@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>陳明渙 | 個人履歷與介紹</title>
+  <meta name="description" content="陳明渙的個人個人履歷網站。就讀萬能科技大學企業管理系，具備家庭餐飲營運實務，熱愛重機、鋼琴、跳傘與深度潛水。">
+  <!-- Google Fonts: Inter & Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+              800: '#0c4a6e',
+              900: '#082f49',
+            }
+          },
+          fontFamily: {
+            sans: ['"Noto Sans TC"', 'Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-sky-500 selection:text-white transition-colors duration-300">
+
+  <!-- Background Decorative Gradient -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-sky-600/15 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/3 -left-40 w-96 h-96 bg-indigo-600/15 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-40 right-1/4 w-96 h-96 bg-cyan-600/15 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo / Name -->
+        <a href="#home" class="flex items-center gap-2 group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-500 flex items-center justify-center font-bold text-white shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform">
+            渙
+          </div>
+          <span class="text-xl font-bold tracking-tight text-white group-hover:text-sky-400 transition-colors">陳明渙</span>
+        </a>
+
+        <!-- Desktop Nav Items -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+          <a href="#about" class="hover:text-sky-400 transition-colors">關於我</a>
+          <a href="#experience" class="hover:text-sky-400 transition-colors">工作經歷</a>
+          <a href="#education" class="hover:text-sky-400 transition-colors">學歷背景</a>
+          <a href="#passions" class="hover:text-sky-400 transition-colors">生活與探索</a>
+          <a href="#contact" class="px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-medium transition-all shadow-md shadow-sky-600/20">聯絡我</a>
+        </nav>
+
+        <!-- Mobile Menu Toggle -->
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 focus:outline-none">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Nav Menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-6 border-b border-slate-800 bg-slate-950/95 space-y-3">
+      <a href="#about" class="mobile-nav-link block py-2 text-slate-300 hover:text-sky-400">關於我</a>
+      <a href="#experience" class="mobile-nav-link block py-2 text-slate-300 hover:text-sky-400">工作經歷</a>
+      <a href="#education" class="mobile-nav-link block py-2 text-slate-300 hover:text-sky-400">學歷背景</a>
+      <a href="#passions" class="mobile-nav-link block py-2 text-slate-300 hover:text-sky-400">生活與探索</a>
+      <a href="#contact" class="mobile-nav-link block py-2 text-sky-400 font-semibold">聯絡我</a>
+    </div>
+  </header>
+
+  <main class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-28">
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-8 sm:pt-16 pb-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-8 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-400 text-xs sm:text-sm font-medium">
+            <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+            萬能科技大學 企業管理系 ｜ 現正就讀中
+          </div>
+          <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+            你好，我是 <span class="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 via-indigo-400 to-cyan-300">陳明渙</span>
+          </h1>
+          <p class="text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl font-normal">
+            生於 2000 年（民國 89 年 4 月 24 日）。兼具扎實的<strong class="text-white font-medium">餐飲第一線營運實戰</strong>與<strong class="text-white font-medium">企業管理知識</strong>。
+            動靜皆宜，生活熱愛沉靜專注的鋼琴演奏，亦勇於追求極限運動的沉穩與挑戰。
+          </p>
+
+          <div class="flex flex-wrap gap-4 pt-2">
+            <a href="#experience" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 text-white font-semibold transition-all shadow-lg shadow-sky-600/25 hover:shadow-sky-600/40">
+              <i data-lucide="briefcase" class="w-4 h-4"></i>
+              查看經歷
+            </a>
+            <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-700 hover:border-slate-500 bg-slate-900/60 hover:bg-slate-800 text-slate-200 font-semibold transition-all">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+              聯絡方式
+            </a>
+          </div>
+
+          <!-- Quick Badges -->
+          <div class="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center border-t border-slate-800/80">
+            <div class="p-3 rounded-xl bg-slate-900/40 border border-slate-800/60">
+              <div class="text-2xl font-bold text-white">2000</div>
+              <div class="text-xs text-slate-400 mt-1">出生年份</div>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-900/40 border border-slate-800/60">
+              <div class="text-2xl font-bold text-sky-400">餐飲實戰</div>
+              <div class="text-xs text-slate-400 mt-1">多年營運經驗</div>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-900/40 border border-slate-800/60">
+              <div class="text-2xl font-bold text-indigo-400">企管專業</div>
+              <div class="text-xs text-slate-400 mt-1">大學在讀中</div>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-900/40 border border-slate-800/60">
+              <div class="text-2xl font-bold text-cyan-400">極限與藝術</div>
+              <div class="text-xs text-slate-400 mt-1">多元生活體驗</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile Card Visual -->
+        <div class="lg:col-span-4 flex justify-center">
+          <div class="relative w-full max-w-sm rounded-3xl p-1 bg-gradient-to-b from-sky-500/30 via-slate-800 to-indigo-500/20 shadow-2xl">
+            <div class="bg-slate-900 rounded-[22px] p-6 space-y-6">
+              <div class="w-24 h-24 mx-auto rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-600 flex items-center justify-center text-4xl font-bold text-white shadow-xl shadow-sky-500/20">
+                渙
+              </div>
+              <div class="text-center space-y-1">
+                <h3 class="text-xl font-bold text-white">陳明渙</h3>
+                <p class="text-sm text-sky-400 font-medium">企業管理系 ｜ 餐飲實務</p>
+                <p class="text-xs text-slate-400">民國 89 年 4 月 24 日生</p>
+              </div>
+
+              <div class="space-y-3 pt-2 text-sm text-slate-300 border-t border-slate-800">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-sky-400">
+                    <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+                  </div>
+                  <span>萬能科技大學 企管系</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-indigo-400">
+                    <i data-lucide="utensils" class="w-4 h-4"></i>
+                  </div>
+                  <span>家庭餐飲店 現場營運</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-cyan-400">
+                    <i data-lucide="compass" class="w-4 h-4"></i>
+                  </div>
+                  <span>重機 ｜ 鋼琴 ｜ 跳傘 ｜ 潛水</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="space-y-8">
+      <div class="flex items-center gap-3">
+        <div class="h-8 w-1.5 bg-sky-500 rounded-full"></div>
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">個人簡介與核心特質</h2>
+          <p class="text-sm text-slate-400">About Me & Philosophy</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-sky-500/40 transition-all hover:-translate-y-1 duration-300">
+          <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center mb-4">
+            <i data-lucide="store" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">務實扎實的實戰力</h3>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            長年在自營餐飲店第一線工作，磨練出不怕吃苦、主動解決問題的韌性。從顧客接待到現場突發狀況應變，皆能冷靜沉著應對。
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-indigo-500/40 transition-all hover:-translate-y-1 duration-300">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-4">
+            <i data-lucide="trending-up" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">管理與企劃思維</h3>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            正在萬能科技大學進修企業管理，將管理學、成本管控與組織營運知識，實際比對日常商業運作，持續拓展全方位的商管視野。
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-cyan-500/40 transition-all hover:-translate-y-1 duration-300">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-4">
+            <i data-lucide="shield-check" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">膽識與冷靜自律</h3>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            擁有高空跳傘、深度潛水與重機長途騎行經驗。在高壓與極限情境下，始終能嚴守安全紀律，並在關鍵時刻保持沉穩思考。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience" class="space-y-8">
+      <div class="flex items-center gap-3">
+        <div class="h-8 w-1.5 bg-sky-500 rounded-full"></div>
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">工作經歷</h2>
+          <p class="text-sm text-slate-400">Work Experience</p>
+        </div>
+      </div>
+
+      <div class="relative pl-6 sm:pl-8 border-l border-slate-800 space-y-8">
+        <!-- Experience 1 -->
+        <div class="relative group">
+          <!-- Timeline Node -->
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full border-2 border-sky-400 bg-slate-950 group-hover:scale-125 transition-transform"></div>
+
+          <div class="p-6 sm:p-8 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+              <div>
+                <h3 class="text-xl font-bold text-white">家庭餐廳經營 ｜ 現場營運與客戶服務</h3>
+                <p class="text-sm text-sky-400 font-medium mt-0.5">家庭自營事業</p>
+              </div>
+              <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-slate-800 text-slate-300 border border-slate-700 w-fit">
+                至今在職
+              </span>
+            </div>
+
+            <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+              長期參與家中餐廳全方位日常營運，涵蓋前線外場接待至後台庫存與金流管理：
+            </p>
+
+            <ul class="space-y-3 text-sm text-slate-300">
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400 mt-1 shrink-0"></i>
+                <span><strong>現場接待與客訴應對</strong>：第一線迎賓引導、訂位確認與點餐送餐，培養出高度同理心與應對進退技巧。</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400 mt-1 shrink-0"></i>
+                <span><strong>物料進出貨與庫存盤點</strong>：每日食材耗損檢查、庫存記錄與向供應商叫貨，維持原物料鮮度並控制食材耗損。</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400 mt-1 shrink-0"></i>
+                <span><strong>收銀與金流管理</strong>：操作 POS 系統結帳開立發票、每日營收現金額度核對與結帳報表產出。</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400 mt-1 shrink-0"></i>
+                <span><strong>流程協調與團隊合作</strong>：尖峰用餐時段前後場溝通協調，有效縮短出餐時間，保持高效運作。</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="space-y-8">
+      <div class="flex items-center gap-3">
+        <div class="h-8 w-1.5 bg-sky-500 rounded-full"></div>
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">學歷背景</h2>
+          <p class="text-sm text-slate-400">Education</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- University -->
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center shrink-0">
+            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs text-sky-400 font-semibold uppercase tracking-wider">大專院校 ｜ 在學中</span>
+            <h3 class="text-lg font-bold text-white">萬能科技大學</h3>
+            <p class="text-sm text-slate-300">企業管理系（一年級）</p>
+            <p class="text-xs text-slate-400 pt-1">深入學習組織行為、行銷管理、財務會計基礎與企業營運策略。</p>
+          </div>
+        </div>
+
+        <!-- High School -->
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center shrink-0">
+            <i data-lucide="school" class="w-6 h-6"></i>
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">高級中學 ｜ 畢業</span>
+            <h3 class="text-lg font-bold text-white">治平高級中學</h3>
+            <p class="text-sm text-slate-300">普通高中學業完成</p>
+            <p class="text-xs text-slate-400 pt-1">奠定穩健的基礎學科能力與團體生活互助精神。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Passions & Life Highlights -->
+    <section id="passions" class="space-y-8">
+      <div class="flex items-center gap-3">
+        <div class="h-8 w-1.5 bg-sky-500 rounded-full"></div>
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">生活與極限探索</h2>
+          <p class="text-sm text-slate-400">Passions, Adventure & Artistry</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Item 1: Motorcycle -->
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-sky-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="bike" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">重型機車騎乘</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            享受掌控機械動力的快感與公路巡航。鍛鍊長途專注力、路況敏銳觀察力與自律的防禦性駕駛態度。
+          </p>
+        </div>
+
+        <!-- Item 2: Piano -->
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-indigo-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="music" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">鋼琴演奏</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            具備長期音樂專注力，在黑白琴鍵間沉澱心境。具備良好的節奏感、細緻的感知度與持之以恆的反覆練習毅力。
+          </p>
+        </div>
+
+        <!-- Item 3: Skydiving -->
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-cyan-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="wind" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">高空跳傘挑戰</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            挑戰千米高空的重力加速度，突破個人的心理舒適圈。在極端恐懼面前依然果斷邁出腳步，具備強大心理素質。
+          </p>
+        </div>
+
+        <!-- Item 4: Deep Diving -->
+        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-blue-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="anchor" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">深度潛水體驗</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            深海無重力環境下的冷靜與自控。嚴格遵守潛水 SOP、空氣監控與潛伴互助制度，展現高規格的安全風險意識。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="space-y-8">
+      <div class="flex items-center gap-3">
+        <div class="h-8 w-1.5 bg-sky-500 rounded-full"></div>
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">與我聯絡</h2>
+          <p class="text-sm text-slate-400">Get in Touch</p>
+        </div>
+      </div>
+
+      <div class="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border border-slate-800 shadow-xl space-y-6">
+        <div class="max-w-2xl">
+          <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">期待與您進一步交流</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            目前持續在企業管理領域精進，並積極尋找實習、工作交流與多元合作機會。若您有任何職缺或專案合作機會，歡迎隨時與我聯繫！
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-800/80">
+          <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-800/40 border border-slate-700/60">
+            <div class="w-10 h-10 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center">
+              <i data-lucide="mail" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="text-xs text-slate-400">電子信箱</div>
+              <div class="text-sm font-semibold text-white">chen.minghuan.tw@gmail.com</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-800/40 border border-slate-700/60">
+            <div class="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+              <i data-lucide="phone" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="text-xs text-slate-400">聯絡電話</div>
+              <div class="text-sm font-semibold text-white">09XX-XXX-XXX (面試洽詢)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-900 bg-slate-950 py-8 relative z-10 text-center text-xs text-slate-500">
+    <div class="max-w-6xl mx-auto px-4 space-y-2">
+      <p>© 2026 陳明渙 (Chen, Ming-Huan). All rights reserved.</p>
+      <p>Built with HTML5 & Tailwind CSS ｜ Deployed on GitHub Pages</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
