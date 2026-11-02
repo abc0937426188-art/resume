@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>陳明渙 | 個人履歷與介紹</title>
-  <meta name="description" content="陳明渙的個人履歷網站。具備上銀科技3年高精密精修師實務經驗、萬能科技大學企業管理系學歷，結合家庭餐飲營運實戰，熱愛重機、鋼琴、跳傘與深度潛水。">
+  <title>陳明渙 | 傳奇個人履歷與戰鬥力報告</title>
+  <meta name="description" content="陳明渙的個人履歷。具備上銀科技3年高精密精修師微米級手藝、萬能科技大學企管系學歷，結合家庭餐飲營運實戰，熱愛重機、鋼琴、跳傘與深度潛水。">
   <!-- Google Fonts: Inter & Noto Sans TC -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+TC:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -18,9 +18,11 @@
         extend: {
           colors: {
             brand: {
+              cyan: '#00f0ff',
               blue: '#3b82f6',
-              purple: '#9333ea',
-              pink: '#ec4899',
+              purple: '#a855f7',
+              pink: '#ff007f',
+              gold: '#fbbf24',
             }
           },
           fontFamily: {
@@ -34,43 +36,63 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#080412] text-slate-100 font-sans antialiased selection:bg-pink-500 selection:text-white transition-colors duration-300">
+<body class="bg-[#05020a] text-slate-100 font-sans antialiased selection:bg-pink-500 selection:text-white transition-colors duration-300 overflow-x-hidden">
 
   <!-- Interactive Dynamic Ambient Particle Canvas -->
   <canvas id="ambient-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
-  <!-- Background Decorative Blue, Purple & Pink Harmonious Gradients -->
+  <!-- Background Decorative Cyber-Luxe Neon Orbs -->
   <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-    <div class="absolute -top-40 -right-40 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl"></div>
-    <div class="absolute top-1/4 -left-40 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
-    <div class="absolute top-2/3 -right-20 w-80 h-80 bg-pink-600/15 rounded-full blur-3xl"></div>
-    <div class="absolute -bottom-40 left-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl"></div>
+    <div class="absolute -top-40 -right-40 w-[30rem] h-[30rem] bg-purple-600/20 rounded-full blur-[130px]"></div>
+    <div class="absolute top-1/4 -left-40 w-[28rem] h-[28rem] bg-cyan-500/15 rounded-full blur-[140px]"></div>
+    <div class="absolute top-1/2 right-1/4 w-[26rem] h-[26rem] bg-pink-600/15 rounded-full blur-[130px]"></div>
+    <div class="absolute -bottom-40 left-1/3 w-[32rem] h-[32rem] bg-blue-600/20 rounded-full blur-[150px]"></div>
   </div>
 
   <!-- Header / Navigation -->
-  <header class="sticky top-0 z-40 backdrop-blur-md bg-[#080412]/85 border-b border-indigo-950/60">
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-[#05020a]/85 border-b border-purple-900/40 shadow-lg shadow-purple-950/20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <!-- Logo / Name -->
-        <a href="#home" class="flex items-center gap-2.5 group">
-          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-purple-600 to-pink-500 flex items-center justify-center font-bold text-white shadow-lg shadow-purple-500/25 group-hover:scale-105 transition-transform">
-            渙
+        <a href="#home" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-400 via-purple-600 to-pink-500 p-[1.5px] shadow-lg shadow-purple-500/25 group-hover:scale-105 transition-transform">
+            <div class="w-full h-full bg-[#0d071a] rounded-[10px] flex items-center justify-center font-black text-transparent bg-clip-text bg-gradient-to-tr from-cyan-300 via-pink-400 to-amber-300">
+              渙
+            </div>
           </div>
-          <span class="text-xl font-bold tracking-tight text-white group-hover:text-purple-300 transition-colors">陳明渙</span>
+          <div>
+            <div class="text-lg font-black tracking-tight text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1.5">
+              <span>陳明渙</span>
+              <span class="text-[10px] px-1.5 py-0.5 rounded bg-gradient-to-r from-pink-500 to-purple-600 text-white font-extrabold uppercase">SSR</span>
+            </div>
+            <div class="text-[10px] text-slate-400 -mt-0.5 tracking-wider font-medium">PRECISION & MANAGEMENT</div>
+          </div>
         </a>
 
         <!-- Desktop Nav Items -->
-        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-          <a href="#about" class="hover:text-blue-400 transition-colors">關於我</a>
-          <a href="#experience" class="hover:text-purple-300 transition-colors">工作經歷</a>
-          <a href="#education" class="hover:text-pink-400 transition-colors">學歷背景</a>
-          <a href="#passions" class="hover:text-blue-300 transition-colors">生活與探索</a>
-          <a href="#contact" class="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-500 hover:via-purple-500 hover:to-pink-500 text-white font-medium transition-all shadow-md shadow-purple-600/25 hover:shadow-pink-600/40">聯絡我</a>
+        <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
+          <a href="#about" class="hover:text-cyan-300 transition-colors">核心亮點</a>
+          <a href="#combat-power" class="hover:text-amber-300 transition-colors flex items-center gap-1">
+            <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-400"></i>
+            <span>戰鬥力</span>
+          </a>
+          <a href="#experience" class="hover:text-purple-300 transition-colors">經歷實績</a>
+          <a href="#education" class="hover:text-pink-300 transition-colors">學歷背景</a>
+          <a href="#passions" class="hover:text-cyan-300 transition-colors">極限生活</a>
+
+          <!-- 音效開關切換按鈕 -->
+          <button id="sound-toggle-btn" class="p-2 rounded-xl bg-purple-950/60 hover:bg-purple-900/80 border border-purple-500/30 text-purple-300 hover:text-white transition-all shadow-sm" title="音效切換（開 / 關）">
+            <i id="sound-icon" data-lucide="volume-2" class="w-4 h-4"></i>
+          </button>
+
+          <a href="#contact" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-500 hover:from-cyan-400 hover:via-purple-500 hover:to-pink-400 text-white font-bold transition-all shadow-lg shadow-purple-600/30 hover:shadow-cyan-500/40 hover:scale-105">
+            發送 Offer 🚀
+          </a>
         </nav>
 
         <!-- Mobile Menu Toggle -->
-        <div class="md:hidden flex items-center">
-          <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-purple-950/60 focus:outline-none">
+        <div class="md:hidden flex items-center gap-2">
+          <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-purple-950/60 focus:outline-none">
             <i data-lucide="menu" class="w-6 h-6"></i>
           </button>
         </div>
@@ -78,240 +100,373 @@
     </div>
 
     <!-- Mobile Nav Menu -->
-    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-6 border-b border-indigo-950/60 bg-[#080412]/95 space-y-3">
-      <a href="#about" class="mobile-nav-link block py-2 text-slate-300 hover:text-blue-400">關於我</a>
-      <a href="#experience" class="mobile-nav-link block py-2 text-slate-300 hover:text-purple-300">工作經歷</a>
+    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-6 border-b border-purple-900/40 bg-[#080312]/95 space-y-3">
+      <a href="#about" class="mobile-nav-link block py-2 text-slate-300 hover:text-cyan-400">核心亮點</a>
+      <a href="#combat-power" class="mobile-nav-link block py-2 text-amber-300">戰鬥力數據</a>
+      <a href="#experience" class="mobile-nav-link block py-2 text-slate-300 hover:text-purple-300">經歷實績</a>
       <a href="#education" class="mobile-nav-link block py-2 text-slate-300 hover:text-pink-400">學歷背景</a>
-      <a href="#passions" class="mobile-nav-link block py-2 text-slate-300 hover:text-blue-300">生活與探索</a>
-      <a href="#contact" class="mobile-nav-link block py-2 text-pink-400 font-semibold">聯絡我</a>
+      <a href="#passions" class="mobile-nav-link block py-2 text-slate-300 hover:text-cyan-300">極限生活</a>
+      <a href="#contact" class="mobile-nav-link block py-2 text-pink-400 font-bold">發送 Offer 🚀</a>
     </div>
   </header>
 
   <main class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-28">
 
-    <!-- Hero Section -->
-    <section id="home" class="pt-8 sm:pt-16 pb-8 reveal-on-scroll">
+    <!-- Hero Section (狂暴華麗開場) -->
+    <section id="home" class="pt-6 sm:pt-14 pb-8 reveal-on-scroll">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
         <div class="lg:col-span-8 space-y-6">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-xs sm:text-sm font-medium shadow-sm shadow-blue-500/20">
-            <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-            上銀科技 3 年精密精修師 ｜ 萬能科大企管系在學中
+          
+          <!-- SSR 稱號標籤 -->
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-cyan-400/40 bg-cyan-950/40 text-cyan-300 text-xs sm:text-sm font-semibold shadow-lg shadow-cyan-500/20">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
+            <span>【SSR 全能稀有角】物理精修 × 企管戰術 × 鋼鐵抗壓</span>
           </div>
-          <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
-            你好，我是 <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-300 to-pink-400 animate-gradient-flow">陳明渙</span>
+
+          <!-- 主標題 (流光動畫) -->
+          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.15]">
+            你好，我是 <br class="sm:hidden" />
+            <span class="animate-shimmer-text bg-gradient-to-r from-cyan-400 via-purple-300 via-pink-400 to-amber-300 bg-clip-text text-transparent">
+              陳明渙
+            </span>
           </h1>
-          <p class="text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl font-normal">
-            生於 2000 年（民國 89 年 4 月 24 日）。兼具<strong class="text-blue-300 font-medium">上銀科技 3 年高精密精修師</strong>的專注工匠實力、<strong class="text-purple-300 font-medium">家庭餐飲第一線營運實務</strong>與<strong class="text-pink-300 font-medium">企業管理專業知識</strong>。
-            動靜皆宜，生活熱愛沉靜專注的鋼琴演奏，亦勇於追求極限運動的沉穩與挑戰。
+
+          <!-- 亮點幽默標語 -->
+          <div class="p-4 rounded-2xl bg-gradient-to-r from-purple-950/60 via-pink-950/40 to-[#0c0618] border-l-4 border-cyan-400 shadow-xl text-sm sm:text-base text-slate-200 leading-relaxed font-medium">
+            💡 <strong class="text-cyan-300 font-bold">「能手工鏟花到微米級，也能笑納暴走奧客；動能萬呎跳傘一躍而下，靜能十指流暢彈奏德布西。」</strong>
+          </div>
+
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-normal">
+            生於 2000 年（民國 89 年 4 月 24 日）。兼具<strong class="text-cyan-300 font-semibold">上銀科技 3 年高精密精修師</strong>的微米級硬核手藝、<strong class="text-pink-400 font-semibold">家庭餐飲第一線修羅場</strong>的極限抗壓耐操力，以及<strong class="text-purple-300 font-semibold">萬能科大企業管理系</strong>的商業全局思維。
+            兼具勞工階級的實幹手腕與管理階層的成本視野，抗壓耐操、絕不疲軟！
           </p>
 
+          <!-- 動作按鈕 -->
           <div class="flex flex-wrap gap-4 pt-2">
-            <a href="#experience" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-500 hover:via-purple-500 hover:to-pink-500 text-white font-semibold transition-all shadow-lg shadow-purple-600/30 hover:shadow-pink-600/40">
-              <i data-lucide="briefcase" class="w-4 h-4"></i>
-              查看經歷
+            <a href="#contact" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-500 hover:from-cyan-400 hover:via-purple-500 hover:to-pink-400 text-white font-extrabold transition-all shadow-xl shadow-purple-600/30 hover:shadow-cyan-500/50 hover:scale-105">
+              <i data-lucide="sparkles" class="w-5 h-5 text-yellow-300"></i>
+              立即招募神角
             </a>
-            <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-indigo-900/70 hover:border-blue-400/70 bg-[#120a26]/70 hover:bg-[#1b0f38] text-slate-200 font-semibold transition-all">
-              <i data-lucide="mail" class="w-4 h-4"></i>
-              聯絡方式
+            <a href="#combat-power" id="combat-trigger-btn" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl border-2 border-amber-400/60 bg-amber-950/30 hover:bg-amber-900/50 text-amber-300 font-bold transition-all shadow-lg shadow-amber-500/20 hover:scale-105">
+              <i data-lucide="zap" class="w-5 h-5 text-amber-400 animate-bounce"></i>
+              測試戰鬥力破表！
             </a>
           </div>
 
-          <!-- Quick Badges (Harmonious Blue, Pink, Purple, Sky) -->
-          <div class="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center border-t border-indigo-950/60">
-            <div class="p-3 rounded-xl bg-[#120a26]/80 border border-blue-900/40 card-hover">
-              <div class="text-2xl font-bold text-blue-400">2000</div>
-              <div class="text-xs text-slate-400 mt-1">出生年份</div>
+          <!-- Quick Stats Badges -->
+          <div class="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center border-t border-purple-950/70">
+            <div class="p-3.5 rounded-2xl bg-[#0f0721]/80 border border-cyan-500/30 card-hover">
+              <div class="text-2xl font-black text-cyan-400">2000</div>
+              <div class="text-xs text-slate-400 mt-0.5">千禧年黃金出廠</div>
             </div>
-            <div class="p-3 rounded-xl bg-[#120a26]/80 border border-pink-900/40 card-hover">
-              <div class="text-2xl font-bold text-pink-400">上銀精修</div>
-              <div class="text-xs text-slate-400 mt-1">3年精密工藝</div>
+            <div class="p-3.5 rounded-2xl bg-[#0f0721]/80 border border-pink-500/30 card-hover">
+              <div class="text-2xl font-black text-pink-400">3年精修</div>
+              <div class="text-xs text-slate-400 mt-0.5">微米級手藝練成</div>
             </div>
-            <div class="p-3 rounded-xl bg-[#120a26]/80 border border-purple-900/40 card-hover">
-              <div class="text-2xl font-bold text-purple-400">餐飲實戰</div>
-              <div class="text-xs text-slate-400 mt-1">多年營運管理</div>
+            <div class="p-3.5 rounded-2xl bg-[#0f0721]/80 border border-purple-500/30 card-hover">
+              <div class="text-2xl font-black text-purple-400">餐飲修羅</div>
+              <div class="text-xs text-slate-400 mt-0.5">超高EQ極致耐操</div>
             </div>
-            <div class="p-3 rounded-xl bg-[#120a26]/80 border border-indigo-900/40 card-hover">
-              <div class="text-2xl font-bold text-indigo-300">企管專業</div>
-              <div class="text-xs text-slate-400 mt-1">大學在讀中</div>
+            <div class="p-3.5 rounded-2xl bg-[#0f0721]/80 border border-amber-500/30 card-hover">
+              <div class="text-2xl font-black text-amber-400">企管戰術</div>
+              <div class="text-xs text-slate-400 mt-0.5">商業成本全局腦</div>
             </div>
           </div>
+
         </div>
 
-        <!-- Profile Card Visual -->
+        <!-- Profile Card Visual (全息旋轉彩虹霓虹邊框) -->
         <div class="lg:col-span-4 flex justify-center">
-          <div class="relative w-full max-w-sm rounded-3xl p-1 bg-gradient-to-b from-blue-500/40 via-purple-500/30 to-pink-500/30 shadow-2xl shadow-indigo-950/70 card-hover">
-            <div class="bg-[#120a26] rounded-[22px] p-6 space-y-6 border border-purple-900/40">
-              <div class="w-24 h-24 mx-auto rounded-2xl bg-gradient-to-br from-blue-600 via-purple-600 to-pink-500 flex items-center justify-center text-4xl font-bold text-white shadow-xl shadow-purple-500/25">
-                渙
+          <div class="rainbow-border-box rounded-3xl p-[3px] shadow-2xl shadow-cyan-500/20 card-hover">
+            <div class="rainbow-border-content bg-[#0d061c] rounded-[22px] p-6 space-y-6">
+              
+              <!-- 華麗大頭貼 -->
+              <div class="relative w-28 h-28 mx-auto">
+                <div class="w-full h-full rounded-2xl bg-gradient-to-tr from-cyan-400 via-purple-600 to-pink-500 flex items-center justify-center text-5xl font-black text-white shadow-2xl shadow-pink-500/30">
+                  渙
+                </div>
+                <div class="absolute -bottom-2 -right-2 px-2 py-0.5 rounded-full bg-amber-400 text-black text-[10px] font-black uppercase tracking-wider shadow-md">
+                  ★ SSR LV.99
+                </div>
               </div>
+
               <div class="text-center space-y-1">
-                <h3 class="text-xl font-bold text-white">陳明渙</h3>
-                <p class="text-sm bg-gradient-to-r from-blue-400 to-pink-400 bg-clip-text text-transparent font-medium">精密工藝精修師 ｜ 企管實務</p>
+                <h3 class="text-2xl font-black text-white">陳明渙</h3>
+                <p class="text-sm bg-gradient-to-r from-cyan-400 via-purple-300 to-pink-400 bg-clip-text text-transparent font-bold">
+                  高精密精修工匠 ｜ 企管實戰狂人
+                </p>
                 <p class="text-xs text-slate-400">民國 89 年 4 月 24 日生</p>
               </div>
 
-              <div class="space-y-3 pt-2 text-sm text-slate-300 border-t border-purple-900/40">
+              <!-- 特色條列 -->
+              <div class="space-y-3 pt-2 text-sm text-slate-300 border-t border-purple-900/50">
                 <div class="flex items-center gap-3">
-                  <div class="w-8 h-8 rounded-lg bg-blue-950/80 flex items-center justify-center text-blue-400">
+                  <div class="w-8 h-8 rounded-lg bg-cyan-950/80 flex items-center justify-center text-cyan-400 shrink-0">
                     <i data-lucide="wrench" class="w-4 h-4"></i>
                   </div>
-                  <span>上銀科技 3年精修師</span>
+                  <span class="font-medium text-xs">上銀科技 3年微米精修師</span>
                 </div>
                 <div class="flex items-center gap-3">
-                  <div class="w-8 h-8 rounded-lg bg-purple-950/80 flex items-center justify-center text-purple-400">
+                  <div class="w-8 h-8 rounded-lg bg-purple-950/80 flex items-center justify-center text-purple-400 shrink-0">
                     <i data-lucide="graduation-cap" class="w-4 h-4"></i>
                   </div>
-                  <span>萬能科技大學 企管系</span>
+                  <span class="font-medium text-xs">萬能科技大學 企管系</span>
                 </div>
                 <div class="flex items-center gap-3">
-                  <div class="w-8 h-8 rounded-lg bg-pink-950/80 flex items-center justify-center text-pink-400">
+                  <div class="w-8 h-8 rounded-lg bg-pink-950/80 flex items-center justify-center text-pink-400 shrink-0">
                     <i data-lucide="utensils" class="w-4 h-4"></i>
                   </div>
-                  <span>家庭餐飲店 現場營運</span>
+                  <span class="font-medium text-xs">家庭餐飲修羅場 第一線營運</span>
                 </div>
                 <div class="flex items-center gap-3">
-                  <div class="w-8 h-8 rounded-lg bg-indigo-950/80 flex items-center justify-center text-indigo-300">
+                  <div class="w-8 h-8 rounded-lg bg-amber-950/80 flex items-center justify-center text-amber-400 shrink-0">
                     <i data-lucide="compass" class="w-4 h-4"></i>
                   </div>
-                  <span>重機 ｜ 鋼琴 ｜ 跳傘 ｜ 潛水</span>
+                  <span class="font-medium text-xs">重機 ｜ 鋼琴 ｜ 跳傘 ｜ 潛水</span>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- About Section -->
+    <!-- Combat Power Section (戰鬥力雷達與評級 - 浮誇數據面板) -->
+    <section id="combat-power" class="space-y-8 reveal-on-scroll">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="h-8 w-1.5 bg-gradient-to-b from-cyan-400 via-purple-500 to-pink-500 rounded-full"></div>
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-center gap-2">
+              <span>戰鬥力規格書</span>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                OVERPOWERED
+              </span>
+            </h2>
+            <p class="text-sm text-slate-400">Tactical Attributes & Combat Readiness</p>
+          </div>
+        </div>
+        <div class="text-right">
+          <span class="text-xs text-slate-400">綜合評級</span>
+          <div id="combat-score-text" class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-pink-500">
+            9999+ (神級)
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Bar 1: Precision -->
+        <div class="p-6 rounded-2xl bg-[#0f0721]/90 border border-cyan-500/30 spotlight-card space-y-3">
+          <div class="flex justify-between items-center text-sm">
+            <span class="font-bold text-cyan-300 flex items-center gap-1.5">
+              <i data-lucide="crosshair" class="w-4 h-4 text-cyan-400"></i>
+              工藝精密度（公差掌控度）
+            </span>
+            <span class="font-extrabold text-cyan-400">99.8% (微米級)</span>
+          </div>
+          <div class="w-full h-3 rounded-full bg-slate-900 overflow-hidden border border-cyan-500/20">
+            <div class="h-full bg-gradient-to-r from-cyan-500 to-blue-500 combat-bar-fill" style="width: 99%;"></div>
+          </div>
+          <p class="text-xs text-slate-400">
+            在上銀科技累積 3 年微米級傳動元件組配與手工鏟花，手感精確到微米級，比前任的脾氣還細緻。
+          </p>
+        </div>
+
+        <!-- Bar 2: Endurance -->
+        <div class="p-6 rounded-2xl bg-[#0f0721]/90 border border-pink-500/30 spotlight-card space-y-3">
+          <div class="flex justify-between items-center text-sm">
+            <span class="font-bold text-pink-400 flex items-center gap-1.5">
+              <i data-lucide="shield-alert" class="w-4 h-4 text-pink-400"></i>
+              抗壓耐磨損度（修羅場耐操體質）
+            </span>
+            <span class="font-extrabold text-pink-400">99.9% (不可摧毀)</span>
+          </div>
+          <div class="w-full h-3 rounded-full bg-slate-900 overflow-hidden border border-pink-500/20">
+            <div class="h-full bg-gradient-to-r from-pink-500 to-purple-600 combat-bar-fill" style="width: 98%;"></div>
+          </div>
+          <p class="text-xs text-slate-400">
+            家庭餐廳第一線經年累月的油煙與奧客毒打，心臟硬過高碳鋼，笑臉迎人解決一切危機，耐操度爆表。
+          </p>
+        </div>
+
+        <!-- Bar 3: Preload & Rigidity -->
+        <div class="p-6 rounded-2xl bg-[#0f0721]/90 border border-purple-500/30 spotlight-card space-y-3">
+          <div class="flex justify-between items-center text-sm">
+            <span class="font-bold text-purple-300 flex items-center gap-1.5">
+              <i data-lucide="activity" class="w-4 h-4 text-purple-400"></i>
+              剛性與預壓平衡（持久運轉不疲軟）
+            </span>
+            <span class="font-extrabold text-purple-400">MAX (頂級調校)</span>
+          </div>
+          <div class="w-full h-3 rounded-full bg-slate-900 overflow-hidden border border-purple-500/20">
+            <div class="h-full bg-gradient-to-r from-purple-500 to-pink-500 combat-bar-fill" style="width: 97%;"></div>
+          </div>
+          <p class="text-xs text-slate-400">
+            深諳「適度預壓」的物理精髓——太緊磨損發熱，太鬆晃動失準。調校至最佳平衡，長時間高負載絕不翻車。
+          </p>
+        </div>
+
+        <!-- Bar 4: Mental Toughness -->
+        <div class="p-6 rounded-2xl bg-[#0f0721]/90 border border-amber-500/30 spotlight-card space-y-3">
+          <div class="flex justify-between items-center text-sm">
+            <span class="font-bold text-amber-300 flex items-center gap-1.5">
+              <i data-lucide="flame" class="w-4 h-4 text-amber-400"></i>
+              極限心智與膽量（千米跳傘＋深海潛水）
+            </span>
+            <span class="font-extrabold text-amber-400">9999+ (毫無畏懼)</span>
+          </div>
+          <div class="w-full h-3 rounded-full bg-slate-900 overflow-hidden border border-amber-500/20">
+            <div class="h-full bg-gradient-to-r from-amber-400 to-red-500 combat-bar-fill" style="width: 100%;"></div>
+          </div>
+          <p class="text-xs text-slate-400">
+            千米跳傘一躍而下、30米深海冷靜自控。面對職場上的 Deadline 與突發緊急狀況，心率穩如止水。
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- About Section (核心特質) -->
     <section id="about" class="space-y-8 reveal-on-scroll">
       <div class="flex items-center gap-3">
-        <div class="h-8 w-1.5 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 rounded-full"></div>
+        <div class="h-8 w-1.5 bg-gradient-to-b from-cyan-400 via-purple-500 to-pink-500 rounded-full"></div>
         <div>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">個人簡介與核心特質</h2>
-          <p class="text-sm text-slate-400">About Me & Philosophy</p>
+          <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">核心特質與戰術哲學</h2>
+          <p class="text-sm text-slate-400">Tri-Core Competitive Advantages</p>
         </div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
         <!-- Card 1: Precision Finisher at HIWIN -->
-        <div class="p-6 rounded-2xl bg-[#120a26]/80 border border-blue-900/40 hover:border-blue-400/50 card-hover">
-          <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-4">
-            <i data-lucide="crosshair" class="w-6 h-6"></i>
+        <div class="p-7 rounded-2xl spotlight-card border border-cyan-500/30 space-y-4">
+          <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center border border-cyan-500/30 shadow-lg shadow-cyan-500/20">
+            <i data-lucide="crosshair" class="w-7 h-7"></i>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2">微米級專注與工匠精神</h3>
+          <h3 class="text-xl font-black text-white">微米級專注與工匠手感</h3>
           <p class="text-sm text-slate-300 leading-relaxed">
-            在上銀科技累積 3 年高精密精修師經驗，掌握手工鏟花與微米級幾何公差精修技術。鍛鍊出沉穩專注的耐力與對品質細節極度嚴謹的工匠態度。
+            在上銀科技實打實歷練 3 年高精密精修師，精通手工鏟花（Scraping）與關鍵幾何公差檢驗。懂得如何透過極細微的修整創造完美油膜與極致順暢度，對細節苛求到微米等級。
           </p>
         </div>
 
         <!-- Card 2: Restaurant Real-world Experience -->
-        <div class="p-6 rounded-2xl bg-[#120a26]/80 border border-purple-900/40 hover:border-purple-400/50 card-hover">
-          <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-4">
-            <i data-lucide="store" class="w-6 h-6"></i>
+        <div class="p-7 rounded-2xl spotlight-card border border-pink-500/30 space-y-4">
+          <div class="w-14 h-14 rounded-2xl bg-pink-500/10 text-pink-400 flex items-center justify-center border border-pink-500/30 shadow-lg shadow-pink-500/20">
+            <i data-lucide="store" class="w-7 h-7"></i>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2">務實扎實的現場營運力</h3>
+          <h3 class="text-xl font-black text-white">修羅場淬鍊出的抗壓韌性</h3>
           <p class="text-sm text-slate-300 leading-relaxed">
-            長年投身家庭自營餐飲店第一線，從食材耗損盤點、POS 結帳至客訴接待，具備不怕吃苦、同理溝通與迅速解決問題的團隊實戰韌性。
+            長年深耕家庭自營餐飲店第一線。尖峰點餐秒速出菜、食材耗損精準控制、奧客客訴笑臉化解。鍛造出「笑著承受折磨，帳目依舊清楚」的超凡團隊執行力與抗壓體質。
           </p>
         </div>
 
         <!-- Card 3: Business Management & Extreme Focus -->
-        <div class="p-6 rounded-2xl bg-[#120a26]/80 border border-pink-900/40 hover:border-pink-400/50 card-hover">
-          <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center mb-4">
-            <i data-lucide="trending-up" class="w-6 h-6"></i>
+        <div class="p-7 rounded-2xl spotlight-card border border-purple-500/30 space-y-4">
+          <div class="w-14 h-14 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center border border-purple-500/30 shadow-lg shadow-purple-500/20">
+            <i data-lucide="trending-up" class="w-7 h-7"></i>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2">商管思維與極限心理素質</h3>
+          <h3 class="text-xl font-black text-white">商管戰術腦與大心臟思維</h3>
           <p class="text-sm text-slate-300 leading-relaxed">
-            進修萬能科技大學企業管理系，融合管理學與成本掌控視角。結合鋼琴演奏的沉澱專注，以及重機、跳傘與潛水的冷靜自律與果敢膽識。
+            進修萬能企管系，兼具基層勞工的務實乾貨與管理階層的成本刀法。搭配鋼琴十指的沉靜專注，以及重機、萬呎跳傘與深海潛水的強大心臟，在任何極端情境下皆能冷靜決策。
           </p>
         </div>
+
       </div>
     </section>
 
-    <!-- Work Experience Section -->
+    <!-- Work Experience Section (工作經歷) -->
     <section id="experience" class="space-y-8 reveal-on-scroll">
       <div class="flex items-center gap-3">
-        <div class="h-8 w-1.5 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 rounded-full"></div>
+        <div class="h-8 w-1.5 bg-gradient-to-b from-cyan-400 via-purple-500 to-pink-500 rounded-full"></div>
         <div>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">工作經歷</h2>
-          <p class="text-sm text-slate-400">Work Experience</p>
+          <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">工作經歷與硬核實績</h2>
+          <p class="text-sm text-slate-400">Battle-Tested Experience</p>
         </div>
       </div>
 
-      <div class="relative pl-6 sm:pl-8 border-l border-indigo-950/80 space-y-8">
+      <div class="relative pl-6 sm:pl-8 border-l-2 border-purple-900/60 space-y-10">
 
         <!-- Experience 1: HIWIN Technologies (3 Years) -->
         <div class="relative group">
-          <!-- Timeline Node (Blue glow) -->
-          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full border-2 border-blue-400 bg-[#080412] group-hover:scale-125 transition-transform shadow-md shadow-blue-500/60"></div>
+          <!-- Timeline Node (Cyan glow) -->
+          <div class="absolute -left-[33px] sm:-left-[41px] top-1.5 w-5 h-5 rounded-full border-2 border-cyan-400 bg-[#05020a] group-hover:scale-125 transition-transform shadow-lg shadow-cyan-500/80"></div>
 
-          <div class="p-6 sm:p-8 rounded-2xl bg-[#120a26]/85 border border-blue-900/40 hover:border-blue-400/60 card-hover">
+          <div class="p-6 sm:p-8 rounded-2xl spotlight-card border border-cyan-500/30">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
               <div>
-                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                <h3 class="text-xl sm:text-2xl font-black text-white flex items-center gap-2.5">
                   <span>上銀科技股份有限公司 (HIWIN)</span>
-                  <span class="text-xs px-2.5 py-0.5 rounded-md bg-blue-500/20 text-blue-300 border border-blue-500/30">精密製造龍頭</span>
+                  <span class="text-xs px-2.5 py-0.5 rounded-md bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-bold">精密製造全球龍頭</span>
                 </h3>
-                <p class="text-sm text-blue-400 font-semibold mt-0.5">精修師 (Precision Finisher) ｜ 傳動控制與線性元件組配精修</p>
+                <p class="text-sm text-cyan-300 font-bold mt-1">精修師 (Precision Finisher) ｜ 傳動控制與線性元件組配精修</p>
               </div>
-              <span class="inline-block px-3.5 py-1 text-xs font-semibold rounded-full bg-blue-950/70 text-blue-300 border border-blue-600/60 w-fit">
-                共作 3 年歷練
+              <span class="inline-block px-4 py-1.5 text-xs font-black rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-500/60 shadow-sm shadow-cyan-500/30 w-fit">
+                連續 3 年工匠實戰
               </span>
             </div>
 
-            <p class="text-sm text-slate-300 mb-4 leading-relaxed">
-              任職於全球傳動控制與系統科技領導品牌「上銀科技」共計 3 年，專任高階傳動元件關鍵部位之微米級精密手工精修與裝配工藝：
+            <p class="text-sm text-slate-300 mb-4 leading-relaxed font-medium">
+              任職於全球傳動控制領導品牌「上銀科技」整整 3 年。專門操刀高階傳動元件關鍵滑動面之微米級手工精修、剷花與公差調校：
             </p>
 
             <ul class="space-y-3 text-sm text-slate-300">
               <li class="flex items-start gap-2.5">
-                <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-400 mt-1 shrink-0"></i>
-                <span><strong>微米級幾何公差精修與手工鏟花（Scraping）</strong>：專責精密滾珠螺桿、線性滑軌與高階導向模組之關鍵滑動面手工精修，精心調整接觸面點數分佈與油膜間隙，確保極致運轉順暢度與高剛性。</span>
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400 mt-1 shrink-0"></i>
+                <span><strong>微米級幾何公差精修與手工鏟花（Scraping）</strong>：專責精密滾珠螺桿、線性滑軌關鍵面手工精修，精心掌握油膜附著點數分佈，讓傳動組件既具備超高剛性、又達到極致滑順耐磨。</span>
               </li>
               <li class="flex items-start gap-2.5">
-                <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-400 mt-1 shrink-0"></i>
-                <span><strong>高精密量具與光學真直度量測</strong>：熟練運用千分錶、平行度規、光學真直度測量儀及精密水平儀進行嚴格檢測，落實每一道超高規格出廠品管標準。</span>
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400 mt-1 shrink-0"></i>
+                <span><strong>光學與高階儀器真直度量測</strong>：熟練運用千分錶、平行度規、光學真直度測量儀及精密水平儀，嚴格把關出廠公差，差一微米都不放行。</span>
               </li>
               <li class="flex items-start gap-2.5">
-                <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-400 mt-1 shrink-0"></i>
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400 mt-1 shrink-0"></i>
                 <span><strong>滑動異常排查與預壓公差調校</strong>：針對裝配與測試階段發生的微小阻抗、異音或預壓微偏擺進行即時根本原因診斷與微修，大幅優化一次良品率。</span>
               </li>
               <li class="flex items-start gap-2.5">
-                <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-400 mt-1 shrink-0"></i>
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400 mt-1 shrink-0"></i>
                 <span><strong>極致專注耐力與品質零容忍態度</strong>：3 年高密度精細工藝實踐，鍛鍊出無與倫比的細膩手感、抗壓性、專注耐力與一絲不苟的工匠敬業精神。</span>
               </li>
             </ul>
+
+            <!-- 幽默點評 -->
+            <div class="mt-4 p-3 rounded-xl bg-cyan-950/30 border border-cyan-500/20 text-xs text-cyan-200">
+              💬 <strong>老司機工藝點評</strong>：每天都在跟微米級的進給與摩擦打交道，深知「適度預壓」的重要性——太緊會磨壞，太鬆會晃動。明渙調校得剛剛好，又硬又滑順！
+            </div>
           </div>
         </div>
 
         <!-- Experience 2: Family Restaurant -->
         <div class="relative group">
-          <!-- Timeline Node (Purple/Pink glow) -->
-          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full border-2 border-purple-400 bg-[#080412] group-hover:scale-125 transition-transform shadow-md shadow-purple-500/60"></div>
+          <!-- Timeline Node (Pink glow) -->
+          <div class="absolute -left-[33px] sm:-left-[41px] top-1.5 w-5 h-5 rounded-full border-2 border-pink-400 bg-[#05020a] group-hover:scale-125 transition-transform shadow-lg shadow-pink-500/80"></div>
 
-          <div class="p-6 sm:p-8 rounded-2xl bg-[#120a26]/85 border border-purple-900/40 hover:border-pink-500/60 card-hover">
+          <div class="p-6 sm:p-8 rounded-2xl spotlight-card border border-pink-500/30">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
               <div>
-                <h3 class="text-xl font-bold text-white">家庭餐廳經營 ｜ 現場營運與客戶服務</h3>
-                <p class="text-sm text-purple-400 font-medium mt-0.5">家庭自營事業</p>
+                <h3 class="text-xl sm:text-2xl font-black text-white">家庭餐廳經營 ｜ 現場第一線營運與客情維護</h3>
+                <p class="text-sm text-pink-400 font-bold mt-1">家庭自營事業 ｜ 修羅場洗禮</p>
               </div>
-              <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-purple-950/70 text-purple-300 border border-purple-600/60 w-fit">
-                多年實務積累
+              <span class="inline-block px-4 py-1.5 text-xs font-black rounded-full bg-pink-950/80 text-pink-300 border border-pink-500/60 shadow-sm shadow-pink-500/30 w-fit">
+                多年實務抗壓磨練
               </span>
             </div>
 
-            <p class="text-sm text-slate-300 mb-4 leading-relaxed">
-              長期參與家中餐廳全方位日常營運，涵蓋前線外場接待至後台庫存與金流管理：
+            <p class="text-sm text-slate-300 mb-4 leading-relaxed font-medium">
+              長期參與家中餐廳全方位日常營運，涵蓋尖峰前線外場接待至後台庫存、原物料耗損與金流結算：
             </p>
 
             <ul class="space-y-3 text-sm text-slate-300">
               <li class="flex items-start gap-2.5">
                 <i data-lucide="check-circle-2" class="w-4 h-4 text-pink-400 mt-1 shrink-0"></i>
-                <span><strong>現場接待與客訴應對</strong>：第一線迎賓引導、訂位確認與點餐送餐，培養出高度同理心與應對進退技巧。</span>
+                <span><strong>第一線危機應對與客訴化解</strong>：尖峰時段高壓環境下快速安撫客戶並解決突發狀況，練就超高 EQ 與見招拆招的溝通藝術。</span>
               </li>
               <li class="flex items-start gap-2.5">
                 <i data-lucide="check-circle-2" class="w-4 h-4 text-pink-400 mt-1 shrink-0"></i>
-                <span><strong>物料進出貨與庫存盤點</strong>：每日食材耗損檢查、庫存記錄與向供應商叫貨，維持原物料鮮度並控制食材耗損。</span>
+                <span><strong>原物料耗損控制與進出貨盤點</strong>：每日食材耗損檢查、庫存記錄與供應商叫貨，嚴密控管成本、維持原物料最高新鮮度。</span>
               </li>
               <li class="flex items-start gap-2.5">
                 <i data-lucide="check-circle-2" class="w-4 h-4 text-pink-400 mt-1 shrink-0"></i>
@@ -319,147 +474,167 @@
               </li>
               <li class="flex items-start gap-2.5">
                 <i data-lucide="check-circle-2" class="w-4 h-4 text-pink-400 mt-1 shrink-0"></i>
-                <span><strong>流程協調與團隊合作</strong>：尖峰用餐時段前後場溝通協調，有效縮短出餐時間，保持高效運作。</span>
+                <span><strong>團隊高壓節奏協調</strong>：尖峰用餐時段前後場溝通協調，有效縮短出餐時間，保持高效運作。</span>
               </li>
             </ul>
+
+            <!-- 幽默點評 -->
+            <div class="mt-4 p-3 rounded-xl bg-pink-950/30 border border-pink-500/20 text-xs text-pink-200">
+              💬 <strong>修羅場抗壓點評</strong>：經歷過油煙火海與暴走奧客的千錘百鍊，早就練成「被罵還能保持微笑、把帳算得清清楚楚」的抖M鋼鐵心臟！
+            </div>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- Education Section -->
+    <!-- Education Section (學歷背景) -->
     <section id="education" class="space-y-8 reveal-on-scroll">
       <div class="flex items-center gap-3">
-        <div class="h-8 w-1.5 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 rounded-full"></div>
+        <div class="h-8 w-1.5 bg-gradient-to-b from-cyan-400 via-purple-500 to-pink-500 rounded-full"></div>
         <div>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">學歷背景</h2>
-          <p class="text-sm text-slate-400">Education</p>
+          <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">學歷背景</h2>
+          <p class="text-sm text-slate-400">Academic Background</p>
         </div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- University -->
-        <div class="p-6 rounded-2xl bg-[#120a26]/80 border border-blue-900/40 hover:border-blue-400/50 flex items-start gap-4 card-hover">
-          <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
-            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+        <div class="p-7 rounded-2xl spotlight-card border border-purple-500/30 flex items-start gap-5">
+          <div class="w-14 h-14 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0 border border-purple-500/30 shadow-lg shadow-purple-500/20">
+            <i data-lucide="graduation-cap" class="w-7 h-7"></i>
           </div>
-          <div class="space-y-1">
-            <span class="text-xs text-blue-400 font-semibold uppercase tracking-wider">大專院校 ｜ 在學中</span>
-            <h3 class="text-lg font-bold text-white">萬能科技大學</h3>
-            <p class="text-sm text-slate-300">企業管理系（一年級）</p>
-            <p class="text-xs text-slate-400 pt-1">深入學習組織行為、行銷管理、財務會計基礎與企業營運策略，將實務經驗昇華為系統化管理思維。</p>
+          <div class="space-y-1.5">
+            <span class="text-xs text-purple-300 font-extrabold uppercase tracking-wider">大專院校 ｜ 在學中</span>
+            <h3 class="text-xl font-black text-white">萬能科技大學</h3>
+            <p class="text-sm text-purple-200 font-semibold">企業管理系（一年級）</p>
+            <p class="text-xs text-slate-300 pt-1 leading-relaxed">
+              深入鑽研組織行為、企業營運策略、行銷管理與成本財務。將第一線苦工與工藝經驗昇華為全局商業邏輯與管理思維。
+            </p>
           </div>
         </div>
 
         <!-- High School -->
-        <div class="p-6 rounded-2xl bg-[#120a26]/80 border border-purple-900/40 hover:border-purple-400/50 flex items-start gap-4 card-hover">
-          <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0">
-            <i data-lucide="school" class="w-6 h-6"></i>
+        <div class="p-7 rounded-2xl spotlight-card border border-pink-500/30 flex items-start gap-5">
+          <div class="w-14 h-14 rounded-2xl bg-pink-500/10 text-pink-400 flex items-center justify-center shrink-0 border border-pink-500/30 shadow-lg shadow-pink-500/20">
+            <i data-lucide="school" class="w-7 h-7"></i>
           </div>
-          <div class="space-y-1">
-            <span class="text-xs text-purple-400 font-semibold uppercase tracking-wider">高級中學 ｜ 畢業</span>
-            <h3 class="text-lg font-bold text-white">治平高級中學</h3>
-            <p class="text-sm text-slate-300">普通高中學業完成</p>
-            <p class="text-xs text-slate-400 pt-1">奠定穩健的基礎學科能力與團體生活互助精神。</p>
+          <div class="space-y-1.5">
+            <span class="text-xs text-pink-300 font-extrabold uppercase tracking-wider">高級中學 ｜ 畢業</span>
+            <h3 class="text-xl font-black text-white">治平高級中學</h3>
+            <p class="text-sm text-pink-200 font-semibold">普通高中學業完成</p>
+            <p class="text-xs text-slate-300 pt-1 leading-relaxed">
+              奠定紮實穩固的學科底蘊、邏輯思維基礎與團體合作互助素養。
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Passions & Life Highlights -->
+    <!-- Passions & Extreme Exploration (生活與極限探索) -->
     <section id="passions" class="space-y-8 reveal-on-scroll">
       <div class="flex items-center gap-3">
-        <div class="h-8 w-1.5 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 rounded-full"></div>
+        <div class="h-8 w-1.5 bg-gradient-to-b from-cyan-400 via-purple-500 to-pink-500 rounded-full"></div>
         <div>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">生活與極限探索</h2>
-          <p class="text-sm text-slate-400">Passions, Adventure & Artistry</p>
+          <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">生活與極限探索（文武雙修）</h2>
+          <p class="text-sm text-slate-400">Extreme Courage, Artistry & High-Octane Passions</p>
         </div>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
         <!-- Item 1: Motorcycle -->
-        <div class="p-6 rounded-2xl bg-[#120a26]/80 border border-blue-900/40 hover:border-blue-400/50 group card-hover">
-          <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+        <div class="p-6 rounded-2xl spotlight-card border border-cyan-500/30 group">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform border border-cyan-500/30">
             <i data-lucide="bike" class="w-6 h-6"></i>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2">重型機車騎乘</h3>
+          <span class="text-[10px] px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 font-bold border border-cyan-500/30">極速專注</span>
+          <h3 class="text-lg font-black text-white mt-2 mb-1.5">重型機車巡航</h3>
           <p class="text-xs text-slate-300 leading-relaxed">
-            享受掌控機械動力的快感與公路巡航。鍛鍊長途專注力、路況敏銳觀察力與自律的防禦性駕駛態度。
+            掌控機械動力的快感。堅持防禦駕駛，彎得過去是拓海，安全回家是男神；在職場上也是絕不翻車的穩健老司機。
           </p>
         </div>
 
         <!-- Item 2: Piano -->
-        <div class="p-6 rounded-2xl bg-[#120a26]/80 border border-purple-900/40 hover:border-purple-400/50 group card-hover">
-          <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+        <div class="p-6 rounded-2xl spotlight-card border border-purple-500/30 group">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform border border-purple-500/30">
             <i data-lucide="music" class="w-6 h-6"></i>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2">鋼琴演奏</h3>
+          <span class="text-[10px] px-2 py-0.5 rounded bg-purple-950 text-purple-300 font-bold border border-purple-500/30">靈活十指</span>
+          <h3 class="text-lg font-black text-white mt-2 mb-1.5">鋼琴演奏</h3>
           <p class="text-xs text-slate-300 leading-relaxed">
-            具備長期音樂專注力，在黑白琴鍵間沉澱心境。具備良好的節奏感、細緻的感知度與持之以恆的反覆練習毅力。
+            黑白琴鍵間沉澱心境。手速快、節奏穩、觸鍵力道深淺自如，無論是用在微米級精修還是鍵盤輸出都無懈可擊。
           </p>
         </div>
 
         <!-- Item 3: Skydiving -->
-        <div class="p-6 rounded-2xl bg-[#120a26]/80 border border-pink-900/40 hover:border-pink-400/50 group card-hover">
-          <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+        <div class="p-6 rounded-2xl spotlight-card border border-amber-500/30 group">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform border border-amber-500/30">
             <i data-lucide="wind" class="w-6 h-6"></i>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2">高空跳傘挑戰</h3>
+          <span class="text-[10px] px-2 py-0.5 rounded bg-amber-950 text-amber-300 font-bold border border-amber-500/30">極限大心臟</span>
+          <h3 class="text-lg font-black text-white mt-2 mb-1.5">高空跳傘挑戰</h3>
           <p class="text-xs text-slate-300 leading-relaxed">
-            挑戰千米高空的重力加速度，突破個人的心理舒適圈。在極端恐懼面前依然果斷邁出腳步，具備強大心理素質。
+            萬呎高空一躍而下突破恐懼。只要傘有開，人生沒什麼好怕的；連跳傘都不怕了，你那點專案 Deadline 算什麼壓力！
           </p>
         </div>
 
         <!-- Item 4: Deep Diving -->
-        <div class="p-6 rounded-2xl bg-[#120a26]/80 border border-indigo-900/40 hover:border-cyan-400/50 group card-hover">
-          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+        <div class="p-6 rounded-2xl spotlight-card border border-pink-500/30 group">
+          <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform border border-pink-500/30">
             <i data-lucide="anchor" class="w-6 h-6"></i>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2">深度潛水體驗</h3>
+          <span class="text-[10px] px-2 py-0.5 rounded bg-pink-950 text-pink-300 font-bold border border-pink-500/30">深海冷靜</span>
+          <h3 class="text-lg font-black text-white mt-2 mb-1.5">深度潛水體驗</h3>
           <p class="text-xs text-slate-300 leading-relaxed">
-            深海無重力環境下的冷靜與自控。嚴格遵守潛水 SOP、空氣監控與潛伴互助制度，展現高規格的安全風險意識。
+            深海無重力高壓環境下的冷靜自控。嚴格恪守 SOP 與安全檢查，懂得在巨大的外部壓力下保持極度冷靜與自律。
           </p>
         </div>
+
       </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section (聯絡我) -->
     <section id="contact" class="space-y-8 reveal-on-scroll">
       <div class="flex items-center gap-3">
-        <div class="h-8 w-1.5 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 rounded-full"></div>
+        <div class="h-8 w-1.5 bg-gradient-to-b from-cyan-400 via-purple-500 to-pink-500 rounded-full"></div>
         <div>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">與我聯絡</h2>
-          <p class="text-sm text-slate-400">Get in Touch</p>
+          <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">招募召喚 ｜ 立即與我聯繫</h2>
+          <p class="text-sm text-slate-400">Summon & Get in Touch</p>
         </div>
       </div>
 
-      <div class="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#120a26] via-[#0d071c] to-[#080412] border border-purple-900/50 shadow-xl space-y-6 card-hover">
-        <div class="max-w-2xl">
-          <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">期待與您進一步交流</h3>
+      <div class="p-8 sm:p-12 rounded-3xl spotlight-card border border-purple-500/40 shadow-2xl space-y-8">
+        <div class="max-w-2xl space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-950/60 border border-pink-500/40 text-pink-300 text-xs font-bold">
+            🔥 戰力充沛 ｜ 隨時可戰
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-black text-white">
+            您缺一個懂微米級硬功夫、又能扛大局的管理戰力嗎？
+          </h3>
           <p class="text-slate-300 text-sm leading-relaxed">
-            具備上銀科技 3 年高精密精修實績，同時持續在企業管理領域精進。積極尋找實習、工作交流與多元合作機會。若您有任何職缺或專案合作機會，歡迎隨時與我聯繫！
+            具備上銀科技 3 年高精密精修實績，同時持續在萬能科大企業管理系深造。不論是高精密製造、現場營運調度，還是多元挑戰性職缺，我都準備好了。歡迎隨時預約面試交流！
           </p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-indigo-950/60">
-          <div class="flex items-center gap-4 p-4 rounded-xl bg-[#170e30]/80 border border-blue-900/40">
-            <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center">
-              <i data-lucide="mail" class="w-5 h-5"></i>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-4 border-t border-purple-900/50">
+          <div class="flex items-center gap-4 p-5 rounded-2xl bg-[#140b28]/90 border border-cyan-500/30 card-hover">
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center border border-cyan-500/30 shrink-0">
+              <i data-lucide="mail" class="w-6 h-6"></i>
             </div>
             <div>
-              <div class="text-xs text-slate-400">電子信箱</div>
-              <div class="text-sm font-semibold text-white">chen.minghuan.tw@gmail.com</div>
+              <div class="text-xs text-slate-400">電子信箱（隨時回覆）</div>
+              <div class="text-sm sm:text-base font-bold text-white">chen.minghuan.tw@gmail.com</div>
             </div>
           </div>
 
-          <div class="flex items-center gap-4 p-4 rounded-xl bg-[#170e30]/80 border border-purple-900/40">
-            <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center">
-              <i data-lucide="phone" class="w-5 h-5"></i>
+          <div class="flex items-center gap-4 p-5 rounded-2xl bg-[#140b28]/90 border border-pink-500/30 card-hover">
+            <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center border border-pink-500/30 shrink-0">
+              <i data-lucide="phone" class="w-6 h-6"></i>
             </div>
             <div>
-              <div class="text-xs text-slate-400">聯絡電話</div>
-              <div class="text-sm font-semibold text-white">09XX-XXX-XXX (面試洽詢)</div>
+              <div class="text-xs text-slate-400">聯絡電話（面試洽詢）</div>
+              <div class="text-sm sm:text-base font-bold text-white">09XX-XXX-XXX (歡迎來信索取)</div>
             </div>
           </div>
         </div>
@@ -469,29 +644,35 @@
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-indigo-950/80 bg-[#06030d] py-8 relative z-10 text-center text-xs text-slate-500">
-    <div class="max-w-6xl mx-auto px-4 space-y-2">
-      <p>© 2026 陳明渙 (Chen, Ming-Huan). All rights reserved.</p>
-      <p class="text-slate-400/80">藍紫粉幻彩風格 ｜ 上銀科技精修師 ｜ 台灣最強迷因互動中</p>
+  <footer class="border-t border-purple-950/80 bg-[#030107] py-10 relative z-10 text-center text-xs text-slate-500">
+    <div class="max-w-6xl mx-auto px-4 space-y-3">
+      <div class="flex justify-center items-center gap-2 text-sm font-bold text-slate-300">
+        <span>陳明渙 (Chen, Ming-Huan)</span>
+        <span class="text-purple-400">×</span>
+        <span class="text-cyan-400">賽博微米精修工藝</span>
+        <span class="text-purple-400">×</span>
+        <span class="text-pink-400">台灣最強迷因神作</span>
+      </div>
+      <p class="text-slate-400/80">© 2026 All rights reserved. 兼具極致質感、黑色幽默與硬核專業。</p>
     </div>
   </footer>
 
   <!-- ============================================================
        台灣最強迷因 (Taiwan Top Meme) 懸浮互動夥伴
-       「聽話！讓我看看！」杰哥 / 台灣迷因大會串
+       「聽話！讓我看看！」杰哥 / 黑色幽默與老司機黃腔名句庫
        ============================================================ -->
   <div id="meme-widget" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end select-none">
     
     <!-- 對話氣泡 (Dialogue Bubble) -->
-    <div id="meme-dialog" class="dialog-floating mb-2 max-w-[240px] sm:max-w-[290px] p-3.5 rounded-2xl bg-[#120a26]/95 border-2 border-purple-500/80 shadow-2xl shadow-purple-500/30 text-xs text-slate-100 transition-all duration-300">
-      <div class="flex items-center justify-between gap-2 pb-1.5 border-b border-purple-500/20 text-[10px] text-purple-300 font-bold uppercase tracking-wider">
+    <div id="meme-dialog" class="dialog-floating-luxe mb-2 max-w-[250px] sm:max-w-[310px] p-4 rounded-2xl bg-[#120829]/95 border-2 border-purple-500/90 shadow-2xl shadow-purple-500/40 text-xs text-slate-100 transition-all duration-300">
+      <div class="flex items-center justify-between gap-2 pb-2 border-b border-purple-500/30 text-[10px] text-purple-300 font-bold uppercase tracking-wider">
         <span class="flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-pink-400 animate-ping"></span>
-          <span id="meme-tag-label" class="text-pink-400 font-black">杰哥經典</span>
+          <span class="w-2.5 h-2.5 rounded-full bg-pink-400 animate-ping"></span>
+          <span id="meme-tag-label" class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-pink-400 font-black">杰哥深入視察</span>
         </span>
         <div class="flex items-center gap-1.5">
-          <button id="meme-next-btn" class="px-2 py-0.5 rounded-md bg-purple-950/90 hover:bg-purple-800 text-purple-200 border border-purple-500/40 text-[10px] transition-all flex items-center gap-1" title="換下一句迷因">
-            <span>換一句</span>
+          <button id="meme-next-btn" class="px-2 py-0.5 rounded-md bg-purple-950/90 hover:bg-purple-800 text-purple-200 border border-purple-500/50 text-[10px] font-bold transition-all flex items-center gap-1 shadow-sm" title="換下一句迷因">
+            <span>換梗</span>
             <span>🔄</span>
           </button>
           <button id="meme-toggle-btn" class="text-slate-400 hover:text-pink-300 p-0.5 rounded transition-colors" title="收起對話">
@@ -499,8 +680,8 @@
           </button>
         </div>
       </div>
-      <p id="meme-dialog-text" class="mt-2 leading-relaxed text-slate-200 font-medium">
-        「聽話！讓我看看！...哎唷，你這份履歷蠻勇的嘛！」
+      <p id="meme-dialog-text" class="mt-2.5 leading-relaxed text-slate-200 font-medium transition-all duration-200">
+        「聽話！讓我看看你的履歷！...嘶！這微米級公差也太硬了吧！我常幫助一些缺工的企業，我家還蠻大的，來我這面試！」
       </p>
     </div>
 
@@ -508,84 +689,82 @@
     <div class="relative flex items-center justify-center cursor-pointer group" title="點我跟台灣最強迷因互動！">
 
       <!-- 互動小標籤 -->
-      <div class="absolute -bottom-2 -left-8 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-[10px] font-bold text-white shadow-lg shadow-purple-500/40 whitespace-nowrap opacity-95 group-hover:scale-105 transition-transform">
+      <div class="absolute -bottom-2 -left-8 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-500 text-[10px] font-black text-white shadow-xl shadow-purple-500/50 whitespace-nowrap opacity-95 group-hover:scale-110 transition-transform border border-white/40">
         <span id="meme-badge-text">聽話！點我互動 👆</span>
       </div>
 
       <!-- SVG Character (杰哥 聽話讓我看看 Taiwan Top Meme Character) -->
-      <div id="meme-char" class="meme-bob transition-transform hover:scale-110">
-        <svg viewBox="0 0 160 175" class="w-24 h-28 sm:w-28 sm:h-32 drop-shadow-[0_12px_24px_rgba(168,85,247,0.4)]">
-          <!-- 招牌紅色運動夾克身體 (Classic Red Zip Hoodie/Jacket) -->
-          <path d="M 42 125 C 38 100, 52 88, 70 85 C 80 85, 95 85, 110 88 C 122 100, 126 125, 128 160 C 128 165, 36 165, 36 160 Z" fill="#b91c1c" stroke="#180e29" stroke-width="2.5"/>
+      <div id="meme-char" class="meme-bob-fancy transition-transform hover:scale-110">
+        <svg viewBox="0 0 160 175" class="w-24 h-28 sm:w-28 sm:h-32 drop-shadow-[0_12px_28px_rgba(0,240,255,0.45)]">
+          <!-- 招牌紅色運動夾克身體 (Classic Red Zip Jacket) -->
+          <path d="M 40 125 C 36 98, 50 86, 70 84 C 80 84, 95 84, 110 86 C 124 98, 128 125, 130 160 C 130 165, 34 165, 34 160 Z" fill="#b91c1c" stroke="#180e29" stroke-width="2.5"/>
 
           <!-- 夾克白色拉鍊與飾條 -->
-          <path d="M 80 88 L 80 160" stroke="#f8fafc" stroke-width="2.8" stroke-dasharray="3,2"/>
-          <path d="M 62 90 L 52 160" stroke="#ef4444" stroke-width="2"/>
-          <path d="M 98 90 L 108 160" stroke="#ef4444" stroke-width="2"/>
+          <path d="M 80 88 L 80 160" stroke="#f8fafc" stroke-width="3" stroke-dasharray="3,2"/>
+          <path d="M 60 90 L 50 160" stroke="#ef4444" stroke-width="2"/>
+          <path d="M 100 90 L 110 160" stroke="#ef4444" stroke-width="2"/>
 
           <!-- 圓領內搭衣 -->
-          <path d="M 68 86 Q 80 96 92 86 Z" fill="#ffffff" stroke="#180e29" stroke-width="2"/>
+          <path d="M 68 85 Q 80 96 92 85 Z" fill="#ffffff" stroke="#180e29" stroke-width="2"/>
 
           <!-- 頸部 -->
-          <rect x="72" y="74" width="16" height="15" rx="3" fill="#fed7aa" stroke="#180e29" stroke-width="2"/>
+          <rect x="72" y="73" width="16" height="15" rx="3" fill="#fed7aa" stroke="#180e29" stroke-width="2"/>
 
           <!-- 頭部輪廓 -->
-          <ellipse cx="80" cy="54" rx="27" ry="30" fill="#fed7aa" stroke="#180e29" stroke-width="2.5"/>
+          <ellipse cx="80" cy="53" rx="27" ry="30" fill="#fed7aa" stroke="#180e29" stroke-width="2.5"/>
 
-          <!-- 招牌油頭／分邊短髮 (Slick Haircut) -->
-          <path d="M 52 48 C 50 32, 60 22, 80 20 C 100 20, 112 30, 108 48 C 108 36, 96 26, 80 26 C 64 26, 56 38, 52 48 Z" fill="#1c1917" stroke="#180e29" stroke-width="2"/>
-          <path d="M 53 46 C 60 30, 75 28, 86 32 C 96 35, 105 32, 107 42" fill="#1c1917" stroke="#180e29" stroke-width="1.5"/>
+          <!-- 招牌油頭短髮 (Slick Haircut) -->
+          <path d="M 52 47 C 50 31, 60 21, 80 19 C 100 19, 112 29, 108 47 C 108 35, 96 25, 80 25 C 64 25, 56 37, 52 47 Z" fill="#1c1917" stroke="#180e29" stroke-width="2"/>
+          <path d="M 53 45 C 60 29, 75 27, 86 31 C 96 34, 105 31, 107 41" fill="#1c1917" stroke="#180e29" stroke-width="1.5"/>
 
           <!-- 左耳 & 右耳 -->
-          <ellipse cx="52" cy="56" rx="4" ry="6" fill="#fbcfe8" stroke="#180e29" stroke-width="1.8"/>
-          <ellipse cx="108" cy="56" rx="4" ry="6" fill="#fbcfe8" stroke="#180e29" stroke-width="1.8"/>
+          <ellipse cx="52" cy="55" rx="4" ry="6" fill="#fbcfe8" stroke="#180e29" stroke-width="1.8"/>
+          <ellipse cx="108" cy="55" rx="4" ry="6" fill="#fbcfe8" stroke="#180e29" stroke-width="1.8"/>
 
           <!-- 招牌挑眉 (Smug confident eyebrows) -->
-          <path d="M 60 40 Q 69 34 75 39" fill="none" stroke="#1c1917" stroke-width="2.6" stroke-linecap="round"/>
-          <path d="M 85 39 Q 91 32 100 37" fill="none" stroke="#1c1917" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M 59 39 Q 68 33 75 38" fill="none" stroke="#1c1917" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M 85 38 Q 92 31 101 36" fill="none" stroke="#1c1917" stroke-width="2.6" stroke-linecap="round"/>
 
-          <!-- 眼睛 (眼睛微瞇 自信笑容) -->
-          <ellipse cx="68" cy="48" rx="4" ry="3" fill="#1c1917"/>
-          <ellipse cx="92" cy="48" rx="4" ry="3" fill="#1c1917"/>
-          <circle cx="69" cy="47" r="1.2" fill="#ffffff"/>
-          <circle cx="93" cy="47" r="1.2" fill="#ffffff"/>
+          <!-- 眼睛 (自信魔性微瞇) -->
+          <ellipse cx="68" cy="47" rx="4" ry="3" fill="#1c1917"/>
+          <ellipse cx="92" cy="47" rx="4" ry="3" fill="#1c1917"/>
+          <circle cx="69" cy="46" r="1.2" fill="#ffffff"/>
+          <circle cx="93" cy="46" r="1.2" fill="#ffffff"/>
 
           <!-- 招牌黑框眼鏡 (Classic Black Rim Glasses) -->
           <!-- 左框 -->
-          <rect x="58" y="42" width="19" height="15" rx="3.5" fill="rgba(240, 249, 255, 0.45)" stroke="#111827" stroke-width="2.5"/>
+          <rect x="58" y="41" width="19" height="15" rx="3.5" fill="rgba(0, 240, 255, 0.35)" stroke="#111827" stroke-width="2.5"/>
           <!-- 右框 -->
-          <rect x="83" y="42" width="19" height="15" rx="3.5" fill="rgba(240, 249, 255, 0.45)" stroke="#111827" stroke-width="2.5"/>
+          <rect x="83" y="41" width="19" height="15" rx="3.5" fill="rgba(0, 240, 255, 0.35)" stroke="#111827" stroke-width="2.5"/>
           <!-- 鼻樑中梁 -->
-          <path d="M 77 47 L 83 47" stroke="#111827" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M 77 46 L 83 46" stroke="#111827" stroke-width="2.5" stroke-linecap="round"/>
           <!-- 鏡腿 -->
-          <path d="M 58 46 L 52 48" stroke="#111827" stroke-width="2"/>
-          <path d="M 102 46 L 108 48" stroke="#111827" stroke-width="2"/>
+          <path d="M 58 45 L 52 47" stroke="#111827" stroke-width="2"/>
+          <path d="M 102 45 L 108 47" stroke="#111827" stroke-width="2"/>
 
-          <!-- 眼鏡動態反光 (Shining Glint Animation) -->
-          <g class="glasses-glint">
-            <line x1="62" y1="44" x2="72" y2="54" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
-            <line x1="87" y1="44" x2="97" y2="54" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+          <!-- 眼鏡動態超強閃光 (Anime Glasses Mega Shine) -->
+          <g class="glasses-mega-shine">
+            <line x1="61" y1="43" x2="73" y2="55" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" opacity="0.95"/>
+            <line x1="86" y1="43" x2="98" y2="55" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" opacity="0.95"/>
           </g>
 
           <!-- 鼻子 -->
-          <path d="M 78 54 L 81 58 L 78 60" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M 78 53 L 81 57 L 78 59" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round"/>
 
-          <!-- 招牌斜笑嘴角 (Confident smirk) -->
-          <path d="M 70 65 Q 81 73 93 64" fill="none" stroke="#1c1917" stroke-width="2.4" stroke-linecap="round"/>
-          <path d="M 91 63 L 95 65" stroke="#1c1917" stroke-width="2" stroke-linecap="round"/>
+          <!-- 招牌邪笑嘴角 (Confident smirk) -->
+          <path d="M 69 64 Q 81 73 94 63" fill="none" stroke="#1c1917" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M 92 62 L 96 64" stroke="#1c1917" stroke-width="2" stroke-linecap="round"/>
 
           <!-- 可愛小腮紅 -->
-          <ellipse cx="60" cy="58" rx="4" ry="2" fill="#f43f5e" opacity="0.35"/>
-          <ellipse cx="100" cy="58" rx="4" ry="2" fill="#f43f5e" opacity="0.35"/>
+          <ellipse cx="60" cy="57" rx="4" ry="2" fill="#f43f5e" opacity="0.4"/>
+          <ellipse cx="100" cy="57" rx="4" ry="2" fill="#f43f5e" opacity="0.4"/>
 
           <!-- 招牌動作：右手食指指向前方「聽話！讓我看看！」 -->
-          <g class="meme-finger">
-            <!-- 手臂 -->
-            <path d="M 116 112 Q 135 110 142 120" stroke="#b91c1c" stroke-width="10" stroke-linecap="round"/>
-            <!-- 手掌與指頭指向前方 -->
-            <ellipse cx="143" cy="120" rx="6" ry="6" fill="#fed7aa" stroke="#180e29" stroke-width="1.8"/>
-            <path d="M 144 116 L 155 114" stroke="#fed7aa" stroke-width="4.5" stroke-linecap="round"/>
-            <path d="M 144 116 L 155 114" stroke="#180e29" stroke-width="1.2" stroke-linecap="round"/>
+          <g>
+            <path d="M 116 111 Q 136 109 143 119" stroke="#b91c1c" stroke-width="11" stroke-linecap="round"/>
+            <ellipse cx="144" cy="119" rx="6.5" ry="6.5" fill="#fed7aa" stroke="#180e29" stroke-width="1.8"/>
+            <path d="M 145 115 L 157 113" stroke="#fed7aa" stroke-width="5" stroke-linecap="round"/>
+            <path d="M 145 115 L 157 113" stroke="#180e29" stroke-width="1.2" stroke-linecap="round"/>
           </g>
         </svg>
       </div>

@@ -1,23 +1,138 @@
-// Script for Chen Ming-Huan Resume Website (Blue, Purple & Pink Harmonious Theme)
+// ============================================================
+// 陳明渙 (Chen, Ming-Huan) 頂級奢華賽博龐克履歷互動腳本
+// ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Lucide icons
+  // 1. 初始化 Lucide 圖標
   if (window.lucide) {
     window.lucide.createIcons();
   }
 
   // ============================================================
-  // 1. Mobile Menu Toggle
+  // 2. Web Audio API 原生合成音效系統 (零外部依賴，秒開高科技音效)
   // ============================================================
+  let audioCtx = null;
+  let soundEnabled = true;
+
+  function initAudio() {
+    if (!audioCtx) {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioContextClass) {
+        audioCtx = new AudioContextClass();
+      }
+    }
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+  }
+
+  // 播放高科技輕微滴答聲 (Hover Blip)
+  function playHoverBlip() {
+    if (!soundEnabled || !audioCtx) return;
+    try {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(880, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(1320, audioCtx.currentTime + 0.05);
+      gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.05);
+    } catch (e) {}
+  }
+
+  // 播放能量按鈕雷射音 (Click Laser)
+  function playClickLaser() {
+    initAudio();
+    if (!soundEnabled || !audioCtx) return;
+    try {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.12);
+      gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.12);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.12);
+    } catch (e) {}
+  }
+
+  // 播放迷因彈跳歡樂音 (Meme Boing & Jump)
+  function playMemeSound() {
+    initAudio();
+    if (!soundEnabled || !audioCtx) return;
+    try {
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(180, now);
+      osc.frequency.exponentialRampToValueAtTime(720, now + 0.15);
+      osc.frequency.exponentialRampToValueAtTime(440, now + 0.25);
+      gain.gain.setValueAtTime(0.15, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.25);
+    } catch (e) {}
+  }
+
+  // 播放戰鬥力爆表超強和弦 (Power Up Chord)
+  function playPowerUpChord() {
+    initAudio();
+    if (!soundEnabled || !audioCtx) return;
+    try {
+      const freqs = [523.25, 659.25, 783.99, 1046.5]; // C Major arpeggio
+      freqs.forEach((freq, idx) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        const startTime = audioCtx.currentTime + idx * 0.06;
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, startTime);
+        gain.gain.setValueAtTime(0.1, startTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.35);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(startTime);
+        osc.stop(startTime + 0.35);
+      });
+    } catch (e) {}
+  }
+
+  // 音效開關按鈕控制
+  const soundToggleBtn = document.getElementById('sound-toggle-btn');
+  const soundIcon = document.getElementById('sound-icon');
+  if (soundToggleBtn) {
+    soundToggleBtn.addEventListener('click', () => {
+      initAudio();
+      soundEnabled = !soundEnabled;
+      if (soundToggleBtn) {
+        soundToggleBtn.setAttribute('title', soundEnabled ? '音效已開啟 (點擊靜音)' : '音效已靜音 (點擊開啟)');
+      }
+      if (soundIcon) {
+        soundIcon.setAttribute('data-lucide', soundEnabled ? 'volume-2' : 'volume-x');
+        if (window.lucide) window.lucide.createIcons();
+      }
+      if (soundEnabled) playClickLaser();
+    });
+  }
+
+  // 手機漢堡選單切換
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-
   if (mobileMenuBtn && mobileMenu) {
     mobileMenuBtn.addEventListener('click', () => {
+      playClickLaser();
       mobileMenu.classList.toggle('hidden');
     });
-
     mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
@@ -26,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================================================
-  // 2. Dynamic Ambient Particle Canvas (藍、紫、粉流動星塵粒子)
+  // 3. 賽博龐克微粒星塵 Canvas (支援滑鼠吸引與流光動態)
   // ============================================================
   const canvas = document.getElementById('ambient-canvas');
   if (canvas) {
@@ -34,100 +149,160 @@ document.addEventListener('DOMContentLoaded', () => {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
+    let mouse = { x: -1000, y: -1000, active: false };
+
     window.addEventListener('resize', () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     });
 
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+      mouse.active = true;
+    });
+
+    window.addEventListener('mouseleave', () => {
+      mouse.active = false;
+    });
+
     const colors = [
+      'rgba(0, 240, 255, ',    // Cyan
       'rgba(59, 130, 246, ',   // Blue
-      'rgba(147, 51, 234, ',   // Purple
-      'rgba(236, 72, 153, ',   // Pink
-      'rgba(99, 102, 241, '    // Indigo
+      'rgba(168, 85, 247, ',   // Purple
+      'rgba(255, 0, 127, ',    // Pink / Magenta
+      'rgba(251, 191, 36, '    // Gold / Amber
     ];
 
-    const particleCount = Math.min(Math.floor(width / 32), 45);
+    const particleCount = Math.min(Math.floor(width / 24), 55);
     const particles = Array.from({ length: particleCount }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.45,
-      vy: (Math.random() - 0.5) * 0.45,
-      radius: Math.random() * 2 + 1,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+      radius: Math.random() * 2.2 + 0.8,
       color: colors[Math.floor(Math.random() * colors.length)],
-      alpha: Math.random() * 0.45 + 0.2
+      alpha: Math.random() * 0.5 + 0.25
     }));
 
-    function animateParticles() {
+    function renderCanvas() {
       ctx.clearRect(0, 0, width, height);
 
       particles.forEach((p, i) => {
         p.x += p.vx;
         p.y += p.vy;
 
+        // 邊界循環
         if (p.x < 0) p.x = width;
         if (p.x > width) p.x = 0;
         if (p.y < 0) p.y = height;
         if (p.y > height) p.y = 0;
 
+        // 滑鼠微弱排斥/吸引效應
+        if (mouse.active) {
+          const mdx = mouse.x - p.x;
+          const mdy = mouse.y - p.y;
+          const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+          if (mdist < 140) {
+            p.x -= (mdx / mdist) * 1.5;
+            p.y -= (mdy / mdist) * 1.5;
+          }
+        }
+
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = `${p.color}${p.alpha})`;
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = `${p.color}0.8)`;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = `${p.color}0.9)`;
         ctx.fill();
 
-        // 鄰近粒子微弱連線效果
+        // 鄰近微粒連結
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const dx = p.x - p2.x;
           const dy = p.y - p2.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 100) {
+          if (dist < 115) {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(168, 85, 247, ${0.12 * (1 - dist / 100)})`;
-            ctx.lineWidth = 0.6;
+            ctx.strokeStyle = `rgba(168, 85, 247, ${0.16 * (1 - dist / 115)})`;
+            ctx.lineWidth = 0.65;
             ctx.stroke();
           }
         }
       });
 
-      requestAnimationFrame(animateParticles);
+      requestAnimationFrame(renderCanvas);
     }
-
-    animateParticles();
+    renderCanvas();
   }
 
   // ============================================================
-  // 3. Scroll Reveal Animations (平滑滾動進場特效)
+  // 4. 科技聚光燈卡片 (Spotlight Card Mouse Following Effect)
+  // ============================================================
+  const spotlightCards = document.querySelectorAll('.spotlight-card');
+  spotlightCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+
+    card.addEventListener('mouseenter', () => {
+      playHoverBlip();
+    });
+  });
+
+  // ============================================================
+  // 5. 滾動進場特效 (Scroll Reveal via IntersectionObserver)
   // ============================================================
   const revealElements = document.querySelectorAll('.reveal-on-scroll');
   if ('IntersectionObserver' in window && revealElements.length > 0) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '0px 0px -40px 0px'
-      }
-    );
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
 
-    revealElements.forEach((el) => observer.observe(el));
+    revealElements.forEach(el => observer.observe(el));
   } else {
-    // 若不支援 observer 則直接顯示
-    revealElements.forEach((el) => el.classList.add('is-visible'));
+    revealElements.forEach(el => el.classList.add('is-visible'));
   }
 
   // ============================================================
-  // 4. 台灣最強迷因 (Taiwan Top Meme) 互動夥伴「聽話！讓我看看！」
+  // 6. 戰鬥力狂飆按鈕 (Combat Power Blast Easter Egg)
+  // ============================================================
+  const combatTriggerBtn = document.getElementById('combat-trigger-btn');
+  const combatScore = document.getElementById('combat-score-text');
+  if (combatTriggerBtn && combatScore) {
+    combatTriggerBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      playPowerUpChord();
+
+      // 觸發全螢幕震撼
+      document.body.classList.remove('screen-shake-anim');
+      void document.body.offsetWidth;
+      document.body.classList.add('screen-shake-anim');
+
+      combatScore.textContent = '99999+ (破表！)';
+      combatScore.classList.add('text-yellow-300', 'animate-pulse');
+
+      // 噴發金幣彩色光點
+      for (let i = 0; i < 15; i++) {
+        setTimeout(() => spawnMemeComicTag('⚡ 戰鬥力破表！'), i * 35);
+      }
+    });
+  }
+
+  // ============================================================
+  // 7. 台灣最強迷因互動引擎 (黑色幽默 × 雙關黃腔 × 專業硬核)
   // ============================================================
   const memeChar = document.getElementById('meme-char');
   const memeDialog = document.getElementById('meme-dialog');
@@ -136,80 +311,120 @@ document.addEventListener('DOMContentLoaded', () => {
   const memeNextBtn = document.getElementById('meme-next-btn');
   const memeBadge = document.getElementById('meme-badge-text');
   const memeContainer = document.getElementById('meme-widget');
+  const memeTagLabel = document.getElementById('meme-tag-label');
 
-  // 台灣最紅迷因經典神句庫（融合陳明渙真實經歷）
+  // 既搞笑又有梗、黑色幽默、雙關名句庫（句句扣緊明渙的真實專業技能）
   const memeQuotes = [
-    { tag: '杰哥經典', text: '「聽話！讓我看看！...哎唷，你這份履歷蠻勇的嘛！」' },
-    { tag: '亞洲統神', text: '「太神啦！上銀科技 3 年微米級精修 ＋ 企管系，真的太神啦！」' },
-    { tag: '杰哥名言', text: '「我看你是完全不懂喔？人家還會彈鋼琴、高空跳傘跟深度潛水欸！」' },
-    { tag: '水母歸剛欸', text: '「歸剛欸！人資主管看履歷看歸剛欸，看到這份眼睛都亮起來了！」' },
-    { tag: '杰哥邀請', text: '「（推眼鏡閃光✨）我家還蠻大的，歡迎帶這份履歷來面試，有吃又有喝！」' },
-    { tag: '九天玄女', text: '「800英呎！500英呎！降落！降落！九天玄女唯一指定神級人才！」' },
-    { tag: '統神絕技', text: '「一代一代一代！這手工鏟花微米級公差，比我的鏡片還平整！」' },
-    { tag: '杰哥不要', text: '「杰哥不要... 不要再猶豫了，快點聯絡明渙安排面試啦！」' },
-    { tag: '山道猴子', text: '「莫忘初衷！重機騎士的熱血魂，做工程也是全力以赴過彎！」' },
-    { tag: '超派鐵拳', text: '「超派！餐飲實戰 ＋ 企業管理 ＋ 精密工藝，這種綜合戰力真的超派！」' },
-    { tag: '杰哥認可', text: '「登大人啦！能吃苦、懂管理、會修微米級元件，這才是真男人！」' },
-    { tag: '統神哭啊', text: '「哭啊！這麼優秀全面的人才去哪裡找？還不快點寄信預約面試！」' }
+    {
+      tag: '杰哥深入視察',
+      text: '「聽話！讓我看看你的履歷！...嘶！這微米級公差也太硬了吧！我常幫助一些缺工的企業，我家還蠻大的，來我這面試！」'
+    },
+    {
+      tag: '亞洲統神咆哮',
+      text: '「太神啦！上銀科技 3 年天天在磨！這手速跟手感早就練到出神入化了！我就問一句，到底要不要發 Offer 啦！」'
+    },
+    {
+      tag: '老司機雙關調校',
+      text: '「老闆，你懂什麼叫『適度預壓』嗎？太緊會磨壞，太鬆會晃動～明渙調得剛剛好，又硬又滑順，運轉一整天都不發熱！」'
+    },
+    {
+      tag: '水母歸剛欸',
+      text: '「歸剛欸！每天看那些灌水吹牛的履歷看歸剛欸！看到明渙這份微米級真功夫，直接登大人啦！」'
+    },
+    {
+      tag: '黑色幽默警告',
+      text: '「連萬呎高空跳傘跟深海三十米窒息感我都挺過來了，你那點專案 Deadline 跟主管咆哮，連讓我心跳加速都做不到。」'
+    },
+    {
+      tag: '鋼琴靈活十指',
+      text: '「能彈蕭邦德布西的靈活手指，拿來微米級鏟花組裝，手速與力道深淺自如... 面試官你到底在想什麼？我說的是機械手感！」'
+    },
+    {
+      tag: '九天玄女降落',
+      text: '「800英呎！500英呎！降落！降落！九天玄女唯一指定神級人才！只要你敢發 Offer，明渙直接空降帶飛全公司！」'
+    },
+    {
+      tag: '餐飲修羅場',
+      text: '「在家庭餐廳被暴走奧客跟油煙火海折磨多年，早就練成笑著承受一切的抖M抗壓體質。要多耐操有多耐操！」'
+    },
+    {
+      tag: '山道防禦駕駛',
+      text: '「重機跑山只講技術，不當山道猴子。彎得過去是拓海，安全回家是男神；在職場上也是絕不翻車的穩健老司機！」'
+    },
+    {
+      tag: '杰哥終極告白',
+      text: '「杰哥不要... 不要再猶豫了！這麼耐磨耐操、懂企管又會微米級手藝的男人，全台灣打著燈籠都找不到了！」'
+    },
+    {
+      tag: '超派戰鬥力',
+      text: '「超派！兼具勞工階級的實幹硬功夫，又有企管系的成本刀法，這種神級性價比，錄取下去直接超派！」'
+    },
+    {
+      tag: '統神絕望哭啊',
+      text: '「哭啊！面試官你今天要是沒把握住他，下週就被台積電或外商高薪挖走了，到時候你別躲在茶水間哭啊！」'
+    }
   ];
 
-  // 點擊爆出之漫畫特效字
+  // 噴射漫畫標籤
   const comicWords = [
     '💥 太神啦！',
     '👉 讓我看看！',
     '🔥 歸剛欸！',
-    '💯 蠻勇的喔！',
+    '💯 太硬了吧！',
     '🚀 降落降落！',
-    '⚡ 一代一代！',
-    '✨ 莫忘初衷！',
+    '⚡ 微米級神手！',
+    '✨ 登大人啦！',
     '🥊 超派！',
-    '👏 登大人！'
+    '💋 又硬又滑順！',
+    '🎹 靈活十指！',
+    '🏍️ 絕不翻車！',
+    '💎 SSR神角！'
   ];
 
   let currentQuoteIndex = 0;
   let isMinimized = false;
 
-  // 點擊噴發漂浮漫畫特效字動畫
-  function spawnComicBurst(e) {
+  // 產生浮誇漫畫特效字
+  function spawnMemeComicTag(customWord) {
     if (!memeContainer) return;
+    const word = customWord || comicWords[Math.floor(Math.random() * comicWords.length)];
 
-    const word = comicWords[Math.floor(Math.random() * comicWords.length)];
     const tag = document.createElement('div');
-    tag.className = 'comic-burst-tag text-xs sm:text-sm px-3 py-1 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white shadow-xl shadow-purple-500/40 border border-white/40';
+    tag.className = 'comic-burst-tag text-xs sm:text-sm px-3.5 py-1.5 rounded-full bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 text-white border-2 border-white/60 shadow-2xl';
     tag.textContent = word;
 
-    // 隨機角度與位置
-    const rotStart = (Math.random() * 24 - 12) + 'deg';
-    const rotMid = (Math.random() * 20 - 10) + 'deg';
-    const rotEnd = (Math.random() * 30 - 15) + 'deg';
+    const rotStart = (Math.random() * 30 - 15) + 'deg';
+    const rotMid = (Math.random() * 24 - 12) + 'deg';
+    const rotEnd = (Math.random() * 36 - 18) + 'deg';
     tag.style.setProperty('--rot-start', rotStart);
     tag.style.setProperty('--rot-mid', rotMid);
     tag.style.setProperty('--rot-end', rotEnd);
 
-    tag.style.right = (Math.random() * 50 + 20) + 'px';
-    tag.style.bottom = (Math.random() * 40 + 70) + 'px';
+    tag.style.right = (Math.random() * 60 + 15) + 'px';
+    tag.style.bottom = (Math.random() * 50 + 75) + 'px';
 
     memeContainer.appendChild(tag);
-
-    setTimeout(() => {
-      tag.remove();
-    }, 1200);
+    setTimeout(() => tag.remove(), 1300);
   }
 
-  // 切換至下一句台詞
-  function triggerNextQuote(e) {
+  // 切換迷因台詞與觸發爆破特效
+  function triggerMemeEvent(e) {
     if (e) e.stopPropagation();
 
-    // 觸發角色彈跳動作
+    // 播放迷因專屬音效
+    playMemeSound();
+
+    // 角色魔性跳躍衝擊
     if (memeChar) {
-      memeChar.classList.remove('meme-action');
-      void memeChar.offsetWidth; // 強制重繪
-      memeChar.classList.add('meme-action');
-      setTimeout(() => memeChar.classList.remove('meme-action'), 700);
+      memeChar.classList.remove('meme-action-explosive');
+      void memeChar.offsetWidth;
+      memeChar.classList.add('meme-action-explosive');
+      setTimeout(() => memeChar.classList.remove('meme-action-explosive'), 750);
     }
 
-    // 產生爆出文字特效
-    spawnComicBurst(e);
+    // 噴出 2~3 個爆笑漫畫字
+    spawnMemeComicTag();
+    setTimeout(() => spawnMemeComicTag(), 80);
 
     // 切換語錄
     currentQuoteIndex = (currentQuoteIndex + 1) % memeQuotes.length;
@@ -217,40 +432,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (memeText) {
       memeText.style.opacity = '0';
+      memeText.style.transform = 'translateY(4px)';
       setTimeout(() => {
         memeText.textContent = current.text;
         memeText.style.opacity = '1';
-      }, 150);
+        memeText.style.transform = 'translateY(0)';
+      }, 120);
     }
 
-    // 更新標籤名
-    const memeTagEl = document.getElementById('meme-tag-label');
-    if (memeTagEl) {
-      memeTagEl.textContent = current.tag;
+    if (memeTagLabel) {
+      memeTagLabel.textContent = current.tag;
     }
 
-    // 若被收起則展開
+    // 展開對話框
     if (isMinimized && memeDialog) {
       isMinimized = false;
       memeDialog.classList.remove('hidden');
-      if (memeBadge) memeBadge.textContent = '點我互動 👆';
+      if (memeBadge) memeBadge.textContent = '聽話！點我互動 👆';
     }
   }
 
-  // 綁定角色點擊
-  if (memeChar) {
-    memeChar.addEventListener('click', triggerNextQuote);
-  }
+  if (memeChar) memeChar.addEventListener('click', triggerMemeEvent);
+  if (memeNextBtn) memeNextBtn.addEventListener('click', triggerMemeEvent);
 
-  // 綁定「下一句」按鈕
-  if (memeNextBtn) {
-    memeNextBtn.addEventListener('click', triggerNextQuote);
-  }
-
-  // 綁定收起 / 展開按鈕
   if (memeToggleBtn && memeDialog) {
     memeToggleBtn.addEventListener('click', (e) => {
       e.stopPropagation();
+      playClickLaser();
       isMinimized = !isMinimized;
       if (isMinimized) {
         memeDialog.classList.add('hidden');
@@ -259,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         memeDialog.classList.remove('hidden');
         memeToggleBtn.setAttribute('title', '收起對話');
-        if (memeBadge) memeBadge.textContent = '點我互動 👆';
+        if (memeBadge) memeBadge.textContent = '聽話！點我互動 👆';
       }
     });
   }

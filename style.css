@@ -1,171 +1,257 @@
-/* Custom styles for Chen Ming-Huan Resume Website (Blue, Purple & Pink Harmonious Theme) */
+/* ============================================================
+   陳明渙 (Chen, Ming-Huan) 頂級奢華賽博龐克履歷風格
+   (Extravagant Cyber-Luxe: Cyan, Royal Blue, Purple, Neon Pink & Gold)
+   ============================================================ */
 
-/* Smooth scrolling */
+/* 基礎平滑捲動 */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom Tri-color (Blue - Purple - Pink) subtle scrollbar */
+/* 霓虹多色漸層滾動條 */
 ::-webkit-scrollbar {
-  width: 9px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #080412;
+  background: #04010a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #3b82f6 0%, #9333ea 50%, #ec4899 100%);
-  border-radius: 6px;
-  border: 2px solid #080412;
+  background: linear-gradient(180deg, #00f0ff 0%, #3b82f6 30%, #a855f7 70%, #ff007f 100%);
+  border-radius: 8px;
+  border: 2px solid #04010a;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #60a5fa 0%, #c084fc 50%, #f472b6 100%);
+  background: linear-gradient(180deg, #38bdf8 0%, #60a5fa 30%, #c084fc 70%, #f43f5e 100%);
 }
 
-/* Dynamic Gradient Flow for Highlights */
-@keyframes gradientFlow {
+/* ============================================================
+   流光漸層與全息動畫 (Holographic & Gradient Animations)
+   ============================================================ */
+@keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-.animate-gradient-flow {
-  background-size: 200% 200%;
-  animation: gradientFlow 6s ease infinite;
+.animate-shimmer-text {
+  background-size: 300% 300%;
+  animation: gradientShift 5s ease infinite;
 }
 
-/* Glassmorphism with Blue/Purple/Pink border hint */
-.glass-panel {
-  background: rgba(18, 12, 34, 0.8);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(139, 92, 246, 0.2);
+/* 旋轉霓虹光暈邊框 (Rotating Rainbow Neon Border) */
+@keyframes borderRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-/* Card hover animation with harmonious Blue-Purple-Pink tri-glow */
-.card-hover {
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+.rainbow-border-box {
   position: relative;
+  overflow: hidden;
 }
 
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 32px -8px rgba(59, 130, 246, 0.2),
-              0 8px 24px -6px rgba(236, 72, 153, 0.2);
-  border-color: rgba(168, 85, 247, 0.5);
+.rainbow-border-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, #00f0ff, #3b82f6, #a855f7, #ff007f, #fbbf24, #00f0ff);
+  animation: borderRotate 6s linear infinite;
+  z-index: 0;
+  opacity: 0.6;
 }
 
-/* Reveal on scroll animations */
+.rainbow-border-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* 脈衝呼吸光暈 */
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3), 0 0 30px rgba(168, 85, 247, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(255, 0, 127, 0.45), 0 0 50px rgba(0, 240, 255, 0.3);
+  }
+}
+
+.neon-glow-pulse {
+  animation: neonPulse 3.5s infinite ease-in-out;
+}
+
+/* 聚光燈科技卡片 (Spotlight Card with Mouse Coordinate Glow) */
+.spotlight-card {
+  position: relative;
+  background: rgba(14, 8, 30, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    500px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+    rgba(0, 240, 255, 0.14),
+    rgba(168, 85, 247, 0.08) 35%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+.spotlight-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 240, 255, 0.6);
+  box-shadow: 0 18px 40px -10px rgba(0, 240, 255, 0.22),
+              0 10px 25px -8px rgba(255, 0, 127, 0.22);
+}
+
+/* 戰鬥力條動態載入動畫 */
+@keyframes barFill {
+  0% { width: 0%; }
+}
+
+.combat-bar-fill {
+  animation: barFill 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 滾動漸顯動態 */
 .reveal-on-scroll {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(28px) scale(0.98);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
 .reveal-on-scroll.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 /* ============================================================
-   台灣最強迷因 (Taiwan Top Meme) 互動角色動態效果
-   「聽話！讓我看看！」杰哥 / 迷因之神
+   台灣最強迷因 (Taiwan Meme) 互動夥伴
    ============================================================ */
 
-/* 輕微呼吸浮動 */
-@keyframes memeBob {
+/* 呼吸擺動 */
+@keyframes memeBobFancy {
   0%, 100% {
     transform: translateY(0) rotate(0deg);
   }
-  50% {
-    transform: translateY(-5px) rotate(1deg);
+  25% {
+    transform: translateY(-4px) rotate(-1.5deg);
+  }
+  75% {
+    transform: translateY(-7px) rotate(1.5deg);
   }
 }
 
-.meme-bob {
-  animation: memeBob 3s ease-in-out infinite;
+.meme-bob-fancy {
+  animation: memeBobFancy 3.2s ease-in-out infinite;
   transform-origin: bottom center;
 }
 
-/* 眼鏡反光閃爍 */
-@keyframes glassesGlint {
-  0%, 80%, 100% {
-    opacity: 0.15;
-    transform: translateX(-15px) skewX(-20deg);
+/* 眼鏡超強閃光 (Anime Glasses Flash) */
+@keyframes glassesMegaShine {
+  0%, 75%, 100% {
+    opacity: 0.1;
+    transform: translateX(-25px) skewX(-25deg);
   }
-  85%, 92% {
-    opacity: 0.95;
-    transform: translateX(18px) skewX(-20deg);
+  80%, 90% {
+    opacity: 1;
+    transform: translateX(25px) skewX(-25deg);
+    filter: drop-shadow(0 0 10px #00f0ff);
   }
 }
 
-.glasses-glint {
-  animation: glassesGlint 4.5s infinite ease-in-out;
+.glasses-mega-shine {
+  animation: glassesMegaShine 3.8s infinite ease-in-out;
 }
 
-/* 點擊時的魔性招牌動作 (彈跳 + 手指指向) */
-@keyframes memeAction {
+/* 點擊魔性衝擊跳躍與放大 */
+@keyframes memeActionExplosive {
   0% { transform: scale(1) rotate(0deg); }
-  25% { transform: scale(1.15, 0.88) translateY(-14px) rotate(-3deg); }
-  50% { transform: scale(0.95, 1.12) translateY(-20px) rotate(4deg); }
-  75% { transform: scale(1.05, 0.95) translateY(-5px) rotate(-1deg); }
-  100% { transform: scale(1) translateY(0) rotate(0deg); }
+  20% { transform: scale(1.3, 0.75) translateY(5px); }
+  45% { transform: scale(0.85, 1.28) translateY(-32px) rotate(-6deg); }
+  65% { transform: scale(1.15, 0.9) translateY(-14px) rotate(5deg); }
+  85% { transform: scale(0.95, 1.05) translateY(-3px); }
+  100% { transform: scale(1) rotate(0deg); }
 }
 
-.meme-action {
-  animation: memeAction 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+.meme-action-explosive {
+  animation: memeActionExplosive 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* 手指晃動提示 */
-@keyframes fingerPoint {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(4px); }
-}
-
-.meme-finger {
-  animation: fingerPoint 1.5s ease-in-out infinite;
-}
-
-/* 對話氣泡呼吸浮動 */
-@keyframes bubbleFloat {
+/* 氣泡呼吸懸浮 */
+@keyframes bubbleFloatLuxe {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+  50% { transform: translateY(-5px); }
 }
 
-.dialog-floating {
-  animation: bubbleFloat 3.5s infinite ease-in-out;
+.dialog-floating-luxe {
+  animation: bubbleFloatLuxe 3s infinite ease-in-out;
 }
 
-/* 點擊噴發迷因漫畫字特效 (Floating Comic Pop) */
-@keyframes comicBurstFade {
+/* 點擊噴發漫畫字 (Comic Burst Tag) */
+@keyframes comicTagBurst {
   0% {
     opacity: 0;
-    transform: scale(0.4) translateY(0) rotate(var(--rot-start, -10deg));
+    transform: scale(0.3) translateY(0) rotate(var(--rot-start, -15deg));
   }
-  20% {
+  15% {
     opacity: 1;
-    transform: scale(1.18) translateY(-25px) rotate(var(--rot-mid, 5deg));
+    transform: scale(1.3) translateY(-30px) rotate(var(--rot-mid, 8deg));
   }
   70% {
     opacity: 1;
-    transform: scale(1) translateY(-60px) rotate(var(--rot-mid, 5deg));
+    transform: scale(1.05) translateY(-75px) rotate(var(--rot-mid, 8deg));
   }
   100% {
     opacity: 0;
-    transform: scale(0.9) translateY(-95px) rotate(var(--rot-end, 15deg));
+    transform: scale(0.8) translateY(-120px) rotate(var(--rot-end, -8deg));
   }
 }
 
 .comic-burst-tag {
   position: absolute;
   pointer-events: none;
-  font-weight: 800;
+  font-weight: 900;
   white-space: nowrap;
-  animation: comicBurstFade 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  z-index: 60;
+  animation: comicTagBurst 1.3s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+  z-index: 100;
   user-select: none;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.9));
+}
+
+/* 畫面震撼抖動 (Screen Shake on Ultimate Attack) */
+@keyframes screenShake {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-4px, 4px); }
+  40% { transform: translate(4px, -4px); }
+  60% { transform: translate(-3px, -2px); }
+  80% { transform: translate(3px, 2px); }
+}
+
+.screen-shake-anim {
+  animation: screenShake 0.4s ease-in-out;
 }
