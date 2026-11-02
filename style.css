@@ -257,22 +257,234 @@ html {
 }
 
 /* ============================================================
-   深空宇宙元素 (Deep Cosmic Universe Visuals)
+   深空宇宙天體與多元行星系統 (Deep Cosmic Planetary System)
+   包含：土星光環巨行星、木星大紅斑紋氣態星、天王冰巨星極光、火星環形山岩質行星
    ============================================================ */
 
-/* 宇宙星環自轉與漂浮 */
-@keyframes planetRingSpin {
-  0% {
-    transform: rotateX(72deg) rotateZ(0deg);
+/* 行星自然浮動微震 (Float Drift) */
+@keyframes planetFloat1 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(2.5deg); }
+}
+
+@keyframes planetFloat2 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(14px) rotate(-2.5deg); }
+}
+
+@keyframes planetFloat3 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(-1.8deg); }
+}
+
+.planet-float-1 {
+  animation: planetFloat1 20s ease-in-out infinite;
+}
+
+.planet-float-2 {
+  animation: planetFloat2 24s ease-in-out infinite;
+}
+
+.planet-float-3 {
+  animation: planetFloat3 22s ease-in-out infinite;
+}
+
+/* 1. 土星環立體傾斜與自轉 (Saturn-like 3D Ring System) */
+@keyframes saturnRingSpin {
+  0% { transform: rotateX(74deg) rotateY(-12deg) rotateZ(0deg); }
+  100% { transform: rotateX(74deg) rotateY(-12deg) rotateZ(360deg); }
+}
+
+.saturn-ring-outer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 260%;
+  height: 260%;
+  margin-top: -130%;
+  margin-left: -130%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 42%,
+    rgba(0, 240, 255, 0.45) 43%,
+    rgba(168, 85, 247, 0.5) 49%,
+    transparent 50.5%, /* Cassini division 卡西尼環縫 */
+    rgba(255, 0, 127, 0.4) 52%,
+    rgba(0, 240, 255, 0.55) 58%,
+    rgba(251, 191, 36, 0.3) 63%,
+    transparent 64%
+  );
+  transform: rotateX(75deg) rotateY(-14deg);
+  box-shadow: 0 0 35px rgba(0, 240, 255, 0.3);
+  pointer-events: none;
+}
+
+/* 2. 木星斑紋氣態行星 (Jupiter Storm Bands & Great Red Spot) */
+.jupiter-body {
+  background: repeating-linear-gradient(
+    174deg,
+    #180b2b 0px,
+    #2e1065 14px,
+    #4c1d95 24px,
+    #7c2d12 36px,
+    #9a3412 48px,
+    #c2410c 60px,
+    #701a75 72px,
+    #4a044e 86px,
+    #180b2b 98px
+  );
+  box-shadow: 
+    inset -28px -28px 45px rgba(0, 0, 0, 0.95),
+    inset 12px 12px 35px rgba(251, 191, 36, 0.45),
+    0 0 45px rgba(168, 85, 247, 0.25);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.jupiter-great-spot {
+  position: absolute;
+  bottom: 28%;
+  right: 22%;
+  width: 32px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ea580c 20%, #991b1b 70%, #450a0a 100%);
+  box-shadow: 0 0 12px rgba(234, 88, 12, 0.8), inset 2px 2px 5px rgba(255, 255, 255, 0.4);
+  transform: rotate(-12deg);
+}
+
+/* 3. 天王星/海王星冰巨星 (Neptune/Uranus Cyan Ice Giant & Aurora) */
+.uranus-body {
+  background: radial-gradient(
+    circle at 35% 35%,
+    #a5f3fc 0%,
+    #38bdf8 25%,
+    #0284c7 50%,
+    #0369a1 70%,
+    #082f49 90%,
+    #020617 100%
+  );
+  box-shadow: 
+    inset -25px -25px 40px rgba(2, 6, 23, 0.95),
+    inset 10px 10px 30px rgba(165, 243, 252, 0.7),
+    0 0 40px rgba(0, 240, 255, 0.4);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+}
+
+/* 極光冠 (Polar Aurora Crown) */
+@keyframes auroraPulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(0.96) rotate(0deg);
+    box-shadow: 0 0 15px #22c55e, inset 0 0 10px #00f0ff;
   }
-  100% {
-    transform: rotateX(72deg) rotateZ(360deg);
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05) rotate(5deg);
+    box-shadow: 0 0 28px #4ade80, inset 0 0 18px #38bdf8;
   }
 }
 
-.cosmic-ring {
-  animation: planetRingSpin 24s linear infinite;
-  transform-style: preserve-3d;
+.polar-aurora {
+  position: absolute;
+  top: 4%;
+  left: 28%;
+  width: 44%;
+  height: 18%;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid rgba(74, 222, 128, 0.7);
+  animation: auroraPulse 4s ease-in-out infinite;
+  filter: blur(1px);
+}
+
+/* 4. 火星/岩質陸相行星 (Terrestrial Mars/Rocky Craters Planet) */
+.mars-rocky-body {
+  background: radial-gradient(
+    circle at 32% 32%,
+    #fed7aa 0%,
+    #fb923c 25%,
+    #ea580c 50%,
+    #9a3412 75%,
+    #431407 90%,
+    #1a0602 100%
+  );
+  box-shadow: 
+    inset -22px -22px 35px rgba(0, 0, 0, 0.95),
+    inset 8px 8px 25px rgba(251, 146, 60, 0.6),
+    0 0 35px rgba(234, 88, 12, 0.35);
+  border: 1px solid rgba(251, 146, 60, 0.4);
+}
+
+/* 隕石坑與地質構造 (Craters) */
+.planet-crater-1 {
+  position: absolute;
+  top: 26%;
+  left: 38%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(67, 20, 7, 0.7);
+  box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.9), 1px 1px 2px rgba(254, 215, 170, 0.4);
+}
+
+.planet-crater-2 {
+  position: absolute;
+  top: 54%;
+  left: 24%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(67, 20, 7, 0.7);
+  box-shadow: inset 3px 3px 4px rgba(0, 0, 0, 0.9), 1px 1px 2px rgba(254, 215, 170, 0.4);
+}
+
+.planet-crater-3 {
+  position: absolute;
+  top: 68%;
+  left: 60%;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: rgba(67, 20, 7, 0.7);
+  box-shadow: inset 1.5px 1.5px 2px rgba(0, 0, 0, 0.9), 1px 1px 2px rgba(254, 215, 170, 0.4);
+}
+
+/* 5. 衛星環繞軌道通用 (General Moon Orbit Trajectories) */
+@keyframes moonOrbitPath1 {
+  0% {
+    transform: rotate(0deg) translateX(70px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(70px) rotate(-360deg);
+  }
+}
+
+@keyframes moonOrbitPath2 {
+  0% {
+    transform: rotate(0deg) translateX(95px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg) translateX(95px) rotate(360deg);
+  }
+}
+
+.moon-orbiter-fast {
+  animation: moonOrbitPath1 12s linear infinite;
+}
+
+.moon-orbiter-slow {
+  animation: moonOrbitPath2 20s linear infinite;
+}
+
+/* 宇宙大氣柔焦光圈 (Exosphere Halo) */
+.planet-exosphere {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  opacity: 0.35;
+  filter: blur(2px);
 }
 
 /* 宇宙脈衝星呼吸發光 */
@@ -283,9 +495,9 @@ html {
     filter: drop-shadow(0 0 25px rgba(0, 240, 255, 0.4));
   }
   50% {
-    opacity: 0.75;
-    transform: scale(1.08);
-    filter: drop-shadow(0 0 50px rgba(168, 85, 247, 0.7));
+    opacity: 0.8;
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 55px rgba(168, 85, 247, 0.75));
   }
 }
 
@@ -295,19 +507,14 @@ html {
 
 /* 星雲緩慢漂移旋轉 */
 @keyframes nebulaDrift {
-  0% {
-    transform: rotate(0deg) scale(1);
-  }
-  50% {
-    transform: rotate(180deg) scale(1.15);
-  }
-  100% {
-    transform: rotate(360deg) scale(1);
-  }
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.12); }
+  100% { transform: rotate(360deg) scale(1); }
 }
 
 .cosmic-nebula-spin {
   animation: nebulaDrift 45s ease-in-out infinite alternate;
 }
+
 
 

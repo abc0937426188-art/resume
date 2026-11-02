@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e) {}
   }
 
-  // 播放戰鬥力爆表超強和弦 (Power Up Chord)
+  // 播放能量破表超強和弦 (Power Up Chord)
   function playPowerUpChord() {
     initAudio();
     if (!soundEnabled || !audioCtx) return;
@@ -420,7 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================================================
-  // 6. 戰鬥力狂飆按鈕 (Combat Power Blast Easter Egg)
+  // 6. 專業指標爆表彩蛋 (Max Competency Blast Easter Egg)
   // ============================================================
   const combatTriggerBtn = document.getElementById('combat-trigger-btn');
   const combatScore = document.getElementById('combat-score-text');
@@ -434,12 +434,12 @@ document.addEventListener('DOMContentLoaded', () => {
       void document.body.offsetWidth;
       document.body.classList.add('screen-shake-anim');
 
-      combatScore.textContent = '99999+ (破表！)';
+      combatScore.textContent = 'MAX (卓越超群)';
       combatScore.classList.add('text-yellow-300', 'animate-pulse');
 
-      // 噴發金幣彩色光點
+      // 噴發彩色光點標籤
       for (let i = 0; i < 15; i++) {
-        setTimeout(() => spawnMemeComicTag('⚡ 戰鬥力破表！'), i * 35);
+        setTimeout(() => spawnMemeComicTag('⚡ 專業評核 MAX！'), i * 35);
       }
     });
   }
@@ -487,8 +487,8 @@ document.addEventListener('DOMContentLoaded', () => {
       text: '「800英呎！500英呎！降落！降落！九天玄女唯一指定神級人才！只要你敢發 Offer，明渙直接空降帶飛全公司！」'
     },
     {
-      tag: '餐飲修羅場',
-      text: '「在家庭餐廳被暴走奧客跟油煙火海折磨多年，早就練成笑著承受一切的抖M抗壓體質。要多耐操有多耐操！」'
+      tag: '餐飲現場實戰',
+      text: '「在家庭餐廳被各路客訴跟高壓節奏磨練多年，早就練成笑著承受一切的鋼鐵抗壓體質。要多耐操有多耐操！」'
     },
     {
       tag: '山道防禦駕駛',
@@ -499,8 +499,8 @@ document.addEventListener('DOMContentLoaded', () => {
       text: '「杰哥不要... 不要再猶豫了！這麼耐磨耐操、懂企管又會微米級手藝的男人，全台灣打著燈籠都找不到了！」'
     },
     {
-      tag: '超派戰鬥力',
-      text: '「超派！兼具勞工階級的實幹硬功夫，又有企管系的成本刀法，這種神級性價比，錄取下去直接超派！」'
+      tag: '超派硬實力',
+      text: '「超派！兼具實幹工匠的硬功夫，又有企管系的成本刀法，這種神級性價比，錄取下去直接超派！」'
     },
     {
       tag: '統神絕望哭啊',
@@ -521,7 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
     '💋 又硬又滑順！',
     '🎹 靈活十指！',
     '🏍️ 絕不翻車！',
-    '💎 SSR神角！'
+    '💎 頂級核心人才！'
   ];
 
   let currentQuoteIndex = 0;
