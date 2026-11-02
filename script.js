@@ -141,7 +141,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================================================
-  // 3. 賽博龐克微粒星塵 Canvas (支援滑鼠吸引與流光動態)
+  // 3. 頂級深空宇宙引擎 (Deep Cosmic Universe Engine)
+  //    - 璀璨星空微粒 (多層次 3D 視差星辰與星等閃爍)
+  //    - 浩瀚星網連線 (Constellation Stellar Filaments)
+  //    - 宇宙流星雨系統 (Periodic Shooting Stars / Meteors)
+  //    - 滑鼠引力波星塵 (Gravitational Stardust Trails)
   // ============================================================
   const canvas = document.getElementById('ambient-canvas');
   if (canvas) {
@@ -160,83 +164,222 @@ document.addEventListener('DOMContentLoaded', () => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
       mouse.active = true;
+
+      // 滑鼠移動時產生微小星塵軌跡
+      if (Math.random() < 0.35 && stardusts.length < 35) {
+        stardusts.push({
+          x: mouse.x + (Math.random() * 20 - 10),
+          y: mouse.y + (Math.random() * 20 - 10),
+          vx: (Math.random() - 0.5) * 0.8,
+          vy: (Math.random() - 0.5) * 0.8,
+          radius: Math.random() * 1.8 + 0.8,
+          alpha: 0.9,
+          decay: Math.random() * 0.02 + 0.015,
+          color: ['#00f0ff', '#a855f7', '#ff007f', '#fbbf24'][Math.floor(Math.random() * 4)]
+        });
+      }
     });
 
     window.addEventListener('mouseleave', () => {
       mouse.active = false;
     });
 
-    const colors = [
-      'rgba(0, 240, 255, ',    // Cyan
-      'rgba(59, 130, 246, ',   // Blue
-      'rgba(168, 85, 247, ',   // Purple
-      'rgba(255, 0, 127, ',    // Pink / Magenta
-      'rgba(251, 191, 36, '    // Gold / Amber
+    // 宇宙星辰色彩池 (超亮星、白矮星、青藍星、紫星、粉星、金星)
+    const starColors = [
+      'rgba(255, 255, 255, ',   // Pure White
+      'rgba(0, 240, 255, ',     // Electric Cyan
+      'rgba(168, 85, 247, ',    // Cosmic Violet
+      'rgba(255, 0, 127, ',     // Hot Magenta
+      'rgba(96, 165, 250, ',    // Deep Blue
+      'rgba(251, 191, 36, '     // Cosmic Gold
     ];
 
-    const particleCount = Math.min(Math.floor(width / 24), 55);
-    const particles = Array.from({ length: particleCount }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
-      radius: Math.random() * 2.2 + 0.8,
-      color: colors[Math.floor(Math.random() * colors.length)],
-      alpha: Math.random() * 0.5 + 0.25
-    }));
+    // 生成多層星辰 (120~180 顆星)
+    const starCount = Math.min(Math.floor(width / 11), 160);
+    const stars = Array.from({ length: starCount }, () => {
+      const layer = Math.random() < 0.6 ? 1 : Math.random() < 0.85 ? 2 : 3; // 1:遠景微星, 2:中景星, 3:近景亮星
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * (0.15 * layer),
+        vy: (Math.random() - 0.5) * (0.15 * layer),
+        radius: layer === 1 ? Math.random() * 0.9 + 0.5 : layer === 2 ? Math.random() * 1.5 + 1.0 : Math.random() * 2.5 + 1.6,
+        layer: layer,
+        color: starColors[Math.floor(Math.random() * starColors.length)],
+        baseAlpha: Math.random() * 0.5 + 0.3,
+        twinkleSpeed: Math.random() * 0.04 + 0.015,
+        twinklePhase: Math.random() * Math.PI * 2
+      };
+    });
 
-    function renderCanvas() {
+    // 流星系統 (Shooting Stars / Meteors)
+    const meteors = [];
+    let lastMeteorTime = Date.now();
+
+    function spawnMeteor() {
+      const startX = Math.random() * width * 1.2;
+      const startY = Math.random() * (height * 0.4);
+      const angle = Math.PI / 4 + (Math.random() * 0.2 - 0.1); // 45度斜向下劃過
+      const speed = Math.random() * 7 + 9;
+      const length = Math.random() * 90 + 70;
+
+      meteors.push({
+        x: startX,
+        y: startY,
+        dx: Math.cos(angle) * speed,
+        dy: Math.sin(angle) * speed,
+        length: length,
+        alpha: 1.0,
+        thickness: Math.random() * 2 + 1.2,
+        color: Math.random() > 0.5 ? '#00f0ff' : '#ff007f'
+      });
+    }
+
+    // 滑鼠微星塵陣列
+    const stardusts = [];
+
+    function renderCosmicUniverse() {
       ctx.clearRect(0, 0, width, height);
 
-      particles.forEach((p, i) => {
-        p.x += p.vx;
-        p.y += p.vy;
+      const now = Date.now();
 
-        // 邊界循環
-        if (p.x < 0) p.x = width;
-        if (p.x > width) p.x = 0;
-        if (p.y < 0) p.y = height;
-        if (p.y > height) p.y = 0;
+      // 隨機流星生成 (每 3~5 秒有機會掉落流星)
+      if (now - lastMeteorTime > 3200 && Math.random() < 0.35 && meteors.length < 3) {
+        spawnMeteor();
+        lastMeteorTime = now;
+      }
 
-        // 滑鼠微弱排斥/吸引效應
+      // 1. 繪製並更新星辰
+      stars.forEach((star, i) => {
+        star.x += star.vx;
+        star.y += star.vy;
+
+        // 循環穿梭邊界
+        if (star.x < 0) star.x = width;
+        if (star.x > width) star.x = 0;
+        if (star.y < 0) star.y = height;
+        if (star.y > height) star.y = 0;
+
+        // 滑鼠引力擾動
         if (mouse.active) {
-          const mdx = mouse.x - p.x;
-          const mdy = mouse.y - p.y;
-          const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
-          if (mdist < 140) {
-            p.x -= (mdx / mdist) * 1.5;
-            p.y -= (mdy / mdist) * 1.5;
+          const mdx = mouse.x - star.x;
+          const mdy = mouse.y - star.y;
+          const dist = Math.sqrt(mdx * mdx + mdy * mdy);
+          if (dist < 130) {
+            star.x += (mdx / dist) * 0.8;
+            star.y += (mdy / dist) * 0.8;
           }
         }
 
+        // 閃爍呼吸計算
+        star.twinklePhase += star.twinkleSpeed;
+        const currentAlpha = Math.max(0.15, Math.min(1.0, star.baseAlpha + Math.sin(star.twinklePhase) * 0.35));
+
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `${p.color}${p.alpha})`;
-        ctx.shadowBlur = 12;
-        ctx.shadowColor = `${p.color}0.9)`;
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `${star.color}${currentAlpha})`;
+        ctx.shadowBlur = star.layer === 3 ? 12 : 5;
+        ctx.shadowColor = `${star.color}0.9)`;
         ctx.fill();
 
-        // 鄰近微粒連結
-        for (let j = i + 1; j < particles.length; j++) {
-          const p2 = particles[j];
-          const dx = p.x - p2.x;
-          const dy = p.y - p2.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+        // 近景亮星的四芒星尖銳光芒 (Cross Glint)
+        if (star.layer === 3 && currentAlpha > 0.65) {
+          ctx.strokeStyle = `${star.color}${currentAlpha * 0.4})`;
+          ctx.lineWidth = 0.7;
+          ctx.beginPath();
+          ctx.moveTo(star.x - star.radius * 3, star.y);
+          ctx.lineTo(star.x + star.radius * 3, star.y);
+          ctx.moveTo(star.x, star.y - star.radius * 3);
+          ctx.lineTo(star.x, star.y + star.radius * 3);
+          ctx.stroke();
+        }
 
-          if (dist < 115) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(168, 85, 247, ${0.16 * (1 - dist / 115)})`;
-            ctx.lineWidth = 0.65;
-            ctx.stroke();
+        // 星座星網微弱連線 (近中景星)
+        if (star.layer >= 2) {
+          for (let j = i + 1; j < stars.length; j++) {
+            const s2 = stars[j];
+            if (s2.layer >= 2) {
+              const dx = star.x - s2.x;
+              const dy = star.y - s2.y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+
+              if (dist < 105) {
+                ctx.beginPath();
+                ctx.moveTo(star.x, star.y);
+                ctx.lineTo(s2.x, s2.y);
+                ctx.strokeStyle = `rgba(168, 85, 247, ${0.14 * (1 - dist / 105)})`;
+                ctx.lineWidth = 0.55;
+                ctx.stroke();
+              }
+            }
           }
         }
       });
 
-      requestAnimationFrame(renderCanvas);
+      // 2. 繪製並更新流星 (Shooting Stars)
+      for (let m = meteors.length - 1; m >= 0; m--) {
+        const meteor = meteors[m];
+        meteor.x += meteor.dx;
+        meteor.y += meteor.dy;
+        meteor.alpha -= 0.016;
+
+        if (meteor.alpha <= 0 || meteor.x > width + 100 || meteor.y > height + 100) {
+          meteors.splice(m, 1);
+          continue;
+        }
+
+        // 流星漸層拖尾 (Gradient Trail)
+        const tailX = meteor.x - (meteor.dx / Math.sqrt(meteor.dx * meteor.dx + meteor.dy * meteor.dy)) * meteor.length;
+        const tailY = meteor.y - (meteor.dy / Math.sqrt(meteor.dx * meteor.dx + meteor.dy * meteor.dy)) * meteor.length;
+
+        const grad = ctx.createLinearGradient(tailX, tailY, meteor.x, meteor.y);
+        grad.addColorStop(0, 'rgba(0, 0, 0, 0)');
+        grad.addColorStop(0.6, `${meteor.color === '#00f0ff' ? 'rgba(0, 240, 255, ' : 'rgba(255, 0, 127, '}${meteor.alpha * 0.5})`);
+        grad.addColorStop(1, `rgba(255, 255, 255, ${meteor.alpha})`);
+
+        ctx.beginPath();
+        ctx.moveTo(tailX, tailY);
+        ctx.lineTo(meteor.x, meteor.y);
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = meteor.thickness;
+        ctx.lineCap = 'round';
+        ctx.shadowBlur = 14;
+        ctx.shadowColor = meteor.color;
+        ctx.stroke();
+
+        // 流星頭部亮點
+        ctx.beginPath();
+        ctx.arc(meteor.x, meteor.y, meteor.thickness * 1.3, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${meteor.alpha})`;
+        ctx.fill();
+      }
+
+      // 3. 繪製並更新滑鼠星塵 (Mouse Stardust)
+      for (let s = stardusts.length - 1; s >= 0; s--) {
+        const dust = stardusts[s];
+        dust.x += dust.vx;
+        dust.y += dust.vy;
+        dust.alpha -= dust.decay;
+
+        if (dust.alpha <= 0) {
+          stardusts.splice(s, 1);
+          continue;
+        }
+
+        ctx.beginPath();
+        ctx.arc(dust.x, dust.y, dust.radius, 0, Math.PI * 2);
+        ctx.fillStyle = dust.color;
+        ctx.globalAlpha = dust.alpha;
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = dust.color;
+        ctx.fill();
+        ctx.globalAlpha = 1.0;
+      }
+
+      requestAnimationFrame(renderCosmicUniverse);
     }
-    renderCanvas();
+
+    renderCosmicUniverse();
   }
 
   // ============================================================
@@ -471,363 +614,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-  // ============================================================
-  // 8. 賽博街機小遊戲：【微米手速修羅場 ｜ 抓 Offer & 虐奧客街機賽】
-  // ============================================================
-  const arcadeOverlay = document.getElementById('arcade-overlay');
-  const arcadeStartView = document.getElementById('arcade-start-view');
-  const arcadeResultView = document.getElementById('arcade-result-view');
-  const arcadeStartBtn = document.getElementById('arcade-start-btn');
-  const arcadeReplayBtn = document.getElementById('arcade-replay-btn');
-  const arcadeCurrentScoreEl = document.getElementById('arcade-current-score');
-  const arcadeTimerEl = document.getElementById('arcade-timer');
-  const arcadeComboNumEl = document.getElementById('arcade-combo-num');
-  const arcadeHighScoreEl = document.getElementById('arcade-high-score');
-  const arcadeFinalScoreEl = document.getElementById('arcade-final-score');
-  const arcadeRankTitleEl = document.getElementById('arcade-rank-title');
-  const arcadeRankCommentEl = document.getElementById('arcade-rank-comment');
-
-  const arcadeSlots = Array.from({ length: 9 }, (_, i) => document.getElementById(`slot-${i}`));
-
-  // 讀取歷史最高紀錄
-  let arcadeHighScore = parseInt(localStorage.getItem('chen_arcade_highscore') || '0', 10);
-  if (arcadeHighScoreEl) arcadeHighScoreEl.textContent = arcadeHighScore;
-
-  let isGameActive = false;
-  let gameScore = 0;
-  let gameTime = 30;
-  let gameCombo = 0;
-  let gameCountdownTimer = null;
-  let gameSpawnerTimer = null;
-  const activeTargets = {}; // 追蹤每個 slot 的目標狀態與計時器
-
-  // 音效合成：命中正分
-  function playGameHitSound() {
-    initAudio();
-    if (!soundEnabled || !audioCtx) return;
-    try {
-      const now = audioCtx.currentTime;
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(587.33, now); // D5
-      osc.frequency.exponentialRampToValueAtTime(987.77, now + 0.08); // B5
-      gain.gain.setValueAtTime(0.12, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start(now);
-      osc.stop(now + 0.1);
-    } catch(e) {}
-  }
-
-  // 音效合成：命中陷阱 (扣分)
-  function playGameTrapSound() {
-    initAudio();
-    if (!soundEnabled || !audioCtx) return;
-    try {
-      const now = audioCtx.currentTime;
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(180, now);
-      osc.frequency.linearRampToValueAtTime(75, now + 0.18);
-      gain.gain.setValueAtTime(0.14, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start(now);
-      osc.stop(now + 0.18);
-    } catch(e) {}
-  }
-
-  // 音效合成：遊戲結束
-  function playGameOverSound() {
-    initAudio();
-    if (!soundEnabled || !audioCtx) return;
-    try {
-      const chords = [523.25, 659.25, 783.99, 1046.5, 1318.5];
-      chords.forEach((f, i) => {
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        const t = audioCtx.currentTime + i * 0.08;
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(f, t);
-        gain.gain.setValueAtTime(0.12, t);
-        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.45);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start(t);
-        osc.stop(t + 0.45);
-      });
-    } catch(e) {}
-  }
-
-  // 目標池設定 (符合明渙背景與爆笑迷因)
-  const targetTypes = [
-    { type: 'offer', name: 'Offer 錄取通知', icon: '🎯', points: 100, isTrap: false, border: 'border-cyan-400', tag: '+100 錄取啦！' },
-    { type: 'screw', name: '上銀微米螺桿', icon: '🔧', points: 60, isTrap: false, border: 'border-pink-400', tag: '+60 又硬又滑順！' },
-    { type: 'jiege', name: '杰哥加持', icon: '👓', points: 150, isTrap: false, border: 'border-amber-400', tag: '+150 讓我看看！' },
-    { type: 'piano', name: '靈活鋼琴鍵', icon: '🎹', points: 50, isTrap: false, border: 'border-purple-400', tag: '+50 手速爆發！' },
-    { type: 'parachute', name: '萬呎跳傘', icon: '🪂', points: 70, isTrap: false, border: 'border-blue-400', tag: '+70 降落！' },
-    { type: 'bike', name: '防禦重機', icon: '🏍️', points: 40, isTrap: false, border: 'border-teal-400', tag: '+40 絕不翻車！' },
-    { type: 'karen', name: '暴走奧客', icon: '🦹', points: -50, isTrap: true, border: 'border-red-500', tag: '-50 奧客退散！' },
-    { type: 'boss', name: '慣老闆畫大餅', icon: '💀', points: -80, isTrap: true, border: 'border-rose-600', tag: '-80 快逃啊！' }
-  ];
-
-  // 浮動得分文字顯示
-  function spawnFloatingScore(slotEl, text, isTrap) {
-    const floatEl = document.createElement('div');
-    floatEl.className = `float-score-tag text-xs sm:text-sm px-2.5 py-1 rounded-full border shadow-xl ${
-      isTrap
-        ? 'bg-red-600/90 text-white border-red-300'
-        : 'bg-gradient-to-r from-cyan-400 to-pink-500 text-white border-white/60'
-    }`;
-    floatEl.textContent = text;
-    slotEl.appendChild(floatEl);
-    setTimeout(() => floatEl.remove(), 950);
-  }
-
-  // 開始遊戲
-  function startArcadeGame() {
-    playClickLaser();
-    isGameActive = true;
-    gameScore = 0;
-    gameTime = 30;
-    gameCombo = 0;
-
-    if (arcadeCurrentScoreEl) arcadeCurrentScoreEl.textContent = '0';
-    if (arcadeTimerEl) {
-      arcadeTimerEl.textContent = '30s';
-      arcadeTimerEl.classList.remove('timer-danger');
-    }
-    if (arcadeComboNumEl) arcadeComboNumEl.textContent = '0';
-
-    if (arcadeOverlay) arcadeOverlay.classList.add('hidden');
-    if (arcadeStartView) arcadeStartView.classList.remove('hidden');
-    if (arcadeResultView) arcadeResultView.classList.add('hidden');
-
-    // 清理所有 slot
-    arcadeSlots.forEach((slot, idx) => {
-      clearSlot(idx);
-    });
-
-    // 啟動倒數計時器
-    gameCountdownTimer = setInterval(() => {
-      gameTime--;
-      if (arcadeTimerEl) {
-        arcadeTimerEl.textContent = `${gameTime}s`;
-        if (gameTime <= 6) {
-          arcadeTimerEl.classList.add('timer-danger');
-        }
-      }
-
-      if (gameTime <= 0) {
-        endArcadeGame();
-      }
-    }, 1000);
-
-    // 啟動地鼠目標生成器
-    spawnTargetLoop();
-  }
-
-  // 清除單一 slot
-  function clearSlot(index) {
-    const slotEl = arcadeSlots[index];
-    if (slotEl) {
-      slotEl.innerHTML = '';
-      slotEl.classList.remove('slot-hit-pos', 'slot-hit-neg');
-    }
-    if (activeTargets[index] && activeTargets[index].timer) {
-      clearTimeout(activeTargets[index].timer);
-    }
-    delete activeTargets[index];
-  }
-
-  // 目標隨機生成循環
-  function spawnTargetLoop() {
-    if (!isGameActive) return;
-
-    // 尋找當前空置的 slot
-    const emptyIndices = [];
-    for (let i = 0; i < 9; i++) {
-      if (!activeTargets[i]) emptyIndices.push(i);
-    }
-
-    if (emptyIndices.length > 0) {
-      // 隨機選 1 ~ 2 個 slot
-      const count = Math.min(emptyIndices.length, Math.random() > 0.4 ? 2 : 1);
-      for (let c = 0; c < count; c++) {
-        if (emptyIndices.length === 0) break;
-        const randPos = Math.floor(Math.random() * emptyIndices.length);
-        const slotIdx = emptyIndices.splice(randPos, 1)[0];
-        spawnTargetAt(slotIdx);
-      }
-    }
-
-    // 隨時間遞減生成間隔 (提升手速難度)
-    const nextInterval = Math.max(450, 750 - (30 - gameTime) * 10);
-    gameSpawnerTimer = setTimeout(spawnTargetLoop, nextInterval);
-  }
-
-  // 在指定 slot 生成目標
-  function spawnTargetAt(slotIndex) {
-    const slotEl = arcadeSlots[slotIndex];
-    if (!slotEl) return;
-
-    // 決定目標種類 (75% 正面, 25% 陷阱)
-    const isTrap = Math.random() < 0.25;
-    let target;
-    if (isTrap) {
-      const traps = targetTypes.filter(t => t.isTrap);
-      target = traps[Math.floor(Math.random() * traps.length)];
-    } else {
-      const goods = targetTypes.filter(t => !t.isTrap);
-      target = goods[Math.floor(Math.random() * goods.length)];
-    }
-
-    // 生成 DOM
-    const targetEl = document.createElement('div');
-    targetEl.className = `arcade-target-active w-full h-full flex flex-col items-center justify-center p-2 rounded-2xl border-2 ${target.border} bg-[#160b2e]/90 shadow-lg`;
-    targetEl.innerHTML = `
-      <div class="text-3xl sm:text-4xl filter drop-shadow-md">${target.icon}</div>
-      <div class="text-[10px] sm:text-xs font-black text-white mt-1 text-center truncate max-w-full">${target.name}</div>
-      <div class="text-[9px] font-bold ${target.isTrap ? 'text-red-400' : 'text-cyan-300'}">${target.points > 0 ? '+' + target.points : target.points}</div>
-    `;
-
-    slotEl.innerHTML = '';
-    slotEl.appendChild(targetEl);
-
-    // 設定停留時間 (800ms ~ 1200ms)
-    const lifetime = Math.max(700, 1100 - (30 - gameTime) * 12);
-    const timer = setTimeout(() => {
-      clearSlot(slotIndex);
-    }, lifetime);
-
-    activeTargets[slotIndex] = {
-      target,
-      timer
-    };
-  }
-
-  // 處理 Slot 點擊 / 觸控
-  function handleSlotHit(slotIndex) {
-    if (!isGameActive) return;
-
-    const slotEl = arcadeSlots[slotIndex];
-    const data = activeTargets[slotIndex];
-
-    if (!data || !slotEl) return;
-
-    const { target } = data;
-
-    // 清除該 slot 計時器，避免重複點擊
-    clearTimeout(data.timer);
-    delete activeTargets[slotIndex];
-
-    if (target.isTrap) {
-      // 命中陷阱
-      playGameTrapSound();
-      gameCombo = 0; // 斷連擊
-      gameScore = Math.max(0, gameScore + target.points);
-
-      slotEl.classList.add('slot-hit-neg');
-      spawnFloatingScore(slotEl, target.tag, true);
-
-      // 觸發全畫面微震
-      document.body.classList.remove('screen-shake-anim');
-      void document.body.offsetWidth;
-      document.body.classList.add('screen-shake-anim');
-    } else {
-      // 命中正面目標
-      playGameHitSound();
-      gameCombo++;
-
-      // 連擊倍率計算
-      let multiplier = 1.0;
-      if (gameCombo >= 15) multiplier = 2.0;
-      else if (gameCombo >= 10) multiplier = 1.5;
-      else if (gameCombo >= 5) multiplier = 1.2;
-
-      const earnedPoints = Math.round(target.points * multiplier);
-      gameScore += earnedPoints;
-
-      slotEl.classList.add('slot-hit-pos');
-      spawnFloatingScore(slotEl, `${target.tag} (${earnedPoints})`, false);
-    }
-
-    // 更新 HUD
-    if (arcadeCurrentScoreEl) arcadeCurrentScoreEl.textContent = gameScore;
-    if (arcadeComboNumEl) arcadeComboNumEl.textContent = gameCombo;
-
-    // 稍後清空 DOM
-    setTimeout(() => {
-      slotEl.innerHTML = '';
-      slotEl.classList.remove('slot-hit-pos', 'slot-hit-neg');
-    }, 200);
-  }
-
-  // 綁定所有 slot 點擊事件
-  arcadeSlots.forEach((slot, index) => {
-    if (slot) {
-      slot.addEventListener('click', (e) => {
-        e.preventDefault();
-        handleSlotHit(index);
-      });
-      slot.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        handleSlotHit(index);
-      }, { passive: false });
-    }
-  });
-
-  // 結束遊戲並結算
-  function endArcadeGame() {
-    isGameActive = false;
-    clearInterval(gameCountdownTimer);
-    clearTimeout(gameSpawnerTimer);
-
-    // 清理所有 slot
-    arcadeSlots.forEach((_, idx) => clearSlot(idx));
-
-    playGameOverSound();
-
-    // 更新歷史最高分
-    if (gameScore > arcadeHighScore) {
-      arcadeHighScore = gameScore;
-      localStorage.setItem('chen_arcade_highscore', arcadeHighScore.toString());
-      if (arcadeHighScoreEl) arcadeHighScoreEl.textContent = arcadeHighScore;
-    }
-
-    // 計算評級稱號與點評
-    let rankTitle = '';
-    let rankComment = '';
-
-    if (gameScore >= 2500) {
-      rankTitle = '【SSR 傳說神之手 ｜ 獵頭搶破頭】';
-      rankComment = '「太神啦！你這份手速蠻勇的喔！30秒內鏟花、端盤、甩奧客樣樣精通，明渙直接把履歷交給你，明天直接來報到！」';
-    } else if (gameScore >= 1500) {
-      rankTitle = '【微米級手速大師 ｜ 頂級工匠】';
-      rankComment = '「超派！這手速已經超越 95% 的人資與工程師！上銀科技 3 年的微米精修與餐飲修羅場被你玩得出神入化！」';
-    } else if (gameScore >= 800) {
-      rankTitle = '【資深精修師 ｜ 穩健熟手】';
-      rankComment = '「很穩喔！懂得適度預壓、閃避奧客，如果手速再快一點，你也能在高空跳傘時空中組裝滾珠螺桿了！」';
-    } else {
-      rankTitle = '【實習修羅 ｜ 潛力無窮】';
-      rankComment = '「我看你是完全不懂喔？剛才是不是被奧客或慣老闆抓到了？別灰心，再戰一局，拿出微米級的專注力！」';
-    }
-
-    if (arcadeFinalScoreEl) arcadeFinalScoreEl.textContent = `${gameScore} 分`;
-    if (arcadeRankTitleEl) arcadeRankTitleEl.textContent = rankTitle;
-    if (arcadeRankCommentEl) arcadeRankCommentEl.textContent = rankComment;
-
-    if (arcadeOverlay) arcadeOverlay.classList.remove('hidden');
-    if (arcadeStartView) arcadeStartView.classList.add('hidden');
-    if (arcadeResultView) arcadeResultView.classList.remove('hidden');
-  }
-
-  // 綁定開始與重玩按鈕
-  if (arcadeStartBtn) arcadeStartBtn.addEventListener('click', startArcadeGame);
-  if (arcadeReplayBtn) arcadeReplayBtn.addEventListener('click', startArcadeGame);
 });
