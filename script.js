@@ -471,4 +471,363 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // ============================================================
+  // 8. 賽博街機小遊戲：【微米手速修羅場 ｜ 抓 Offer & 虐奧客街機賽】
+  // ============================================================
+  const arcadeOverlay = document.getElementById('arcade-overlay');
+  const arcadeStartView = document.getElementById('arcade-start-view');
+  const arcadeResultView = document.getElementById('arcade-result-view');
+  const arcadeStartBtn = document.getElementById('arcade-start-btn');
+  const arcadeReplayBtn = document.getElementById('arcade-replay-btn');
+  const arcadeCurrentScoreEl = document.getElementById('arcade-current-score');
+  const arcadeTimerEl = document.getElementById('arcade-timer');
+  const arcadeComboNumEl = document.getElementById('arcade-combo-num');
+  const arcadeHighScoreEl = document.getElementById('arcade-high-score');
+  const arcadeFinalScoreEl = document.getElementById('arcade-final-score');
+  const arcadeRankTitleEl = document.getElementById('arcade-rank-title');
+  const arcadeRankCommentEl = document.getElementById('arcade-rank-comment');
+
+  const arcadeSlots = Array.from({ length: 9 }, (_, i) => document.getElementById(`slot-${i}`));
+
+  // 讀取歷史最高紀錄
+  let arcadeHighScore = parseInt(localStorage.getItem('chen_arcade_highscore') || '0', 10);
+  if (arcadeHighScoreEl) arcadeHighScoreEl.textContent = arcadeHighScore;
+
+  let isGameActive = false;
+  let gameScore = 0;
+  let gameTime = 30;
+  let gameCombo = 0;
+  let gameCountdownTimer = null;
+  let gameSpawnerTimer = null;
+  const activeTargets = {}; // 追蹤每個 slot 的目標狀態與計時器
+
+  // 音效合成：命中正分
+  function playGameHitSound() {
+    initAudio();
+    if (!soundEnabled || !audioCtx) return;
+    try {
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(587.33, now); // D5
+      osc.frequency.exponentialRampToValueAtTime(987.77, now + 0.08); // B5
+      gain.gain.setValueAtTime(0.12, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.1);
+    } catch(e) {}
+  }
+
+  // 音效合成：命中陷阱 (扣分)
+  function playGameTrapSound() {
+    initAudio();
+    if (!soundEnabled || !audioCtx) return;
+    try {
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(180, now);
+      osc.frequency.linearRampToValueAtTime(75, now + 0.18);
+      gain.gain.setValueAtTime(0.14, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.18);
+    } catch(e) {}
+  }
+
+  // 音效合成：遊戲結束
+  function playGameOverSound() {
+    initAudio();
+    if (!soundEnabled || !audioCtx) return;
+    try {
+      const chords = [523.25, 659.25, 783.99, 1046.5, 1318.5];
+      chords.forEach((f, i) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        const t = audioCtx.currentTime + i * 0.08;
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(f, t);
+        gain.gain.setValueAtTime(0.12, t);
+        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.45);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(t);
+        osc.stop(t + 0.45);
+      });
+    } catch(e) {}
+  }
+
+  // 目標池設定 (符合明渙背景與爆笑迷因)
+  const targetTypes = [
+    { type: 'offer', name: 'Offer 錄取通知', icon: '🎯', points: 100, isTrap: false, border: 'border-cyan-400', tag: '+100 錄取啦！' },
+    { type: 'screw', name: '上銀微米螺桿', icon: '🔧', points: 60, isTrap: false, border: 'border-pink-400', tag: '+60 又硬又滑順！' },
+    { type: 'jiege', name: '杰哥加持', icon: '👓', points: 150, isTrap: false, border: 'border-amber-400', tag: '+150 讓我看看！' },
+    { type: 'piano', name: '靈活鋼琴鍵', icon: '🎹', points: 50, isTrap: false, border: 'border-purple-400', tag: '+50 手速爆發！' },
+    { type: 'parachute', name: '萬呎跳傘', icon: '🪂', points: 70, isTrap: false, border: 'border-blue-400', tag: '+70 降落！' },
+    { type: 'bike', name: '防禦重機', icon: '🏍️', points: 40, isTrap: false, border: 'border-teal-400', tag: '+40 絕不翻車！' },
+    { type: 'karen', name: '暴走奧客', icon: '🦹', points: -50, isTrap: true, border: 'border-red-500', tag: '-50 奧客退散！' },
+    { type: 'boss', name: '慣老闆畫大餅', icon: '💀', points: -80, isTrap: true, border: 'border-rose-600', tag: '-80 快逃啊！' }
+  ];
+
+  // 浮動得分文字顯示
+  function spawnFloatingScore(slotEl, text, isTrap) {
+    const floatEl = document.createElement('div');
+    floatEl.className = `float-score-tag text-xs sm:text-sm px-2.5 py-1 rounded-full border shadow-xl ${
+      isTrap
+        ? 'bg-red-600/90 text-white border-red-300'
+        : 'bg-gradient-to-r from-cyan-400 to-pink-500 text-white border-white/60'
+    }`;
+    floatEl.textContent = text;
+    slotEl.appendChild(floatEl);
+    setTimeout(() => floatEl.remove(), 950);
+  }
+
+  // 開始遊戲
+  function startArcadeGame() {
+    playClickLaser();
+    isGameActive = true;
+    gameScore = 0;
+    gameTime = 30;
+    gameCombo = 0;
+
+    if (arcadeCurrentScoreEl) arcadeCurrentScoreEl.textContent = '0';
+    if (arcadeTimerEl) {
+      arcadeTimerEl.textContent = '30s';
+      arcadeTimerEl.classList.remove('timer-danger');
+    }
+    if (arcadeComboNumEl) arcadeComboNumEl.textContent = '0';
+
+    if (arcadeOverlay) arcadeOverlay.classList.add('hidden');
+    if (arcadeStartView) arcadeStartView.classList.remove('hidden');
+    if (arcadeResultView) arcadeResultView.classList.add('hidden');
+
+    // 清理所有 slot
+    arcadeSlots.forEach((slot, idx) => {
+      clearSlot(idx);
+    });
+
+    // 啟動倒數計時器
+    gameCountdownTimer = setInterval(() => {
+      gameTime--;
+      if (arcadeTimerEl) {
+        arcadeTimerEl.textContent = `${gameTime}s`;
+        if (gameTime <= 6) {
+          arcadeTimerEl.classList.add('timer-danger');
+        }
+      }
+
+      if (gameTime <= 0) {
+        endArcadeGame();
+      }
+    }, 1000);
+
+    // 啟動地鼠目標生成器
+    spawnTargetLoop();
+  }
+
+  // 清除單一 slot
+  function clearSlot(index) {
+    const slotEl = arcadeSlots[index];
+    if (slotEl) {
+      slotEl.innerHTML = '';
+      slotEl.classList.remove('slot-hit-pos', 'slot-hit-neg');
+    }
+    if (activeTargets[index] && activeTargets[index].timer) {
+      clearTimeout(activeTargets[index].timer);
+    }
+    delete activeTargets[index];
+  }
+
+  // 目標隨機生成循環
+  function spawnTargetLoop() {
+    if (!isGameActive) return;
+
+    // 尋找當前空置的 slot
+    const emptyIndices = [];
+    for (let i = 0; i < 9; i++) {
+      if (!activeTargets[i]) emptyIndices.push(i);
+    }
+
+    if (emptyIndices.length > 0) {
+      // 隨機選 1 ~ 2 個 slot
+      const count = Math.min(emptyIndices.length, Math.random() > 0.4 ? 2 : 1);
+      for (let c = 0; c < count; c++) {
+        if (emptyIndices.length === 0) break;
+        const randPos = Math.floor(Math.random() * emptyIndices.length);
+        const slotIdx = emptyIndices.splice(randPos, 1)[0];
+        spawnTargetAt(slotIdx);
+      }
+    }
+
+    // 隨時間遞減生成間隔 (提升手速難度)
+    const nextInterval = Math.max(450, 750 - (30 - gameTime) * 10);
+    gameSpawnerTimer = setTimeout(spawnTargetLoop, nextInterval);
+  }
+
+  // 在指定 slot 生成目標
+  function spawnTargetAt(slotIndex) {
+    const slotEl = arcadeSlots[slotIndex];
+    if (!slotEl) return;
+
+    // 決定目標種類 (75% 正面, 25% 陷阱)
+    const isTrap = Math.random() < 0.25;
+    let target;
+    if (isTrap) {
+      const traps = targetTypes.filter(t => t.isTrap);
+      target = traps[Math.floor(Math.random() * traps.length)];
+    } else {
+      const goods = targetTypes.filter(t => !t.isTrap);
+      target = goods[Math.floor(Math.random() * goods.length)];
+    }
+
+    // 生成 DOM
+    const targetEl = document.createElement('div');
+    targetEl.className = `arcade-target-active w-full h-full flex flex-col items-center justify-center p-2 rounded-2xl border-2 ${target.border} bg-[#160b2e]/90 shadow-lg`;
+    targetEl.innerHTML = `
+      <div class="text-3xl sm:text-4xl filter drop-shadow-md">${target.icon}</div>
+      <div class="text-[10px] sm:text-xs font-black text-white mt-1 text-center truncate max-w-full">${target.name}</div>
+      <div class="text-[9px] font-bold ${target.isTrap ? 'text-red-400' : 'text-cyan-300'}">${target.points > 0 ? '+' + target.points : target.points}</div>
+    `;
+
+    slotEl.innerHTML = '';
+    slotEl.appendChild(targetEl);
+
+    // 設定停留時間 (800ms ~ 1200ms)
+    const lifetime = Math.max(700, 1100 - (30 - gameTime) * 12);
+    const timer = setTimeout(() => {
+      clearSlot(slotIndex);
+    }, lifetime);
+
+    activeTargets[slotIndex] = {
+      target,
+      timer
+    };
+  }
+
+  // 處理 Slot 點擊 / 觸控
+  function handleSlotHit(slotIndex) {
+    if (!isGameActive) return;
+
+    const slotEl = arcadeSlots[slotIndex];
+    const data = activeTargets[slotIndex];
+
+    if (!data || !slotEl) return;
+
+    const { target } = data;
+
+    // 清除該 slot 計時器，避免重複點擊
+    clearTimeout(data.timer);
+    delete activeTargets[slotIndex];
+
+    if (target.isTrap) {
+      // 命中陷阱
+      playGameTrapSound();
+      gameCombo = 0; // 斷連擊
+      gameScore = Math.max(0, gameScore + target.points);
+
+      slotEl.classList.add('slot-hit-neg');
+      spawnFloatingScore(slotEl, target.tag, true);
+
+      // 觸發全畫面微震
+      document.body.classList.remove('screen-shake-anim');
+      void document.body.offsetWidth;
+      document.body.classList.add('screen-shake-anim');
+    } else {
+      // 命中正面目標
+      playGameHitSound();
+      gameCombo++;
+
+      // 連擊倍率計算
+      let multiplier = 1.0;
+      if (gameCombo >= 15) multiplier = 2.0;
+      else if (gameCombo >= 10) multiplier = 1.5;
+      else if (gameCombo >= 5) multiplier = 1.2;
+
+      const earnedPoints = Math.round(target.points * multiplier);
+      gameScore += earnedPoints;
+
+      slotEl.classList.add('slot-hit-pos');
+      spawnFloatingScore(slotEl, `${target.tag} (${earnedPoints})`, false);
+    }
+
+    // 更新 HUD
+    if (arcadeCurrentScoreEl) arcadeCurrentScoreEl.textContent = gameScore;
+    if (arcadeComboNumEl) arcadeComboNumEl.textContent = gameCombo;
+
+    // 稍後清空 DOM
+    setTimeout(() => {
+      slotEl.innerHTML = '';
+      slotEl.classList.remove('slot-hit-pos', 'slot-hit-neg');
+    }, 200);
+  }
+
+  // 綁定所有 slot 點擊事件
+  arcadeSlots.forEach((slot, index) => {
+    if (slot) {
+      slot.addEventListener('click', (e) => {
+        e.preventDefault();
+        handleSlotHit(index);
+      });
+      slot.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        handleSlotHit(index);
+      }, { passive: false });
+    }
+  });
+
+  // 結束遊戲並結算
+  function endArcadeGame() {
+    isGameActive = false;
+    clearInterval(gameCountdownTimer);
+    clearTimeout(gameSpawnerTimer);
+
+    // 清理所有 slot
+    arcadeSlots.forEach((_, idx) => clearSlot(idx));
+
+    playGameOverSound();
+
+    // 更新歷史最高分
+    if (gameScore > arcadeHighScore) {
+      arcadeHighScore = gameScore;
+      localStorage.setItem('chen_arcade_highscore', arcadeHighScore.toString());
+      if (arcadeHighScoreEl) arcadeHighScoreEl.textContent = arcadeHighScore;
+    }
+
+    // 計算評級稱號與點評
+    let rankTitle = '';
+    let rankComment = '';
+
+    if (gameScore >= 2500) {
+      rankTitle = '【SSR 傳說神之手 ｜ 獵頭搶破頭】';
+      rankComment = '「太神啦！你這份手速蠻勇的喔！30秒內鏟花、端盤、甩奧客樣樣精通，明渙直接把履歷交給你，明天直接來報到！」';
+    } else if (gameScore >= 1500) {
+      rankTitle = '【微米級手速大師 ｜ 頂級工匠】';
+      rankComment = '「超派！這手速已經超越 95% 的人資與工程師！上銀科技 3 年的微米精修與餐飲修羅場被你玩得出神入化！」';
+    } else if (gameScore >= 800) {
+      rankTitle = '【資深精修師 ｜ 穩健熟手】';
+      rankComment = '「很穩喔！懂得適度預壓、閃避奧客，如果手速再快一點，你也能在高空跳傘時空中組裝滾珠螺桿了！」';
+    } else {
+      rankTitle = '【實習修羅 ｜ 潛力無窮】';
+      rankComment = '「我看你是完全不懂喔？剛才是不是被奧客或慣老闆抓到了？別灰心，再戰一局，拿出微米級的專注力！」';
+    }
+
+    if (arcadeFinalScoreEl) arcadeFinalScoreEl.textContent = `${gameScore} 分`;
+    if (arcadeRankTitleEl) arcadeRankTitleEl.textContent = rankTitle;
+    if (arcadeRankCommentEl) arcadeRankCommentEl.textContent = rankComment;
+
+    if (arcadeOverlay) arcadeOverlay.classList.remove('hidden');
+    if (arcadeStartView) arcadeStartView.classList.add('hidden');
+    if (arcadeResultView) arcadeResultView.classList.remove('hidden');
+  }
+
+  // 綁定開始與重玩按鈕
+  if (arcadeStartBtn) arcadeStartBtn.addEventListener('click', startArcadeGame);
+  if (arcadeReplayBtn) arcadeReplayBtn.addEventListener('click', startArcadeGame);
 });
