@@ -63,26 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e) {}
   }
 
-  // 播放迷因彈跳歡樂音 (Meme Boing & Jump)
-  function playMemeSound() {
-    initAudio();
-    if (!soundEnabled || !audioCtx) return;
-    try {
-      const now = audioCtx.currentTime;
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(180, now);
-      osc.frequency.exponentialRampToValueAtTime(720, now + 0.15);
-      osc.frequency.exponentialRampToValueAtTime(440, now + 0.25);
-      gain.gain.setValueAtTime(0.15, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start(now);
-      osc.stop(now + 0.25);
-    } catch (e) {}
-  }
+
 
   // 播放能量破表超強和弦 (Power Up Chord)
   function playPowerUpChord() {
@@ -165,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
       mouse.y = e.clientY;
       mouse.active = true;
 
-      // 滑鼠移動時產生微小星塵軌跡
+      // 滑鼠移動時產生微小星塵軌跡 (Refined Platinum & Starlight Cyan Dust)
       if (Math.random() < 0.35 && stardusts.length < 35) {
         stardusts.push({
           x: mouse.x + (Math.random() * 20 - 10),
@@ -175,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
           radius: Math.random() * 1.8 + 0.8,
           alpha: 0.9,
           decay: Math.random() * 0.02 + 0.015,
-          color: ['#00f0ff', '#a855f7', '#ff007f', '#fbbf24'][Math.floor(Math.random() * 4)]
+          color: ['#38bdf8', '#7dd3fc', '#e2e8f0', '#fbbf24'][Math.floor(Math.random() * 4)]
         });
       }
     });
@@ -184,14 +165,14 @@ document.addEventListener('DOMContentLoaded', () => {
       mouse.active = false;
     });
 
-    // 宇宙星辰色彩池 (超亮星、白矮星、青藍星、紫星、粉星、金星)
+    // 電影級深空星辰色彩池 (純白星、清冷天青、冷銀、天王藍、香檳鉑金)
     const starColors = [
       'rgba(255, 255, 255, ',   // Pure White
-      'rgba(0, 240, 255, ',     // Electric Cyan
-      'rgba(168, 85, 247, ',    // Cosmic Violet
-      'rgba(255, 0, 127, ',     // Hot Magenta
-      'rgba(96, 165, 250, ',    // Deep Blue
-      'rgba(251, 191, 36, '     // Cosmic Gold
+      'rgba(186, 230, 253, ',   // Cold Starlight Silver
+      'rgba(56, 189, 248, ',    // Cyan Starlight
+      'rgba(226, 232, 240, ',   // Platinum Stardust
+      'rgba(96, 165, 250, ',    // Deep Starlight Blue
+      'rgba(251, 191, 36, '     // Subtle Champagne Gold
     ];
 
     // 生成多層星辰 (120~180 顆星)
@@ -521,183 +502,28 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.add('screen-shake-anim');
 
       combatScore.textContent = 'MAX (卓越超群)';
-      combatScore.classList.add('text-yellow-300', 'animate-pulse');
-
-      // 噴發彩色光點標籤
-      for (let i = 0; i < 15; i++) {
-        setTimeout(() => spawnMemeComicTag('⚡ 專業評核 MAX！'), i * 35);
-      }
+      combatScore.classList.add('text-cyan-300', 'animate-pulse');
     });
   }
 
   // ============================================================
-  // 7. 台灣最強迷因互動引擎 (黑色幽默 × 雙關黃腔 × 專業硬核)
+  // 7. 電影級月球天文視差與光學動態 (Cinema Moon Parallax & Optical Dynamics)
   // ============================================================
-  const memeChar = document.getElementById('meme-char');
-  const memeDialog = document.getElementById('meme-dialog');
-  const memeText = document.getElementById('meme-dialog-text');
-  const memeToggleBtn = document.getElementById('meme-toggle-btn');
-  const memeNextBtn = document.getElementById('meme-next-btn');
-  const memeBadge = document.getElementById('meme-badge-text');
-  const memeContainer = document.getElementById('meme-widget');
-  const memeTagLabel = document.getElementById('meme-tag-label');
-
-  // 既搞笑又有梗、黑色幽默、雙關名句庫（句句扣緊明渙的真實專業技能）
-  const memeQuotes = [
-    {
-      tag: '杰哥深入視察',
-      text: '「聽話！讓我看看你的履歷！...嘶！這微米級公差也太硬了吧！我常幫助一些缺工的企業，我家還蠻大的，來我這面試！」'
-    },
-    {
-      tag: '亞洲統神咆哮',
-      text: '「太神啦！上銀科技 3 年天天在磨！這手速跟手感早就練到出神入化了！我就問一句，到底要不要發 Offer 啦！」'
-    },
-    {
-      tag: '老司機雙關調校',
-      text: '「老闆，你懂什麼叫『適度預壓』嗎？太緊會磨壞，太鬆會晃動～明渙調得剛剛好，又硬又滑順，運轉一整天都不發熱！」'
-    },
-    {
-      tag: '水母歸剛欸',
-      text: '「歸剛欸！每天看那些灌水吹牛的履歷看歸剛欸！看到明渙這份微米級真功夫，直接登大人啦！」'
-    },
-    {
-      tag: '黑色幽默警告',
-      text: '「連萬呎高空跳傘跟深海三十米窒息感我都挺過來了，你那點專案 Deadline 跟主管咆哮，連讓我心跳加速都做不到。」'
-    },
-    {
-      tag: '鋼琴靈活十指',
-      text: '「能彈蕭邦德布西的靈活手指，拿來微米級鏟花組裝，手速與力道深淺自如... 面試官你到底在想什麼？我說的是機械手感！」'
-    },
-    {
-      tag: '九天玄女降落',
-      text: '「800英呎！500英呎！降落！降落！九天玄女唯一指定神級人才！只要你敢發 Offer，明渙直接空降帶飛全公司！」'
-    },
-    {
-      tag: '餐飲現場實戰',
-      text: '「在家庭餐廳被各路客訴跟高壓節奏磨練多年，早就練成笑著承受一切的鋼鐵抗壓體質。要多耐操有多耐操！」'
-    },
-    {
-      tag: '山道防禦駕駛',
-      text: '「重機跑山只講技術，不當山道猴子。彎得過去是拓海，安全回家是男神；在職場上也是絕不翻車的穩健老司機！」'
-    },
-    {
-      tag: '杰哥終極告白',
-      text: '「杰哥不要... 不要再猶豫了！這麼耐磨耐操、懂企管又會微米級手藝的男人，全台灣打著燈籠都找不到了！」'
-    },
-    {
-      tag: '超派硬實力',
-      text: '「超派！兼具實幹工匠的硬功夫，又有企管系的成本刀法，這種神級性價比，錄取下去直接超派！」'
-    },
-    {
-      tag: '統神絕望哭啊',
-      text: '「哭啊！面試官你今天要是沒把握住他，下週就被台積電或外商高薪挖走了，到時候你別躲在茶水間哭啊！」'
-    }
-  ];
-
-  // 噴射漫畫標籤
-  const comicWords = [
-    '💥 太神啦！',
-    '👉 讓我看看！',
-    '🔥 歸剛欸！',
-    '💯 太硬了吧！',
-    '🚀 降落降落！',
-    '⚡ 微米級神手！',
-    '✨ 登大人啦！',
-    '🥊 超派！',
-    '💋 又硬又滑順！',
-    '🎹 靈活十指！',
-    '🏍️ 絕不翻車！',
-    '💎 頂級核心人才！'
-  ];
-
-  let currentQuoteIndex = 0;
-  let isMinimized = false;
-
-  // 產生浮誇漫畫特效字
-  function spawnMemeComicTag(customWord) {
-    if (!memeContainer) return;
-    const word = customWord || comicWords[Math.floor(Math.random() * comicWords.length)];
-
-    const tag = document.createElement('div');
-    tag.className = 'comic-burst-tag text-xs sm:text-sm px-3.5 py-1.5 rounded-full bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 text-white border-2 border-white/60 shadow-2xl';
-    tag.textContent = word;
-
-    const rotStart = (Math.random() * 30 - 15) + 'deg';
-    const rotMid = (Math.random() * 24 - 12) + 'deg';
-    const rotEnd = (Math.random() * 36 - 18) + 'deg';
-    tag.style.setProperty('--rot-start', rotStart);
-    tag.style.setProperty('--rot-mid', rotMid);
-    tag.style.setProperty('--rot-end', rotEnd);
-
-    tag.style.right = (Math.random() * 60 + 15) + 'px';
-    tag.style.bottom = (Math.random() * 50 + 75) + 'px';
-
-    memeContainer.appendChild(tag);
-    setTimeout(() => tag.remove(), 1300);
-  }
-
-  // 切換迷因台詞與觸發爆破特效
-  function triggerMemeEvent(e) {
-    if (e) e.stopPropagation();
-
-    // 播放迷因專屬音效
-    playMemeSound();
-
-    // 角色魔性跳躍衝擊
-    if (memeChar) {
-      memeChar.classList.remove('meme-action-explosive');
-      void memeChar.offsetWidth;
-      memeChar.classList.add('meme-action-explosive');
-      setTimeout(() => memeChar.classList.remove('meme-action-explosive'), 750);
-    }
-
-    // 噴出 2~3 個爆笑漫畫字
-    spawnMemeComicTag();
-    setTimeout(() => spawnMemeComicTag(), 80);
-
-    // 切換語錄
-    currentQuoteIndex = (currentQuoteIndex + 1) % memeQuotes.length;
-    const current = memeQuotes[currentQuoteIndex];
-
-    if (memeText) {
-      memeText.style.opacity = '0';
-      memeText.style.transform = 'translateY(4px)';
-      setTimeout(() => {
-        memeText.textContent = current.text;
-        memeText.style.opacity = '1';
-        memeText.style.transform = 'translateY(0)';
-      }, 120);
-    }
-
-    if (memeTagLabel) {
-      memeTagLabel.textContent = current.tag;
-    }
-
-    // 展開對話框
-    if (isMinimized && memeDialog) {
-      isMinimized = false;
-      memeDialog.classList.remove('hidden');
-      if (memeBadge) memeBadge.textContent = '聽話！點我互動 👆';
-    }
-  }
-
-  if (memeChar) memeChar.addEventListener('click', triggerMemeEvent);
-  if (memeNextBtn) memeNextBtn.addEventListener('click', triggerMemeEvent);
-
-  if (memeToggleBtn && memeDialog) {
-    memeToggleBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      playClickLaser();
-      isMinimized = !isMinimized;
-      if (isMinimized) {
-        memeDialog.classList.add('hidden');
-        memeToggleBtn.setAttribute('title', '展開對話');
-        if (memeBadge) memeBadge.textContent = '聽話！點我互動 👆';
-      } else {
-        memeDialog.classList.remove('hidden');
-        memeToggleBtn.setAttribute('title', '收起對話');
-        if (memeBadge) memeBadge.textContent = '聽話！點我互動 👆';
+  const moonAnchor = document.getElementById('cinema-moon-anchor');
+  if (moonAnchor) {
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY || window.pageYOffset;
+          // 平滑天文視差緩動 (Subtle astronomical parallax)
+          const translateY = scrollY * 0.16;
+          const rotate = scrollY * 0.006;
+          moonAnchor.style.transform = `translate3d(0, ${translateY}px, 0) rotate(${rotate}deg)`;
+          ticking = false;
+        });
+        ticking = true;
       }
-    });
+    }, { passive: true });
   }
 });

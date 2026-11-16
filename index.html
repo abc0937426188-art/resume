@@ -36,143 +36,68 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#05020a] text-slate-100 font-sans antialiased selection:bg-pink-500 selection:text-white transition-colors duration-300 overflow-x-hidden relative min-h-screen">
+<body class="bg-[#02050e] text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-black transition-colors duration-300 overflow-x-hidden relative min-h-screen">
 
   <!-- Interactive Dynamic Ambient Particle Canvas (星空閃爍、流星劃過、星網連線與滑鼠引力星塵) -->
   <canvas id="ambient-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
-  <!-- 宇宙深空大型星雲漩渦 (Deep Cosmic Ambient Nebulae - 固定視角氛圍) -->
+  <!-- 電影級深空星雲氛圍 (Cinematic Deep Space Atmosphere - 高階精緻化微光) -->
   <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-    <div class="absolute -top-44 -right-44 w-[38rem] h-[38rem] bg-purple-600/20 rounded-full blur-[145px] cosmic-nebula-spin"></div>
-    <div class="absolute top-1/4 -left-52 w-[34rem] h-[34rem] bg-cyan-500/18 rounded-full blur-[155px]"></div>
-    <div class="absolute top-2/3 -right-20 w-[32rem] h-[32rem] bg-pink-600/15 rounded-full blur-[145px]"></div>
-    <div class="absolute -bottom-44 left-1/4 w-[40rem] h-[40rem] bg-indigo-600/18 rounded-full blur-[165px]"></div>
+    <!-- 頂部月後星光輝散：清冷天青與深空靛藍 -->
+    <div class="absolute -top-40 -right-40 w-[42rem] h-[42rem] bg-gradient-to-br from-sky-900/18 via-indigo-950/20 to-transparent rounded-full blur-[160px]"></div>
+    <!-- 中左側：宇宙微光與深空青藍 -->
+    <div class="absolute top-1/4 -left-48 w-[36rem] h-[36rem] bg-gradient-to-tr from-cyan-950/20 via-slate-900/15 to-transparent rounded-full blur-[170px]"></div>
+    <!-- 中右側：沈穩星雲鈦紫微暈 -->
+    <div class="absolute top-2/3 -right-28 w-[35rem] h-[35rem] bg-gradient-to-bl from-indigo-950/18 via-slate-900/10 to-transparent rounded-full blur-[160px]"></div>
+    <!-- 底部：深空深邃藍黑底蘊 -->
+    <div class="absolute -bottom-40 left-1/4 w-[42rem] h-[42rem] bg-gradient-to-t from-blue-950/15 to-transparent rounded-full blur-[180px]"></div>
   </div>
 
-  <!-- 真實月球主題天文系統 (Photorealistic Lunar Celestial System - 以月球為核心之深度宇宙體驗) -->
+  <!-- 電影級深空天體系統 (Cinematic Celestial System) -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
 
-    <!-- 地月傳輸軌道弧線 (Trans-Lunar Orbital Trajectories) -->
-    <div class="absolute top-8 -right-24 w-[52rem] h-[52rem] rounded-full border border-dashed border-slate-400/20 opacity-40"></div>
-    <div class="absolute top-[1200px] -left-44 w-[46rem] h-[46rem] rounded-full border border-dashed border-cyan-400/20 opacity-30"></div>
-    <div class="absolute top-[2300px] -right-36 w-[48rem] h-[48rem] rounded-full border border-dashed border-purple-400/18 opacity-35"></div>
-    <div class="absolute top-[3400px] -left-36 w-[44rem] h-[44rem] rounded-full border border-dashed border-blue-400/20 opacity-30"></div>
-    <div class="absolute top-[4600px] -right-28 w-[40rem] h-[40rem] rounded-full border border-dashed border-slate-300/20 opacity-35"></div>
-
-    <!-- 1. Hero 區核心天體：高精細 3D 擬真月球 (Ultra-Realistic High-Definition Moon with Lunar Maria & Tycho Rays) -->
-    <div class="absolute top-12 right-2 sm:right-12 opacity-95">
-      <div class="relative w-56 h-56 sm:w-72 sm:h-72 lunar-float select-none pointer-events-none">
+    <!-- 1. Hero 區核心天體：電影級超擬真 3D 月球 (NASA 官方高畫質真實月相光影) -->
+    <div id="cinema-moon-anchor" class="absolute top-8 right-2 sm:right-10 lg:right-14 opacity-95 transition-transform duration-700 ease-out">
+      <div class="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-84 lg:h-84 xl:w-96 xl:h-96 cinema-moon-float select-none pointer-events-none">
         
-        <!-- 月球外圈冷光月暈 (Lunar Exosphere Corona & Limb Halo) -->
-        <div class="absolute -inset-4 rounded-full bg-gradient-to-tr from-cyan-400/10 via-slate-200/15 to-purple-400/10 blur-xl"></div>
-        <div class="absolute -inset-1 rounded-full border border-slate-300/30 shadow-[0_0_40px_rgba(226,232,240,0.35)]"></div>
+        <!-- 電影級月冕冷光與鏡頭光學散射 (Anamorphic Lunar Corona & Starlight Halation) -->
+        <div class="absolute -inset-10 rounded-full bg-gradient-to-tr from-sky-400/14 via-slate-200/10 to-indigo-400/10 blur-2xl pointer-events-none"></div>
+        <div class="absolute -inset-2 rounded-full border border-slate-300/20 shadow-[0_0_60px_rgba(186,230,253,0.25)] pointer-events-none"></div>
 
-        <!-- 月球本體 (真實月海、高地玄武岩、撞擊坑與立體晨昏線陰影) -->
-        <div class="w-full h-full rounded-full realistic-moon-sphere relative overflow-hidden shadow-[inset_-35px_-35px_60px_rgba(0,0,0,0.96),inset_14px_14px_35px_rgba(241,245,249,0.85),0_0_55px_rgba(203,213,225,0.3)] border border-slate-300/40">
-          
-          <!-- 月海玄武岩深色平原 (Lunar Maria Basalt Plains) -->
-          <!-- 風暴洋 (Oceanus Procellarum) -->
-          <div class="lunar-mare mare-procellarum"></div>
-          <!-- 雨海 (Mare Imbrium) -->
-          <div class="lunar-mare mare-imbrium"></div>
-          <!-- 澄海與靜海 (Mare Serenitatis & Tranquillitatis - 阿波羅11登月區) -->
-          <div class="lunar-mare mare-serenitatis"></div>
-          <div class="lunar-mare mare-tranquillitatis"></div>
-          <!-- 危難海 (Mare Crisium) -->
-          <div class="lunar-mare mare-crisium"></div>
-          <!-- 雲海與濕海 (Mare Nubium & Humorum) -->
-          <div class="lunar-mare mare-nubium"></div>
+        <!-- 真實 NASA 1280x1280 高精細攝影月球本體 -->
+        <div class="w-full h-full rounded-full relative overflow-hidden cinema-moon-body shadow-[0_25px_60px_rgba(0,0,0,0.95)]">
+          <!-- NASA 高清月面紋理 (Full Near-side High-Resolution Imagery) -->
+          <img src="assets/moon.jpg" alt="Cinematic Moon" class="w-full h-full object-cover scale-105 pointer-events-none select-none filter contrast-[1.08] brightness-[0.96]">
 
-          <!-- 提哥環形山放射狀濺射線條系統 (Tycho Crater & Radial Ejecta Ray System) -->
-          <div class="tycho-crater-system">
-            <div class="tycho-core"></div>
-            <div class="tycho-ray tycho-ray-1"></div>
-            <div class="tycho-ray tycho-ray-2"></div>
-            <div class="tycho-ray tycho-ray-3"></div>
-            <div class="tycho-ray tycho-ray-4"></div>
-            <div class="tycho-ray tycho-ray-5"></div>
-          </div>
+          <!-- 電影級 3D 球形晨昏線陰影層 (Cinematic 3D Spherical Terminator & Relief Lighting) -->
+          <div class="absolute inset-0 cinema-moon-shadow"></div>
 
-          <!-- 哥白尼環形山 (Copernicus Crater with Ejecta Halo) -->
-          <div class="crater-copernicus"></div>
-          <!-- 開普勒環形山 (Kepler Crater) -->
-          <div class="crater-kepler"></div>
-          <!-- 柏拉圖坑 (Plato Dark Floor Crater) -->
-          <div class="crater-plato"></div>
-          <!-- 阿里斯塔克斯高反光撞擊坑 (Aristarchus Crater) -->
-          <div class="crater-aristarchus"></div>
-
-          <!-- 晨昏線立體地形陰影層 (Terminator Shadow & Relief) -->
-          <div class="lunar-terminator-relief"></div>
-        </div>
-
-        <!-- 阿提米絲 / 月球探勘軌道器 (Artemis / LRO Lunar Orbiter Satellite) -->
-        <div class="absolute -inset-5 flex items-center justify-center pointer-events-none">
-          <div class="lunar-satellite-orbit w-full h-full flex items-center justify-start">
-            <div class="flex items-center gap-0.5 transform -rotate-45">
-              <div class="w-1.5 h-0.5 bg-cyan-400"></div>
-              <div class="w-2 h-2 rounded-sm bg-white shadow-[0_0_10px_#00f0ff] border border-cyan-200"></div>
-              <div class="w-1.5 h-0.5 bg-cyan-400"></div>
-            </div>
-          </div>
+          <!-- 冷色地照與邊緣散射 (Earthshine & Rim Scatter) -->
+          <div class="absolute inset-0 cinema-moon-rim"></div>
         </div>
 
       </div>
     </div>
 
-    <!-- 2. About 區：低月球軌道與靜海基地 (Low Lunar Orbit & Statio Tranquillitatis) -->
-    <div class="absolute top-[1120px] -left-10 sm:left-8 opacity-80">
-      <div class="relative w-48 h-48 sm:w-60 sm:h-60 planet-float-3 select-none pointer-events-none">
-        <div class="w-full h-full rounded-full lunar-close-orbit relative overflow-hidden shadow-[inset_-26px_-26px_45px_rgba(0,0,0,0.95),inset_10px_10px_30px_rgba(226,232,240,0.7),0_0_40px_rgba(148,163,184,0.3)] border border-slate-400/40">
-          <div class="lunar-apennines-mountain"></div>
-          <div class="lunar-landing-marker flex items-center gap-1.5">
-            <div class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></div>
-            <span class="text-[9px] font-mono text-cyan-300 tracking-wider bg-black/70 px-1.5 py-0.5 rounded border border-cyan-500/40">APOLLO 11 • 0.67°N</span>
-          </div>
-        </div>
-        <div class="planet-exosphere text-slate-300"></div>
-      </div>
-    </div>
-
-    <!-- 3. Experience 區：經典震撼「地出」景象 (Earthrise from Lunar Surface Horizon) -->
-    <div class="absolute top-[2150px] -right-8 sm:right-10 opacity-85">
-      <div class="relative w-48 h-48 sm:w-64 sm:h-64 planet-float-2 select-none pointer-events-none">
-        <!-- 蔚藍母星地球本體 (Blue Marble Earth with Swirling Clouds & Atmospheric Halo) -->
-        <div class="w-full h-full rounded-full realistic-earth-body relative overflow-hidden shadow-[inset_-28px_-28px_50px_rgba(2,6,23,0.98),inset_12px_12px_35px_rgba(56,189,248,0.85),0_0_55px_rgba(59,130,246,0.45)] border border-cyan-400/50">
-          <!-- 大陸與洋流輪廓 -->
+    <!-- 2. Experience 經歷區：電影級「地出」景象 (Earthrise from Lunar Orbit) -->
+    <div class="absolute top-[2300px] -right-12 sm:right-10 opacity-80">
+      <div class="relative w-52 h-52 sm:w-64 sm:h-64 cinema-earth-float select-none pointer-events-none">
+        <!-- 蔚藍母星地球本體 (Blue Marble Earth with Atmospheric Halo) -->
+        <div class="w-full h-full rounded-full realistic-earth-body relative overflow-hidden shadow-[inset_-28px_-28px_50px_rgba(2,6,23,0.98),inset_12px_12px_35px_rgba(56,189,248,0.85),0_0_60px_rgba(59,130,246,0.35)] border border-cyan-400/40">
           <div class="earth-continents"></div>
-          <!-- 大氣渦旋雲系 (Swirling Cloud Layer) -->
           <div class="earth-clouds"></div>
         </div>
-        <!-- 藍色大氣層散射輝光圈 (Atmospheric Scattering Blue Rim) -->
         <div class="earth-atmosphere-halo"></div>
       </div>
     </div>
 
-    <!-- 4. Industry Analysis 區：極區科研站與地月拉格朗日點 (Lunar Gateway & Polar Orbit) -->
-    <div class="absolute top-[3200px] -left-8 sm:left-12 opacity-80">
-      <div class="relative w-40 h-40 sm:w-52 sm:h-52 planet-float-1 select-none pointer-events-none">
-        <div class="w-full h-full rounded-full lunar-polar-sphere relative overflow-hidden shadow-[inset_-24px_-24px_40px_rgba(0,0,0,0.95),inset_8px_8px_25px_rgba(226,232,240,0.7),0_0_35px_rgba(148,163,184,0.3)] border border-slate-300/40">
-          <div class="crater-shackleton-polar"></div>
-          <div class="polar-ice-glint"></div>
-        </div>
-        <div class="planet-exosphere text-cyan-200"></div>
-        <!-- 軌道環線 -->
-        <div class="absolute -inset-4 rounded-full border border-dashed border-cyan-400/30" style="transform: rotateX(65deg) rotateY(15deg);"></div>
-      </div>
-    </div>
-
-    <!-- 5. Passions & Contact 區：達文西地照新月 (Waxing Crescent Moon with Earthshine) -->
-    <div class="absolute top-[4500px] right-3 sm:right-16 opacity-85">
-      <div class="relative w-36 h-36 sm:w-48 sm:h-48 planet-float-2 select-none pointer-events-none">
-        <!-- 地照微光暗盤 (Ghostly Earthshine Disc) -->
-        <div class="w-full h-full rounded-full bg-[#0a0f1d] border border-cyan-500/25 shadow-[0_0_30px_rgba(14,165,233,0.25)] relative overflow-hidden">
-          <!-- 銀白高光月牙 (Silver-White Bright Crescent Rim) -->
+    <!-- 3. Contact 聯絡區：電影級達文西地照新月 (Cinematic Crescent with Earthshine) -->
+    <div class="absolute top-[4500px] right-4 sm:right-16 opacity-75">
+      <div class="relative w-36 h-36 sm:w-48 sm:h-48 select-none pointer-events-none">
+        <div class="w-full h-full rounded-full bg-[#060b18] border border-cyan-500/20 shadow-[0_0_35px_rgba(14,165,233,0.18)] relative overflow-hidden">
           <div class="crescent-silver-rim"></div>
-          <!-- 暗面微弱地照紋理 -->
           <div class="earthshine-texture"></div>
         </div>
-        <div class="planet-exosphere text-slate-300"></div>
       </div>
     </div>
 
@@ -1292,133 +1217,18 @@
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-purple-950/80 bg-[#030107] py-10 relative z-10 text-center text-xs text-slate-500">
+  <footer class="border-t border-slate-800/80 bg-[#02040b] py-10 relative z-10 text-center text-xs text-slate-500">
     <div class="max-w-6xl mx-auto px-4 space-y-3">
       <div class="flex justify-center items-center gap-2 text-sm font-bold text-slate-300">
         <span>陳明渙 (Chen, Ming-Huan)</span>
-        <span class="text-purple-400">×</span>
-        <span class="text-cyan-400">賽博微米精修工藝</span>
-        <span class="text-purple-400">×</span>
-        <span class="text-pink-400">台灣最強迷因神作</span>
+        <span class="text-cyan-400">×</span>
+        <span class="text-slate-300">微米級高精密精修工藝</span>
+        <span class="text-cyan-400">×</span>
+        <span class="text-sky-400">企業管理與產業分析</span>
       </div>
-      <p class="text-slate-400/80">© 2026 All rights reserved. 兼具極致質感、黑色幽默與硬核專業。</p>
+      <p class="text-slate-400/80">© 2026 All rights reserved. 兼具電影級深空質感與硬核工業實績。</p>
     </div>
   </footer>
-
-  <!-- ============================================================
-       台灣最強迷因 (Taiwan Top Meme) 懸浮互動夥伴
-       「聽話！讓我看看！」杰哥 / 黑色幽默與老司機黃腔名句庫
-       ============================================================ -->
-  <div id="meme-widget" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end select-none">
-    
-    <!-- 對話氣泡 (Dialogue Bubble) -->
-    <div id="meme-dialog" class="dialog-floating-luxe mb-2 max-w-[250px] sm:max-w-[310px] p-4 rounded-2xl bg-[#120829]/95 border-2 border-purple-500/90 shadow-2xl shadow-purple-500/40 text-xs text-slate-100 transition-all duration-300">
-      <div class="flex items-center justify-between gap-2 pb-2 border-b border-purple-500/30 text-[10px] text-purple-300 font-bold uppercase tracking-wider">
-        <span class="flex items-center gap-1.5">
-          <span class="w-2.5 h-2.5 rounded-full bg-pink-400 animate-ping"></span>
-          <span id="meme-tag-label" class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-pink-400 font-black">杰哥深入視察</span>
-        </span>
-        <div class="flex items-center gap-1.5">
-          <button id="meme-next-btn" class="px-2 py-0.5 rounded-md bg-purple-950/90 hover:bg-purple-800 text-purple-200 border border-purple-500/50 text-[10px] font-bold transition-all flex items-center gap-1 shadow-sm" title="換下一句迷因">
-            <span>換梗</span>
-            <span>🔄</span>
-          </button>
-          <button id="meme-toggle-btn" class="text-slate-400 hover:text-pink-300 p-0.5 rounded transition-colors" title="收起對話">
-            <i data-lucide="x" class="w-3.5 h-3.5"></i>
-          </button>
-        </div>
-      </div>
-      <p id="meme-dialog-text" class="mt-2.5 leading-relaxed text-slate-200 font-medium transition-all duration-200">
-        「聽話！讓我看看你的履歷！...嘶！這微米級公差也太硬了吧！我常幫助一些缺工的企業，我家還蠻大的，來我這面試！」
-      </p>
-    </div>
-
-    <!-- 迷因角色本體 (Animated SVG) -->
-    <div class="relative flex items-center justify-center cursor-pointer group" title="點我跟台灣最強迷因互動！">
-
-      <!-- 互動小標籤 -->
-      <div class="absolute -bottom-2 -left-8 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-500 text-[10px] font-black text-white shadow-xl shadow-purple-500/50 whitespace-nowrap opacity-95 group-hover:scale-110 transition-transform border border-white/40">
-        <span id="meme-badge-text">聽話！點我互動 👆</span>
-      </div>
-
-      <!-- SVG Character (杰哥 聽話讓我看看 Taiwan Top Meme Character) -->
-      <div id="meme-char" class="meme-bob-fancy transition-transform hover:scale-110">
-        <svg viewBox="0 0 160 175" class="w-24 h-28 sm:w-28 sm:h-32 drop-shadow-[0_12px_28px_rgba(0,240,255,0.45)]">
-          <!-- 招牌紅色運動夾克身體 (Classic Red Zip Jacket) -->
-          <path d="M 40 125 C 36 98, 50 86, 70 84 C 80 84, 95 84, 110 86 C 124 98, 128 125, 130 160 C 130 165, 34 165, 34 160 Z" fill="#b91c1c" stroke="#180e29" stroke-width="2.5"/>
-
-          <!-- 夾克白色拉鍊與飾條 -->
-          <path d="M 80 88 L 80 160" stroke="#f8fafc" stroke-width="3" stroke-dasharray="3,2"/>
-          <path d="M 60 90 L 50 160" stroke="#ef4444" stroke-width="2"/>
-          <path d="M 100 90 L 110 160" stroke="#ef4444" stroke-width="2"/>
-
-          <!-- 圓領內搭衣 -->
-          <path d="M 68 85 Q 80 96 92 85 Z" fill="#ffffff" stroke="#180e29" stroke-width="2"/>
-
-          <!-- 頸部 -->
-          <rect x="72" y="73" width="16" height="15" rx="3" fill="#fed7aa" stroke="#180e29" stroke-width="2"/>
-
-          <!-- 頭部輪廓 -->
-          <ellipse cx="80" cy="53" rx="27" ry="30" fill="#fed7aa" stroke="#180e29" stroke-width="2.5"/>
-
-          <!-- 招牌油頭短髮 (Slick Haircut) -->
-          <path d="M 52 47 C 50 31, 60 21, 80 19 C 100 19, 112 29, 108 47 C 108 35, 96 25, 80 25 C 64 25, 56 37, 52 47 Z" fill="#1c1917" stroke="#180e29" stroke-width="2"/>
-          <path d="M 53 45 C 60 29, 75 27, 86 31 C 96 34, 105 31, 107 41" fill="#1c1917" stroke="#180e29" stroke-width="1.5"/>
-
-          <!-- 左耳 & 右耳 -->
-          <ellipse cx="52" cy="55" rx="4" ry="6" fill="#fbcfe8" stroke="#180e29" stroke-width="1.8"/>
-          <ellipse cx="108" cy="55" rx="4" ry="6" fill="#fbcfe8" stroke="#180e29" stroke-width="1.8"/>
-
-          <!-- 招牌挑眉 (Smug confident eyebrows) -->
-          <path d="M 59 39 Q 68 33 75 38" fill="none" stroke="#1c1917" stroke-width="2.6" stroke-linecap="round"/>
-          <path d="M 85 38 Q 92 31 101 36" fill="none" stroke="#1c1917" stroke-width="2.6" stroke-linecap="round"/>
-
-          <!-- 眼睛 (自信魔性微瞇) -->
-          <ellipse cx="68" cy="47" rx="4" ry="3" fill="#1c1917"/>
-          <ellipse cx="92" cy="47" rx="4" ry="3" fill="#1c1917"/>
-          <circle cx="69" cy="46" r="1.2" fill="#ffffff"/>
-          <circle cx="93" cy="46" r="1.2" fill="#ffffff"/>
-
-          <!-- 招牌黑框眼鏡 (Classic Black Rim Glasses) -->
-          <!-- 左框 -->
-          <rect x="58" y="41" width="19" height="15" rx="3.5" fill="rgba(0, 240, 255, 0.35)" stroke="#111827" stroke-width="2.5"/>
-          <!-- 右框 -->
-          <rect x="83" y="41" width="19" height="15" rx="3.5" fill="rgba(0, 240, 255, 0.35)" stroke="#111827" stroke-width="2.5"/>
-          <!-- 鼻樑中梁 -->
-          <path d="M 77 46 L 83 46" stroke="#111827" stroke-width="2.5" stroke-linecap="round"/>
-          <!-- 鏡腿 -->
-          <path d="M 58 45 L 52 47" stroke="#111827" stroke-width="2"/>
-          <path d="M 102 45 L 108 47" stroke="#111827" stroke-width="2"/>
-
-          <!-- 眼鏡動態超強閃光 (Anime Glasses Mega Shine) -->
-          <g class="glasses-mega-shine">
-            <line x1="61" y1="43" x2="73" y2="55" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" opacity="0.95"/>
-            <line x1="86" y1="43" x2="98" y2="55" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" opacity="0.95"/>
-          </g>
-
-          <!-- 鼻子 -->
-          <path d="M 78 53 L 81 57 L 78 59" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round"/>
-
-          <!-- 招牌邪笑嘴角 (Confident smirk) -->
-          <path d="M 69 64 Q 81 73 94 63" fill="none" stroke="#1c1917" stroke-width="2.6" stroke-linecap="round"/>
-          <path d="M 92 62 L 96 64" stroke="#1c1917" stroke-width="2" stroke-linecap="round"/>
-
-          <!-- 可愛小腮紅 -->
-          <ellipse cx="60" cy="57" rx="4" ry="2" fill="#f43f5e" opacity="0.4"/>
-          <ellipse cx="100" cy="57" rx="4" ry="2" fill="#f43f5e" opacity="0.4"/>
-
-          <!-- 招牌動作：右手食指指向前方「聽話！讓我看看！」 -->
-          <g>
-            <path d="M 116 111 Q 136 109 143 119" stroke="#b91c1c" stroke-width="11" stroke-linecap="round"/>
-            <ellipse cx="144" cy="119" rx="6.5" ry="6.5" fill="#fed7aa" stroke="#180e29" stroke-width="1.8"/>
-            <path d="M 145 115 L 157 113" stroke="#fed7aa" stroke-width="5" stroke-linecap="round"/>
-            <path d="M 145 115 L 157 113" stroke="#180e29" stroke-width="1.2" stroke-linecap="round"/>
-          </g>
-        </svg>
-      </div>
-
-    </div>
-  </div>
 
   <script src="script.js"></script>
 </body>
