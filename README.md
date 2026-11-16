@@ -9,6 +9,15 @@
   - **治平高級中學**：普通高中畢業。
   - **家庭自營餐飲店**：多年現場第一線營運、食材損耗盤點與客訴接待。
   - **個人多元亮點**：重型機車騎乘、鋼琴演奏、高空跳傘、深度潛水。
+- **產業深度剖析專區 (Industry Analysis & Market Intelligence)**：
+  - **精修工藝 × 企管商業策略雙重視野**：全面剖析全球傳動關鍵零組件市場生態、台灣大肚山 60 公里黃金縱谷聚落、上銀科技 (HIWIN) 與日本 THK、NSK 及德國 Bosch Rexroth 競合矩陣。
+  - **三大次世代成長引擎**：次微米級 (C0~C3) 精度演進、AI 晶片先進封裝 (CoWoS/EFEM)、人形機器人 (Humanoid Robotics) 行星滾柱螺桿百億級藍海。
+  - **權威真實數據與官方超連結**：整合工研院產科國際所 (ITRI IEK)、國際機器人聯合會 (IFR)、工具機暨零組件公會 (TMBA)、智慧自動化協會 (TAIROA)、經濟部統計處 (MOEA)、SEMI 國際半導體協會及 MarketsandMarkets 官方權威報告與可驗證超連結。
+  - **豐富動畫呈現**：動態數字跳動計數器 (KPI Counters)、互動分頁切換 (Interactive Tabs)、應用領域複合年均成長率條形圖 (CAGR Bar Fill)。
+- **真實月球主題天文系統 (Photorealistic Lunar Celestial System)**：
+  - **超擬真 3D 月球主天體**：真實月海（風暴洋、雨海、澄海、靜海等）、提哥環形山放射狀濺射線條 (Tycho Ejecta Rays)、哥白尼坑與立體晨昏線陰影 (Terminator Relief)。
+  - **月平線「地出」震撼景象 (Earthrise)**：重現阿波羅經典地出景象，象徵立足工藝、放眼全球。
+  - **達文西地照新月 (Earthshine Crescent)**：真實模擬月牙光弧與地球反射地照暗面。
 - **色彩設計美學**：
   - 完美協調的 **科技藍（Blue）＋ 神秘紫（Purple）＋ 霓虹粉（Pink）** 漸層與光暈主題。
 - **動態特效與動畫**：

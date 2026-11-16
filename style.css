@@ -257,24 +257,25 @@ html {
 }
 
 /* ============================================================
-   深空宇宙天體與多元行星系統 (Deep Cosmic Planetary System)
-   包含：土星光環巨行星、木星大紅斑紋氣態星、天王冰巨星極光、火星環形山岩質行星
+   真實月球主題天文系統 (Photorealistic Lunar Celestial System)
+   包含：超真實 3D 月球、真實月海 (Maria)、提哥環形山放射紋 (Tycho Rays)、
+   晨昏線立體陰影 (Terminator Relief)、月平線「地出」天體 (Earthrise)、達文西地照新月
    ============================================================ */
 
-/* 行星自然浮動微震 (Float Drift) */
+/* 行星與月球自然浮動微震 (Celestial Drift & Float) */
 @keyframes planetFloat1 {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-14px) rotate(2.5deg); }
+  50% { transform: translateY(-12px) rotate(1.5deg); }
 }
 
 @keyframes planetFloat2 {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(14px) rotate(-2.5deg); }
+  50% { transform: translateY(12px) rotate(-1.5deg); }
 }
 
 @keyframes planetFloat3 {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(-1.8deg); }
+  50% { transform: translateY(-9px) rotate(-1deg); }
 }
 
 .planet-float-1 {
@@ -289,192 +290,325 @@ html {
   animation: planetFloat3 22s ease-in-out infinite;
 }
 
-/* 1. 土星環立體傾斜與自轉 (Saturn-like 3D Ring System) */
-@keyframes saturnRingSpin {
-  0% { transform: rotateX(74deg) rotateY(-12deg) rotateZ(0deg); }
-  100% { transform: rotateX(74deg) rotateY(-12deg) rotateZ(360deg); }
+.lunar-float {
+  animation: planetFloat1 26s ease-in-out infinite;
 }
 
-.saturn-ring-outer {
+/* 1. 主月球 3D 球體物理光影 (Realistic 3D Lunar Sphere) */
+.realistic-moon-sphere {
+  background: radial-gradient(
+    circle at 32% 28%,
+    #ffffff 0%,
+    #f1f5f9 16%,
+    #e2e8f0 32%,
+    #cbd5e1 48%,
+    #94a3b8 64%,
+    #475569 78%,
+    #1e293b 88%,
+    #0f172a 96%,
+    #020617 100%
+  );
+}
+
+/* 月海深色玄武岩平原 (Lunar Maria Basalt Plains) */
+.lunar-mare {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 260%;
-  height: 260%;
-  margin-top: -130%;
-  margin-left: -130%;
   border-radius: 50%;
   background: radial-gradient(
     ellipse at center,
-    transparent 42%,
-    rgba(0, 240, 255, 0.45) 43%,
-    rgba(168, 85, 247, 0.5) 49%,
-    transparent 50.5%, /* Cassini division 卡西尼環縫 */
-    rgba(255, 0, 127, 0.4) 52%,
-    rgba(0, 240, 255, 0.55) 58%,
-    rgba(251, 191, 36, 0.3) 63%,
-    transparent 64%
+    rgba(15, 23, 42, 0.95) 0%,
+    rgba(30, 41, 59, 0.88) 50%,
+    rgba(51, 65, 85, 0.55) 75%,
+    transparent 100%
   );
-  transform: rotateX(75deg) rotateY(-14deg);
-  box-shadow: 0 0 35px rgba(0, 240, 255, 0.3);
+  filter: blur(1.5px);
   pointer-events: none;
 }
 
-/* 2. 木星斑紋氣態行星 (Jupiter Storm Bands & Great Red Spot) */
-.jupiter-body {
-  background: repeating-linear-gradient(
-    174deg,
-    #180b2b 0px,
-    #2e1065 14px,
-    #4c1d95 24px,
-    #7c2d12 36px,
-    #9a3412 48px,
-    #c2410c 60px,
-    #701a75 72px,
-    #4a044e 86px,
-    #180b2b 98px
-  );
-  box-shadow: 
-    inset -28px -28px 45px rgba(0, 0, 0, 0.95),
-    inset 12px 12px 35px rgba(251, 191, 36, 0.45),
-    0 0 45px rgba(168, 85, 247, 0.25);
-  border: 1px solid rgba(251, 191, 36, 0.3);
-}
-
-.jupiter-great-spot {
-  position: absolute;
-  bottom: 28%;
-  right: 22%;
-  width: 32px;
-  height: 20px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #ea580c 20%, #991b1b 70%, #450a0a 100%);
-  box-shadow: 0 0 12px rgba(234, 88, 12, 0.8), inset 2px 2px 5px rgba(255, 255, 255, 0.4);
-  transform: rotate(-12deg);
-}
-
-/* 3. 天王星/海王星冰巨星 (Neptune/Uranus Cyan Ice Giant & Aurora) */
-.uranus-body {
-  background: radial-gradient(
-    circle at 35% 35%,
-    #a5f3fc 0%,
-    #38bdf8 25%,
-    #0284c7 50%,
-    #0369a1 70%,
-    #082f49 90%,
-    #020617 100%
-  );
-  box-shadow: 
-    inset -25px -25px 40px rgba(2, 6, 23, 0.95),
-    inset 10px 10px 30px rgba(165, 243, 252, 0.7),
-    0 0 40px rgba(0, 240, 255, 0.4);
-  border: 1px solid rgba(56, 189, 248, 0.5);
-}
-
-/* 極光冠 (Polar Aurora Crown) */
-@keyframes auroraPulse {
-  0%, 100% {
-    opacity: 0.5;
-    transform: scale(0.96) rotate(0deg);
-    box-shadow: 0 0 15px #22c55e, inset 0 0 10px #00f0ff;
-  }
-  50% {
-    opacity: 0.9;
-    transform: scale(1.05) rotate(5deg);
-    box-shadow: 0 0 28px #4ade80, inset 0 0 18px #38bdf8;
-  }
-}
-
-.polar-aurora {
-  position: absolute;
-  top: 4%;
-  left: 28%;
+/* 各大真實月海位置 */
+.mare-procellarum {
+  top: 24%;
+  left: 6%;
   width: 44%;
-  height: 18%;
+  height: 52%;
+  transform: rotate(-18deg);
+}
+
+.mare-imbrium {
+  top: 15%;
+  left: 26%;
+  width: 32%;
+  height: 28%;
+}
+
+.mare-serenitatis {
+  top: 22%;
+  left: 54%;
+  width: 22%;
+  height: 22%;
+}
+
+.mare-tranquillitatis {
+  top: 36%;
+  left: 56%;
+  width: 26%;
+  height: 24%;
+}
+
+.mare-crisium {
+  top: 26%;
+  left: 80%;
+  width: 14%;
+  height: 15%;
+  border-radius: 46%;
+}
+
+.mare-nubium {
+  top: 58%;
+  left: 28%;
+  width: 24%;
+  height: 22%;
+}
+
+/* 提哥環形山放射狀濺射線條系統 (Tycho Crater & Radial Ejecta Ray System) */
+.tycho-crater-system {
+  position: absolute;
+  top: 76%;
+  left: 45%;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+}
+
+.tycho-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  margin-left: -3px;
   border-radius: 50%;
-  background: transparent;
-  border: 2px solid rgba(74, 222, 128, 0.7);
-  animation: auroraPulse 4s ease-in-out infinite;
+  background: #ffffff;
+  box-shadow: 0 0 10px #ffffff, 0 0 20px rgba(255, 255, 255, 0.9);
+}
+
+.tycho-ray {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 1.5px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(241, 245, 249, 0.6) 40%, transparent 100%);
+  transform-origin: 0 50%;
+  pointer-events: none;
+  filter: blur(0.3px);
+}
+
+.tycho-ray-1 { width: 130px; transform: rotate(-45deg); }
+.tycho-ray-2 { width: 110px; transform: rotate(-15deg); }
+.tycho-ray-3 { width: 140px; transform: rotate(35deg); }
+.tycho-ray-4 { width: 120px; transform: rotate(85deg); }
+.tycho-ray-5 { width: 95px; transform: rotate(-95deg); }
+
+/* 標誌性環形山 (Prominent Lunar Craters) */
+.crater-copernicus {
+  position: absolute;
+  top: 44%;
+  left: 33%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), inset 2px 2px 3px rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+}
+
+.crater-kepler {
+  position: absolute;
+  top: 41%;
+  left: 20%;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 7px rgba(255, 255, 255, 0.9);
+}
+
+.crater-plato {
+  position: absolute;
+  top: 13%;
+  left: 35%;
+  width: 10px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+.crater-aristarchus {
+  position: absolute;
+  top: 29%;
+  left: 17%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 10px #ffffff, 0 0 18px #38bdf8;
+}
+
+/* 晨昏線立體地形陰影 (Terminator 3D Relief) */
+.lunar-terminator-relief {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 32% 28%,
+    transparent 42%,
+    rgba(15, 23, 42, 0.55) 65%,
+    rgba(2, 6, 23, 0.95) 86%,
+    #000000 100%
+  );
+  pointer-events: none;
+}
+
+/* 探月飛行器繞月軌道動畫 (Artemis / LRO Lunar Orbiter) */
+@keyframes lunarOrbitSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.lunar-satellite-orbit {
+  animation: lunarOrbitSpin 28s linear infinite;
+}
+
+/* 2. 低月軌俯瞰與靜海基地 (Low Lunar Orbit & Statio Tranquillitatis) */
+.lunar-close-orbit {
+  background: radial-gradient(
+    circle at 30% 30%,
+    #e2e8f0 0%,
+    #94a3b8 40%,
+    #475569 70%,
+    #1e293b 95%
+  );
+}
+
+.lunar-apennines-mountain {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 65%;
+  height: 50%;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(15, 23, 42, 0.8) 0px,
+    rgba(15, 23, 42, 0.8) 4px,
+    rgba(255, 255, 255, 0.45) 5px,
+    transparent 8px
+  );
+  border-radius: 40%;
   filter: blur(1px);
 }
 
-/* 4. 火星/岩質陸相行星 (Terrestrial Mars/Rocky Craters Planet) */
-.mars-rocky-body {
-  background: radial-gradient(
-    circle at 32% 32%,
-    #fed7aa 0%,
-    #fb923c 25%,
-    #ea580c 50%,
-    #9a3412 75%,
-    #431407 90%,
-    #1a0602 100%
-  );
-  box-shadow: 
-    inset -22px -22px 35px rgba(0, 0, 0, 0.95),
-    inset 8px 8px 25px rgba(251, 146, 60, 0.6),
-    0 0 35px rgba(234, 88, 12, 0.35);
-  border: 1px solid rgba(251, 146, 60, 0.4);
-}
-
-/* 隕石坑與地質構造 (Craters) */
-.planet-crater-1 {
+.lunar-landing-marker {
   position: absolute;
-  top: 26%;
+  top: 52%;
   left: 38%;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: rgba(67, 20, 7, 0.7);
-  box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.9), 1px 1px 2px rgba(254, 215, 170, 0.4);
 }
 
-.planet-crater-2 {
+/* 3. 月平線「地出」景象 (Earthrise from Lunar Horizon) */
+.realistic-earth-body {
+  background: radial-gradient(
+    circle at 35% 30%,
+    #7dd3fc 0%,
+    #38bdf8 15%,
+    #0284c7 35%,
+    #0369a1 60%,
+    #075985 80%,
+    #082f49 92%,
+    #020617 100%
+  );
+}
+
+.earth-continents {
   position: absolute;
-  top: 54%;
-  left: 24%;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: rgba(67, 20, 7, 0.7);
-  box-shadow: inset 3px 3px 4px rgba(0, 0, 0, 0.9), 1px 1px 2px rgba(254, 215, 170, 0.4);
+  inset: 0;
+  background: 
+    radial-gradient(circle at 45% 38%, rgba(22, 101, 52, 0.75) 0%, rgba(21, 128, 61, 0.6) 25%, transparent 45%),
+    radial-gradient(circle at 65% 55%, rgba(133, 77, 14, 0.7) 0%, rgba(202, 138, 4, 0.5) 30%, transparent 55%),
+    radial-gradient(circle at 25% 65%, rgba(22, 101, 52, 0.7) 0%, transparent 40%);
+  filter: blur(1.5px);
 }
 
-.planet-crater-3 {
+.earth-clouds {
   position: absolute;
-  top: 68%;
-  left: 60%;
-  width: 11px;
-  height: 11px;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 40% 25%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.5) 35%, transparent 60%),
+    radial-gradient(ellipse at 65% 65%, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.4) 40%, transparent 65%),
+    radial-gradient(ellipse at 25% 45%, rgba(255, 255, 255, 0.7) 0%, transparent 50%);
+  filter: blur(2px);
+  mix-blend-mode: overlay;
+}
+
+.earth-atmosphere-halo {
+  position: absolute;
+  inset: -6px;
   border-radius: 50%;
-  background: rgba(67, 20, 7, 0.7);
-  box-shadow: inset 1.5px 1.5px 2px rgba(0, 0, 0, 0.9), 1px 1px 2px rgba(254, 215, 170, 0.4);
+  border: 2px solid rgba(56, 189, 248, 0.75);
+  box-shadow: 0 0 35px rgba(56, 189, 248, 0.55), inset 0 0 25px rgba(56, 189, 248, 0.4);
+  pointer-events: none;
 }
 
-/* 5. 衛星環繞軌道通用 (General Moon Orbit Trajectories) */
-@keyframes moonOrbitPath1 {
-  0% {
-    transform: rotate(0deg) translateX(70px) rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg) translateX(70px) rotate(-360deg);
-  }
+/* 4. 極區月球與冰光 (Lunar Polar Sphere) */
+.lunar-polar-sphere {
+  background: radial-gradient(
+    circle at 35% 30%,
+    #f8fafc 0%,
+    #cbd5e1 30%,
+    #64748b 65%,
+    #1e293b 95%
+  );
 }
 
-@keyframes moonOrbitPath2 {
-  0% {
-    transform: rotate(0deg) translateX(95px) rotate(0deg);
-  }
-  100% {
-    transform: rotate(-360deg) translateX(95px) rotate(360deg);
-  }
+.crater-shackleton-polar {
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+  background: #000000;
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.95);
 }
 
-.moon-orbiter-fast {
-  animation: moonOrbitPath1 12s linear infinite;
+.polar-ice-glint {
+  position: absolute;
+  top: 33%;
+  left: 36%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a5f3fc;
+  box-shadow: 0 0 10px #00f0ff;
 }
 
-.moon-orbiter-slow {
-  animation: moonOrbitPath2 20s linear infinite;
+/* 5. 達文西地照新月 (Waxing Crescent Moon with Earthshine) */
+.crescent-silver-rim {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: inset 18px 4px 22px rgba(255, 255, 255, 0.95), 0 0 30px rgba(226, 232, 240, 0.65);
+  pointer-events: none;
+}
+
+.earthshine-texture {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 45% 45%, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 /* 宇宙大氣柔焦光圈 (Exosphere Halo) */
@@ -515,6 +649,71 @@ html {
 .cosmic-nebula-spin {
   animation: nebulaDrift 45s ease-in-out infinite alternate;
 }
+
+/* ============================================================
+   產業深度分析專屬樣式 (Industry Analysis Styles & Animations)
+   ============================================================ */
+.industry-tab-btn {
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.industry-tab-btn.active {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.2) 0%, rgba(168, 85, 247, 0.25) 100%);
+  border-color: rgba(0, 240, 255, 0.6);
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+}
+
+.industry-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, #00f0ff, #a855f7, #ff007f);
+  border-radius: 9999px;
+  box-shadow: 0 0 10px #00f0ff;
+}
+
+.industry-tab-panel {
+  display: none;
+  animation: fadeInTab 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.industry-tab-panel.active {
+  display: block;
+}
+
+@keyframes fadeInTab {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 動態成長條形圖填充 */
+.industry-bar-fill {
+  width: 0%;
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 官方權威超連結卡片懸停效果 */
+.source-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.source-card-hover:hover {
+  transform: translateY(-3px) scale(1.02);
+  border-color: rgba(0, 240, 255, 0.6);
+  box-shadow: 0 10px 25px -5px rgba(0, 240, 255, 0.25), 0 0 15px rgba(168, 85, 247, 0.2);
+}
+
 
 
 

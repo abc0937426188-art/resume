@@ -420,6 +420,92 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================================================
+  // 5.5 產業深度分析互動系統 (Industry Analysis Tab Switcher & Animated Counters)
+  // ============================================================
+  // 1. 分頁切換
+  const industryTabBtns = document.querySelectorAll('.industry-tab-btn');
+  const industryTabPanels = document.querySelectorAll('.industry-tab-panel');
+
+  industryTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      playHoverBlip();
+      const targetId = btn.getAttribute('data-tab');
+
+      // 更新按鈕樣式
+      industryTabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // 切換內容面板
+      industryTabPanels.forEach(panel => {
+        panel.classList.remove('active');
+        if (panel.id === targetId) {
+          panel.classList.add('active');
+        }
+      });
+
+      // 重新觸發圖標渲染
+      if (window.lucide) window.lucide.createIcons();
+    });
+  });
+
+  // 2. 數據跳動計數動畫 (Animated Number Counters)
+  const statCounters = document.querySelectorAll('.stat-counter');
+  let countersAnimated = false;
+
+  function animateCounters() {
+    if (countersAnimated) return;
+    countersAnimated = true;
+
+    statCounters.forEach(counter => {
+      const target = parseFloat(counter.getAttribute('data-target'));
+      const isDecimal = target % 1 !== 0;
+      const duration = 1600; // ms
+      const startTime = performance.now();
+
+      function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // 使用 easeOutQuart 減速效果
+        const ease = 1 - Math.pow(1 - progress, 4);
+        const currentVal = ease * target;
+
+        counter.textContent = isDecimal ? currentVal.toFixed(1) : Math.floor(currentVal);
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = isDecimal ? target.toFixed(1) : target;
+        }
+      }
+
+      requestAnimationFrame(updateCounter);
+    });
+  }
+
+  // 監聽產業分析區塊進入可視區域
+  const industrySection = document.getElementById('industry-analysis');
+  if (industrySection && 'IntersectionObserver' in window) {
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    counterObserver.observe(industrySection);
+  } else {
+    animateCounters();
+  }
+
+  // 3. 官方超連結音效回饋
+  document.querySelectorAll('.source-card-hover').forEach(link => {
+    link.addEventListener('mouseenter', () => playHoverBlip());
+    link.addEventListener('click', () => playClickLaser());
+  });
+
+  // ============================================================
   // 6. 專業指標爆表彩蛋 (Max Competency Blast Easter Egg)
   // ============================================================
   const combatTriggerBtn = document.getElementById('combat-trigger-btn');

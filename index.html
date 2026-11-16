@@ -49,97 +49,131 @@
     <div class="absolute -bottom-44 left-1/4 w-[40rem] h-[40rem] bg-indigo-600/18 rounded-full blur-[165px]"></div>
   </div>
 
-  <!-- 多元天體行星漫遊系統 (Deep Space Planetary Multi-Verse System - 隨捲動探索不同行星) -->
+  <!-- 真實月球主題天文系統 (Photorealistic Lunar Celestial System - 以月球為核心之深度宇宙體驗) -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
 
-    <!-- 天體軌道弧線 (Orbital Trajectories) -->
-    <div class="absolute top-10 -right-24 w-[48rem] h-[48rem] rounded-full border border-dashed border-cyan-400/20 opacity-40"></div>
-    <div class="absolute top-[1000px] -left-36 w-[42rem] h-[42rem] rounded-full border border-dashed border-purple-400/20 opacity-40"></div>
-    <div class="absolute top-[2100px] -right-28 w-[45rem] h-[45rem] rounded-full border border-dashed border-amber-400/18 opacity-35"></div>
-    <div class="absolute top-[3100px] -left-32 w-[38rem] h-[38rem] rounded-full border border-dashed border-pink-400/20 opacity-35"></div>
+    <!-- 地月傳輸軌道弧線 (Trans-Lunar Orbital Trajectories) -->
+    <div class="absolute top-8 -right-24 w-[52rem] h-[52rem] rounded-full border border-dashed border-slate-400/20 opacity-40"></div>
+    <div class="absolute top-[1200px] -left-44 w-[46rem] h-[46rem] rounded-full border border-dashed border-cyan-400/20 opacity-30"></div>
+    <div class="absolute top-[2300px] -right-36 w-[48rem] h-[48rem] rounded-full border border-dashed border-purple-400/18 opacity-35"></div>
+    <div class="absolute top-[3400px] -left-36 w-[44rem] h-[44rem] rounded-full border border-dashed border-blue-400/20 opacity-30"></div>
+    <div class="absolute top-[4600px] -right-28 w-[40rem] h-[40rem] rounded-full border border-dashed border-slate-300/20 opacity-35"></div>
 
-    <!-- 行星 1 (Hero 區): 氣態環狀土星系巨行星 (Saturn-like Ringed Gas Giant with 3D Cassini Rings & Moon) -->
-    <div class="absolute top-16 right-3 sm:right-16 opacity-75">
-      <div class="relative w-48 h-48 sm:w-60 sm:h-60 planet-float-1 select-none pointer-events-none">
-        <!-- 3D 傾斜土星光環 (含卡西尼環縫) -->
-        <div class="saturn-ring-outer"></div>
-        <!-- 行星本體 (紫藍色深空大氣) -->
-        <div class="absolute inset-4 rounded-full bg-gradient-to-tr from-[#03000a] via-[#1b0933] to-[#581c87] shadow-[inset_-25px_-25px_45px_rgba(0,0,0,0.95),inset_10px_10px_30px_rgba(0,240,255,0.45),0_0_40px_rgba(168,85,247,0.35)] border border-cyan-400/30"></div>
-        <!-- 繞行衛星 (Orbiting Moon) -->
-        <div class="absolute inset-0 flex items-center justify-center">
-          <div class="moon-orbiter-fast w-3.5 h-3.5 rounded-full bg-cyan-200 shadow-[0_0_12px_#00f0ff] border border-white"></div>
+    <!-- 1. Hero 區核心天體：高精細 3D 擬真月球 (Ultra-Realistic High-Definition Moon with Lunar Maria & Tycho Rays) -->
+    <div class="absolute top-12 right-2 sm:right-12 opacity-95">
+      <div class="relative w-56 h-56 sm:w-72 sm:h-72 lunar-float select-none pointer-events-none">
+        
+        <!-- 月球外圈冷光月暈 (Lunar Exosphere Corona & Limb Halo) -->
+        <div class="absolute -inset-4 rounded-full bg-gradient-to-tr from-cyan-400/10 via-slate-200/15 to-purple-400/10 blur-xl"></div>
+        <div class="absolute -inset-1 rounded-full border border-slate-300/30 shadow-[0_0_40px_rgba(226,232,240,0.35)]"></div>
+
+        <!-- 月球本體 (真實月海、高地玄武岩、撞擊坑與立體晨昏線陰影) -->
+        <div class="w-full h-full rounded-full realistic-moon-sphere relative overflow-hidden shadow-[inset_-35px_-35px_60px_rgba(0,0,0,0.96),inset_14px_14px_35px_rgba(241,245,249,0.85),0_0_55px_rgba(203,213,225,0.3)] border border-slate-300/40">
+          
+          <!-- 月海玄武岩深色平原 (Lunar Maria Basalt Plains) -->
+          <!-- 風暴洋 (Oceanus Procellarum) -->
+          <div class="lunar-mare mare-procellarum"></div>
+          <!-- 雨海 (Mare Imbrium) -->
+          <div class="lunar-mare mare-imbrium"></div>
+          <!-- 澄海與靜海 (Mare Serenitatis & Tranquillitatis - 阿波羅11登月區) -->
+          <div class="lunar-mare mare-serenitatis"></div>
+          <div class="lunar-mare mare-tranquillitatis"></div>
+          <!-- 危難海 (Mare Crisium) -->
+          <div class="lunar-mare mare-crisium"></div>
+          <!-- 雲海與濕海 (Mare Nubium & Humorum) -->
+          <div class="lunar-mare mare-nubium"></div>
+
+          <!-- 提哥環形山放射狀濺射線條系統 (Tycho Crater & Radial Ejecta Ray System) -->
+          <div class="tycho-crater-system">
+            <div class="tycho-core"></div>
+            <div class="tycho-ray tycho-ray-1"></div>
+            <div class="tycho-ray tycho-ray-2"></div>
+            <div class="tycho-ray tycho-ray-3"></div>
+            <div class="tycho-ray tycho-ray-4"></div>
+            <div class="tycho-ray tycho-ray-5"></div>
+          </div>
+
+          <!-- 哥白尼環形山 (Copernicus Crater with Ejecta Halo) -->
+          <div class="crater-copernicus"></div>
+          <!-- 開普勒環形山 (Kepler Crater) -->
+          <div class="crater-kepler"></div>
+          <!-- 柏拉圖坑 (Plato Dark Floor Crater) -->
+          <div class="crater-plato"></div>
+          <!-- 阿里斯塔克斯高反光撞擊坑 (Aristarchus Crater) -->
+          <div class="crater-aristarchus"></div>
+
+          <!-- 晨昏線立體地形陰影層 (Terminator Shadow & Relief) -->
+          <div class="lunar-terminator-relief"></div>
         </div>
+
+        <!-- 阿提米絲 / 月球探勘軌道器 (Artemis / LRO Lunar Orbiter Satellite) -->
+        <div class="absolute -inset-5 flex items-center justify-center pointer-events-none">
+          <div class="lunar-satellite-orbit w-full h-full flex items-center justify-start">
+            <div class="flex items-center gap-0.5 transform -rotate-45">
+              <div class="w-1.5 h-0.5 bg-cyan-400"></div>
+              <div class="w-2 h-2 rounded-sm bg-white shadow-[0_0_10px_#00f0ff] border border-cyan-200"></div>
+              <div class="w-1.5 h-0.5 bg-cyan-400"></div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <!-- 行星 2 (About 區): 天王/海王冰巨星 (Neptune Cyan Ice Giant with Emerald Polar Aurora & Thin Ring) -->
-    <div class="absolute top-[1080px] -left-8 sm:left-10 opacity-70">
-      <div class="relative w-44 h-44 sm:w-56 sm:h-56 planet-float-3 select-none pointer-events-none">
-        <!-- 行星本體 (冰藍平滑大氣) -->
-        <div class="w-full h-full rounded-full uranus-body relative">
-          <!-- 極光冕 (Polar Aurora Crown) -->
-          <div class="polar-aurora"></div>
+    <!-- 2. About 區：低月球軌道與靜海基地 (Low Lunar Orbit & Statio Tranquillitatis) -->
+    <div class="absolute top-[1120px] -left-10 sm:left-8 opacity-80">
+      <div class="relative w-48 h-48 sm:w-60 sm:h-60 planet-float-3 select-none pointer-events-none">
+        <div class="w-full h-full rounded-full lunar-close-orbit relative overflow-hidden shadow-[inset_-26px_-26px_45px_rgba(0,0,0,0.95),inset_10px_10px_30px_rgba(226,232,240,0.7),0_0_40px_rgba(148,163,184,0.3)] border border-slate-400/40">
+          <div class="lunar-apennines-mountain"></div>
+          <div class="lunar-landing-marker flex items-center gap-1.5">
+            <div class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></div>
+            <span class="text-[9px] font-mono text-cyan-300 tracking-wider bg-black/70 px-1.5 py-0.5 rounded border border-cyan-500/40">APOLLO 11 • 0.67°N</span>
+          </div>
         </div>
-        <!-- 大氣柔焦光圈 -->
-        <div class="planet-exosphere text-cyan-400"></div>
-        <!-- 天王星垂直細環 -->
-        <div class="absolute -inset-4 rounded-full border-[1.5px] border-cyan-300/40" style="transform: rotateY(78deg) rotateX(15deg);"></div>
-        <!-- 繞行衛星 -->
-        <div class="absolute inset-0 flex items-center justify-center">
-          <div class="moon-orbiter-slow w-3 h-3 rounded-full bg-emerald-200 shadow-[0_0_10px_#34d399] border border-white"></div>
-        </div>
+        <div class="planet-exosphere text-slate-300"></div>
       </div>
     </div>
 
-    <!-- 行星 3 (Experience 區): 木星級斑紋氣態行星 (Jupiter Storm Bands, Great Spot & Double Moons) -->
-    <div class="absolute top-[2050px] -right-10 sm:right-12 opacity-75">
+    <!-- 3. Experience 區：經典震撼「地出」景象 (Earthrise from Lunar Surface Horizon) -->
+    <div class="absolute top-[2150px] -right-8 sm:right-10 opacity-85">
       <div class="relative w-48 h-48 sm:w-64 sm:h-64 planet-float-2 select-none pointer-events-none">
-        <!-- 行星本體 (多層次斑紋與大紅斑) -->
-        <div class="w-full h-full rounded-full jupiter-body relative overflow-hidden">
-          <div class="jupiter-great-spot"></div>
+        <!-- 蔚藍母星地球本體 (Blue Marble Earth with Swirling Clouds & Atmospheric Halo) -->
+        <div class="w-full h-full rounded-full realistic-earth-body relative overflow-hidden shadow-[inset_-28px_-28px_50px_rgba(2,6,23,0.98),inset_12px_12px_35px_rgba(56,189,248,0.85),0_0_55px_rgba(59,130,246,0.45)] border border-cyan-400/50">
+          <!-- 大陸與洋流輪廓 -->
+          <div class="earth-continents"></div>
+          <!-- 大氣渦旋雲系 (Swirling Cloud Layer) -->
+          <div class="earth-clouds"></div>
         </div>
-        <!-- 大氣圈輝光 -->
-        <div class="planet-exosphere text-amber-500"></div>
-        <!-- 雙衛星系統 -->
-        <div class="absolute inset-0 flex items-center justify-center">
-          <div class="moon-orbiter-fast w-3 h-3 rounded-full bg-amber-300 shadow-[0_0_10px_#fbbf24] border border-white"></div>
-        </div>
-        <div class="absolute inset-0 flex items-center justify-center">
-          <div class="moon-orbiter-slow w-4 h-4 rounded-full bg-purple-300 shadow-[0_0_12px_#c084fc] border border-white"></div>
-        </div>
+        <!-- 藍色大氣層散射輝光圈 (Atmospheric Scattering Blue Rim) -->
+        <div class="earth-atmosphere-halo"></div>
       </div>
     </div>
 
-    <!-- 行星 4 (Education & Passions 區): 火星/環形山陸相行星 (Terrestrial Mars with Impact Craters) -->
-    <div class="absolute top-[3020px] -left-6 sm:left-14 opacity-70">
-      <div class="relative w-36 h-36 sm:w-48 sm:h-48 planet-float-1 select-none pointer-events-none">
-        <!-- 行星本體 (赤紅地表與隕石坑) -->
-        <div class="w-full h-full rounded-full mars-rocky-body relative overflow-hidden">
-          <div class="planet-crater-1"></div>
-          <div class="planet-crater-2"></div>
-          <div class="planet-crater-3"></div>
+    <!-- 4. Industry Analysis 區：極區科研站與地月拉格朗日點 (Lunar Gateway & Polar Orbit) -->
+    <div class="absolute top-[3200px] -left-8 sm:left-12 opacity-80">
+      <div class="relative w-40 h-40 sm:w-52 sm:h-52 planet-float-1 select-none pointer-events-none">
+        <div class="w-full h-full rounded-full lunar-polar-sphere relative overflow-hidden shadow-[inset_-24px_-24px_40px_rgba(0,0,0,0.95),inset_8px_8px_25px_rgba(226,232,240,0.7),0_0_35px_rgba(148,163,184,0.3)] border border-slate-300/40">
+          <div class="crater-shackleton-polar"></div>
+          <div class="polar-ice-glint"></div>
         </div>
-        <!-- 熾熱大氣柔焦圈 -->
-        <div class="planet-exosphere text-orange-500"></div>
-        <!-- 小岩石衛星 -->
-        <div class="absolute inset-0 flex items-center justify-center">
-          <div class="moon-orbiter-fast w-2.5 h-2.5 rounded-full bg-orange-200 shadow-[0_0_8px_#ea580c] border border-white"></div>
-        </div>
+        <div class="planet-exosphere text-cyan-200"></div>
+        <!-- 軌道環線 -->
+        <div class="absolute -inset-4 rounded-full border border-dashed border-cyan-400/30" style="transform: rotateX(65deg) rotateY(15deg);"></div>
       </div>
     </div>
 
-    <!-- 行星 5 (Contact 區): 晶藍系外小行星與宇宙脈衝星 (Crystalline Dwarf Ice Planet & Cosmic Pulsar) -->
-    <div class="absolute top-[3820px] right-4 sm:right-20 opacity-75">
-      <div class="relative w-32 h-32 sm:w-42 sm:h-42 planet-float-2 select-none pointer-events-none">
-        <!-- 行星本體 -->
-        <div class="w-full h-full rounded-full bg-gradient-to-tr from-[#050b1a] via-[#0e3b66] to-[#38bdf8] shadow-[inset_-16px_-16px_30px_rgba(0,0,0,0.95),inset_6px_6px_20px_rgba(56,189,248,0.7),0_0_35px_rgba(56,189,248,0.4)] border border-cyan-300/40"></div>
-        <!-- 大氣輝光 -->
-        <div class="planet-exosphere text-cyan-300"></div>
-        <!-- 微型粉色光環 -->
-        <div class="absolute -inset-3 rounded-full border border-pink-400/40" style="transform: rotateX(68deg) rotateZ(25deg);"></div>
+    <!-- 5. Passions & Contact 區：達文西地照新月 (Waxing Crescent Moon with Earthshine) -->
+    <div class="absolute top-[4500px] right-3 sm:right-16 opacity-85">
+      <div class="relative w-36 h-36 sm:w-48 sm:h-48 planet-float-2 select-none pointer-events-none">
+        <!-- 地照微光暗盤 (Ghostly Earthshine Disc) -->
+        <div class="w-full h-full rounded-full bg-[#0a0f1d] border border-cyan-500/25 shadow-[0_0_30px_rgba(14,165,233,0.25)] relative overflow-hidden">
+          <!-- 銀白高光月牙 (Silver-White Bright Crescent Rim) -->
+          <div class="crescent-silver-rim"></div>
+          <!-- 暗面微弱地照紋理 -->
+          <div class="earthshine-texture"></div>
+        </div>
+        <div class="planet-exosphere text-slate-300"></div>
       </div>
-      <!-- 伴生深空脈衝星核心 -->
-      <div class="absolute -top-10 -left-12 w-28 h-28 rounded-full bg-purple-500/20 blur-xl cosmic-pulsar pointer-events-none"></div>
     </div>
 
   </div>
@@ -165,13 +199,17 @@
         </a>
 
         <!-- Desktop Nav Items -->
-        <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
           <a href="#about" class="hover:text-cyan-300 transition-colors">核心特質</a>
           <a href="#combat-power" class="hover:text-amber-300 transition-colors flex items-center gap-1">
             <i data-lucide="activity" class="w-3.5 h-3.5 text-amber-400"></i>
             <span>專業指標</span>
           </a>
           <a href="#experience" class="hover:text-purple-300 transition-colors">經歷實績</a>
+          <a href="#industry-analysis" class="hover:text-cyan-300 transition-colors flex items-center gap-1">
+            <i data-lucide="trending-up" class="w-3.5 h-3.5 text-cyan-400"></i>
+            <span>產業深度剖析</span>
+          </a>
           <a href="#education" class="hover:text-pink-300 transition-colors">學歷背景</a>
           <a href="#passions" class="hover:text-cyan-300 transition-colors">生活與探索</a>
 
@@ -199,6 +237,10 @@
       <a href="#about" class="mobile-nav-link block py-2 text-slate-300 hover:text-cyan-400">核心特質</a>
       <a href="#combat-power" class="mobile-nav-link block py-2 text-amber-300">專業能力指標</a>
       <a href="#experience" class="mobile-nav-link block py-2 text-slate-300 hover:text-purple-300">經歷實績</a>
+      <a href="#industry-analysis" class="mobile-nav-link block py-2 text-cyan-300 flex items-center gap-2">
+        <i data-lucide="trending-up" class="w-4 h-4 text-cyan-400"></i>
+        <span>產業深度剖析</span>
+      </a>
       <a href="#education" class="mobile-nav-link block py-2 text-slate-300 hover:text-pink-400">學歷背景</a>
       <a href="#passions" class="mobile-nav-link block py-2 text-slate-300 hover:text-cyan-300">生活與探索</a>
       <a href="#contact" class="mobile-nav-link block py-2 text-pink-400 font-bold">聯絡洽談 ｜ 預約面試</a>
@@ -581,6 +623,517 @@
         </div>
 
       </div>
+    </section>
+
+    <!-- Industry Analysis Section (產業深度剖析 - 真實無虛構、權威數據與動態動畫) -->
+    <section id="industry-analysis" class="space-y-10 reveal-on-scroll">
+      
+      <!-- 區塊標題與引言 -->
+      <div class="space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="h-8 w-1.5 bg-gradient-to-b from-cyan-400 via-purple-500 to-pink-500 rounded-full"></div>
+          <div>
+            <div class="flex items-center gap-3 flex-wrap">
+              <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-center gap-2">
+                <span>產業深度剖析</span>
+                <span class="text-xs px-2.5 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 font-bold uppercase tracking-wider">
+                  MARKET INTELLIGENCE
+                </span>
+              </h2>
+            </div>
+            <p class="text-sm text-slate-400">Precision Motion, Robotics & Semiconductor Automation Analysis</p>
+          </div>
+        </div>
+
+        <!-- 專業背景導言卡片 -->
+        <div class="p-5 sm:p-6 rounded-2xl spotlight-card border border-cyan-500/30 bg-gradient-to-br from-cyan-950/20 via-purple-950/20 to-slate-900/40">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-3 border-b border-purple-500/20">
+            <div class="flex items-center gap-2 text-cyan-300 font-bold text-sm">
+              <i data-lucide="shield-check" class="w-4 h-4 text-cyan-400"></i>
+              <span>精修工藝實證 × 企管策略視野 ｜ 權威公信數據支撐</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-slate-400">
+              <i data-lucide="calendar" class="w-3.5 h-3.5 text-purple-400"></i>
+              <span>研調基準：2024–2026 最新官方年報</span>
+            </div>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-200 pt-3 leading-relaxed">
+            立足於<strong>上銀科技 (HIWIN) 3 年微米級高精密滾珠螺桿與滑軌精修實績</strong>，結合<strong>萬能科大企業管理系之策略管理與市場分析維度</strong>，整合<strong>工研院產科國際所 (ITRI IEK)</strong>、<strong>國際機器人聯合會 (IFR)</strong>、<strong>台灣工具機暨零組件公會 (TMBA)</strong>、<strong>SEMI 國際半導體協會</strong> 及 <strong>MarketsandMarkets</strong> 等權威機構官方數據，深度解構關鍵精密傳動生態、台灣全球戰略地位與次世代 AI / 人形機器人千億級爆發商機。
+          </p>
+        </div>
+      </div>
+
+      <!-- 4 大關鍵動態數據指標 (Animated KPI Metric Cards) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        
+        <!-- 指標 1 -->
+        <div class="p-5 rounded-2xl spotlight-card border border-cyan-500/30 space-y-2 group hover:border-cyan-400/60 transition-all">
+          <div class="flex items-center justify-between text-xs text-slate-400">
+            <span>全球線性傳動產值 (2030E)</span>
+            <i data-lucide="trending-up" class="w-4 h-4 text-cyan-400 group-hover:scale-110 transition-transform"></i>
+          </div>
+          <div class="flex items-baseline gap-1">
+            <span class="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-cyan-200 stat-counter" data-target="15.2">0</span>
+            <span class="text-xl font-bold text-cyan-300">B+ 鎂</span>
+          </div>
+          <p class="text-[11px] text-slate-300 leading-snug">
+            2024 年約 95 億美元，年複合成長率 (CAGR) <strong>7.2%</strong> 高速擴張。
+          </p>
+          <div class="pt-2 border-t border-cyan-500/20 text-[10px] text-cyan-400 flex items-center gap-1">
+            <i data-lucide="check" class="w-3 h-3"></i>
+            <span>來源：MarketsandMarkets 報告</span>
+          </div>
+        </div>
+
+        <!-- 指標 2 -->
+        <div class="p-5 rounded-2xl spotlight-card border border-purple-500/30 space-y-2 group hover:border-purple-400/60 transition-all">
+          <div class="flex items-center justify-between text-xs text-slate-400">
+            <span>台灣滾珠螺桿全球排名</span>
+            <i data-lucide="award" class="w-4 h-4 text-purple-400 group-hover:scale-110 transition-transform"></i>
+          </div>
+          <div class="flex items-baseline gap-1">
+            <span class="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-pink-400 to-purple-200">No. 2</span>
+            <span class="text-sm font-bold text-purple-300">全球第二大</span>
+          </div>
+          <p class="text-[11px] text-slate-300 leading-snug">
+            僅次於日本。上銀科技 (HIWIN) 與日本 THK、NSK 並列世界前列領導廠。
+          </p>
+          <div class="pt-2 border-t border-purple-500/20 text-[10px] text-purple-400 flex items-center gap-1">
+            <i data-lucide="check" class="w-3 h-3"></i>
+            <span>來源：經濟部統計處 / TMBA</span>
+          </div>
+        </div>
+
+        <!-- 指標 3 -->
+        <div class="p-5 rounded-2xl spotlight-card border border-pink-500/30 space-y-2 group hover:border-pink-400/60 transition-all">
+          <div class="flex items-center justify-between text-xs text-slate-400">
+            <span>全球工業機器人現役存量</span>
+            <i data-lucide="bot" class="w-4 h-4 text-pink-400 group-hover:scale-110 transition-transform"></i>
+          </div>
+          <div class="flex items-baseline gap-1">
+            <span class="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-amber-300 to-pink-200 stat-counter" data-target="428">0</span>
+            <span class="text-xl font-bold text-pink-300">萬+ 台</span>
+          </div>
+          <p class="text-[11px] text-slate-300 leading-snug">
+            歷史新高存量，台灣製造業機器人密度破 300 台/萬人，穩居全球前十。
+          </p>
+          <div class="pt-2 border-t border-pink-500/20 text-[10px] text-pink-400 flex items-center gap-1">
+            <i data-lucide="check" class="w-3 h-3"></i>
+            <span>來源：IFR 國際機器人聯合會</span>
+          </div>
+        </div>
+
+        <!-- 指標 4 -->
+        <div class="p-5 rounded-2xl spotlight-card border border-amber-500/30 space-y-2 group hover:border-amber-400/60 transition-all">
+          <div class="flex items-center justify-between text-xs text-slate-400">
+            <span>台灣機械產業總產值</span>
+            <i data-lucide="factory" class="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform"></i>
+          </div>
+          <div class="flex items-baseline gap-1">
+            <span class="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-emerald-300 to-amber-200 stat-counter" data-target="1.1">0</span>
+            <span class="text-xl font-bold text-amber-300">兆+ NT$</span>
+          </div>
+          <p class="text-[11px] text-slate-300 leading-snug">
+            台灣第 3 座兆元產業聚落，外銷遍布全球 138 國，供應鏈縱深厚實。
+          </p>
+          <div class="pt-2 border-t border-amber-500/20 text-[10px] text-amber-400 flex items-center gap-1">
+            <i data-lucide="check" class="w-3 h-3"></i>
+            <span>來源：工研院產科國際所 IEK</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 3 大互動分頁按鈕 (Interactive Tab Switcher) -->
+      <div class="flex flex-wrap items-center gap-3 p-1.5 rounded-2xl bg-[#090317] border border-purple-500/30">
+        <button class="industry-tab-btn active px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 text-slate-300" data-tab="tab-market">
+          <i data-lucide="activity" class="w-4 h-4 text-cyan-400"></i>
+          <span>1. 全球市場動態與傳動進化</span>
+        </button>
+        <button class="industry-tab-btn px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 text-slate-300" data-tab="tab-taiwan">
+          <i data-lucide="cpu" class="w-4 h-4 text-purple-400"></i>
+          <span>2. 台灣聚落地位與上銀競合</span>
+        </button>
+        <button class="industry-tab-btn px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 text-slate-300" data-tab="tab-ai-robot">
+          <i data-lucide="sparkles" class="w-4 h-4 text-pink-400"></i>
+          <span>3. AI 晶片、人形機器人與先進封裝</span>
+        </button>
+      </div>
+
+      <!-- 分頁內容區 -->
+      <div class="space-y-6">
+
+        <!-- ==================== Tab 1: 全球市場動態與傳動進化 ==================== -->
+        <div id="tab-market" class="industry-tab-panel active space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- 卡片 1 -->
+            <div class="p-6 rounded-2xl spotlight-card border border-cyan-500/30 space-y-3">
+              <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center border border-cyan-500/30">
+                <i data-lucide="crosshair" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-base font-black text-white">次微米級 (C0~C3) 精度演進</h3>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                傳統加工機台以 C7~C5 級（導程誤差約 23~50μm）為主，然而隨先進封裝與半導體檢測設備需求攀升，超精密 <strong>C0~C3 級研磨螺桿（誤差 &lt; 3~8μm）</strong> 需求暴增，切線循環靜音防震技術成為市場標配。
+              </p>
+              <div class="pt-2 text-[11px] text-cyan-300 font-medium">
+                🎯 <strong>工藝關鍵</strong>：微米級螺帽預壓調整與雙螺帽消除背隙。
+              </div>
+            </div>
+
+            <!-- 卡片 2 -->
+            <div class="p-6 rounded-2xl spotlight-card border border-blue-500/30 space-y-3">
+              <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center border border-blue-500/30">
+                <i data-lucide="zap" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-base font-black text-white">全電動化 (All-Electric) 綠能取代</h3>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                傳統油壓缸存在漏油污染、維護週期短且能耗巨大之痛點。以滾珠螺桿為核心之<strong>伺服電動壓缸 (Electro-Mechanical Actuators)</strong> 能效達 85% 以上，減碳節能 60%~75%，直球對決歐盟 CBAM 碳關稅。
+              </p>
+              <div class="pt-2 text-[11px] text-blue-300 font-medium">
+                ⚡ <strong>節能效益</strong>：零液壓油污染，精密推力精準閉迴路控制。
+              </div>
+            </div>
+
+            <!-- 卡片 3 -->
+            <div class="p-6 rounded-2xl spotlight-card border border-purple-500/30 space-y-3">
+              <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center border border-purple-500/30">
+                <i data-lucide="hard-drive" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-base font-black text-white">智慧傳動與 IoT 預測性維護</h3>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                上銀科技推出的 <strong>i4.0BS 智慧型滾珠螺桿</strong> 等新世代模組，於滑塊內嵌振動與溫升感測晶片，透過演算法預警潤滑耗盡或疲勞磨損，提早 200 小時通報，防範晶圓廠突發停機損失。
+              </p>
+              <div class="pt-2 text-[11px] text-purple-300 font-medium">
+                🔍 <strong>價值變現</strong>：從被動維修升級為主動壽命健康度管理。
+              </div>
+            </div>
+
+          </div>
+
+          <!-- 動態成長條形圖 -->
+          <div class="p-6 rounded-2xl spotlight-card border border-slate-700/60 bg-[#0c061d]/80 space-y-4">
+            <div class="flex items-center justify-between flex-wrap gap-2">
+              <h4 class="text-sm font-extrabold text-white flex items-center gap-2">
+                <i data-lucide="bar-chart-2" class="w-4 h-4 text-cyan-400"></i>
+                <span>各下游應用領域複合年均成長率預測 (CAGR 2024–2030)</span>
+              </h4>
+              <span class="text-xs text-slate-400">數據來源：MarketsandMarkets / Grand View Research</span>
+            </div>
+
+            <div class="space-y-3.5 pt-2">
+              <!-- Item 1 -->
+              <div class="space-y-1">
+                <div class="flex justify-between text-xs font-semibold">
+                  <span class="text-slate-200">半導體、晶圓傳輸 (EFEM) 與 CoWoS 先進封裝設備</span>
+                  <span class="text-cyan-400 font-black">+11.8% CAGR</span>
+                </div>
+                <div class="h-2.5 w-full bg-slate-800 rounded-full overflow-hidden p-0.5 border border-slate-700">
+                  <div class="h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full industry-bar-fill" style="width: 92%;"></div>
+                </div>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="space-y-1">
+                <div class="flex justify-between text-xs font-semibold">
+                  <span class="text-slate-200">人形機器人 (Humanoid) 與協作型工業機器人 (Cobot)</span>
+                  <span class="text-purple-400 font-black">+9.6% CAGR</span>
+                </div>
+                <div class="h-2.5 w-full bg-slate-800 rounded-full overflow-hidden p-0.5 border border-slate-700">
+                  <div class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full industry-bar-fill" style="width: 78%;"></div>
+                </div>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="space-y-1">
+                <div class="flex justify-between text-xs font-semibold">
+                  <span class="text-slate-200">新能源車 (EV) 線控轉向 (Steer-by-Wire) 與機電煞車</span>
+                  <span class="text-pink-400 font-black">+8.4% CAGR</span>
+                </div>
+                <div class="h-2.5 w-full bg-slate-800 rounded-full overflow-hidden p-0.5 border border-slate-700">
+                  <div class="h-full bg-gradient-to-r from-pink-500 to-amber-500 rounded-full industry-bar-fill" style="width: 66%;"></div>
+                </div>
+              </div>
+
+              <!-- Item 4 -->
+              <div class="space-y-1">
+                <div class="flex justify-between text-xs font-semibold">
+                  <span class="text-slate-200">高階五軸加工中心機與航太複合材料切削</span>
+                  <span class="text-emerald-400 font-black">+5.2% CAGR</span>
+                </div>
+                <div class="h-2.5 w-full bg-slate-800 rounded-full overflow-hidden p-0.5 border border-slate-700">
+                  <div class="h-full bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full industry-bar-fill" style="width: 48%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== Tab 2: 台灣聚落地位與上銀競合 ==================== -->
+        <div id="tab-taiwan" class="industry-tab-panel space-y-6">
+          
+          <!-- 大肚山黃金縱谷分析 -->
+          <div class="p-6 rounded-2xl spotlight-card border border-purple-500/30 space-y-3">
+            <div class="flex items-center gap-2 text-purple-300 font-extrabold text-sm">
+              <i data-lucide="map-pin" class="w-4 h-4 text-purple-400"></i>
+              <span>大台中「大肚山 60 公里黃金縱谷」垂直整合護城河</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              台灣機械產業長年立足於台中精密機械園區、大雅、烏日與豐原等區域，在 60 公里半徑內匯聚超過 1,500 家中小型加工製造與協同廠商。涵蓋<strong>鑄造退火、精密熱處理、微米外圓磨床切削、恆溫裝配與雷射干涉儀干涉補償</strong>。這種「能在 2 小時車程內完成全套客製化協同試作」的超高敏捷度，是全球德日歐美難以企及的供應鏈韌性。
+            </p>
+          </div>
+
+          <!-- 全球四大傳動巨頭客觀競合矩陣 -->
+          <div class="p-6 rounded-2xl spotlight-card border border-cyan-500/30 space-y-4">
+            <h4 class="text-sm font-extrabold text-white flex items-center gap-2">
+              <i data-lucide="git-merge" class="w-4 h-4 text-cyan-400"></i>
+              <span>全球傳動關鍵零組件四大巨頭競合格局矩陣</span>
+            </h4>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-1">
+              
+              <!-- THK -->
+              <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-700/80 space-y-2">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm font-black text-white">日本 THK</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-blue-950 text-blue-300 font-bold">市占全球第一</span>
+                </div>
+                <p class="text-xs text-slate-300">
+                  線性滑軌全球專利發明者。長期佔據全球市占龍頭，品牌溢價最高，在歐美日高階半導體機台擁有強大專利保護。
+                </p>
+                <div class="text-[10px] text-slate-400 border-t border-slate-800 pt-1.5">
+                  優勢：頂尖品牌認知與專利厚度
+                </div>
+              </div>
+
+              <!-- HIWIN -->
+              <div class="p-4 rounded-xl bg-cyan-950/30 border border-cyan-500/50 space-y-2 relative overflow-hidden">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm font-black text-cyan-300">台灣 HIWIN (上銀)</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-cyan-900 text-cyan-200 font-bold">市占全球第二</span>
+                </div>
+                <p class="text-xs text-slate-200">
+                  垂直整合度最高！自主掌握滾珠螺桿、線性滑軌、直驅馬達、諧波減速機與單軸/晶圓機器人，交期短且性價比無敵。
+                </p>
+                <div class="text-[10px] text-cyan-300 border-t border-cyan-500/30 pt-1.5 font-bold">
+                  優勢：極高性價比、交期彈性與一站式整合
+                </div>
+              </div>
+
+              <!-- Bosch Rexroth -->
+              <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-700/80 space-y-2">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm font-black text-white">德國 博世力士樂</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-purple-950 text-purple-300 font-bold">歐系工業標準</span>
+                </div>
+                <p class="text-xs text-slate-300">
+                  Bosch Rexroth 在歐洲重載型滾柱滑軌與大型自動化產線居領導地位，深耕歐系車廠與重型機械自動化。
+                </p>
+                <div class="text-[10px] text-slate-400 border-t border-slate-800 pt-1.5">
+                  優勢：重負載規格與歐洲工業標準制定權
+                </div>
+              </div>
+
+              <!-- NSK -->
+              <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-700/80 space-y-2">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm font-black text-white">日本 NSK</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-pink-950 text-pink-300 font-bold">百年精密軸承</span>
+                </div>
+                <p class="text-xs text-slate-300">
+                  百年軸承巨頭跨足傳動領域，超高速微米滾珠螺桿在半導體曝光機與全電式射出機深獲國際一線日系廠信賴。
+                </p>
+                <div class="text-[10px] text-slate-400 border-t border-slate-800 pt-1.5">
+                  優勢：超高速、極靜音與特殊塗層材料
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- 精修師手藝之不可取代性 -->
+          <div class="p-5 rounded-2xl spotlight-card border border-amber-500/30 bg-gradient-to-r from-amber-950/20 to-transparent space-y-2">
+            <div class="flex items-center gap-2 text-amber-300 font-bold text-sm">
+              <i data-lucide="wrench" class="w-4 h-4 text-amber-400"></i>
+              <span>精修工藝與企管實踐：為何「人工鏟花 (Hand Scraping)」至今無可替代？</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              縱使頂級 CNC 研磨機重現性已達微米級，但在金屬加工釋放內應力時，滑軌與螺桿基座仍會產生極微小微米翹曲。<strong>精修師的手工鏟花</strong>利用刮刀在滑動面精雕出「每平方英吋 20~25 個潤滑油袋 (Oil Pockets)」，徹底杜絕高速移動時的低速黏滯蠕動 (Stick-Slip)，實現十幾年不失真的次微米重複定位精度。這正是台灣工業能以合理成本達成德日工藝極限的關鍵技術瑰寶！
+            </p>
+          </div>
+
+        </div>
+
+        <!-- ==================== Tab 3: AI 晶片、人形機器人與半導體封裝 ==================== -->
+        <div id="tab-ai-robot" class="industry-tab-panel space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <!-- 卡片 1 -->
+            <div class="p-6 rounded-2xl spotlight-card border border-pink-500/30 space-y-3">
+              <div class="w-10 h-10 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center border border-pink-500/30">
+                <i data-lucide="bot" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-base font-black text-white">人形機器人關節：行星滾柱螺桿新藍海</h3>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                特斯拉 Optimus 與 Figure AI 等人形機器人全身有 28~40 個自由度。肢體（肘、膝、踝關節）承受人體體重數倍衝擊，傳統滾珠螺桿易疲勞斷裂，全面改採<strong>行星滾柱螺桿 (Planetary Roller Screw)</strong>。其線接觸承載力為一般滾珠螺桿的 3~5 倍、壽命達 10 倍以上，單機關鍵零件價值高達數千美元。
+              </p>
+              <div class="pt-2 text-[11px] text-pink-300 font-semibold">
+                🤖 <strong>爆發潛能</strong>：上銀等台廠已積極開出專用生產線搶攻百億商機。
+              </div>
+            </div>
+
+            <!-- 卡片 2 -->
+            <div class="p-6 rounded-2xl spotlight-card border border-cyan-500/30 space-y-3">
+              <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center border border-cyan-500/30">
+                <i data-lucide="layers" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-base font-black text-white">CoWoS 先進封裝與 EFEM 晶圓移載</h3>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                AI 算力晶片缺貨驅動台積電 CoWoS 產能連續數年翻倍擴充。晶圓搬運天車 (OHT) 與 EFEM 晶圓機器人必須在 <strong>Class 1 極致無塵室</strong> 下運作，傳動滑軌與螺桿必須耐真空、極低揮發、無微塵發塵。台廠研發之直驅力矩馬達與防微塵滑軌已成功打入護國神山供應鏈。
+              </p>
+              <div class="pt-2 text-[11px] text-cyan-300 font-semibold">
+                🛡️ <strong>國產替代</strong>：打破日商真空傳動壟斷，提高本土供應鏈自主率。
+              </div>
+            </div>
+
+            <!-- 卡片 3 -->
+            <div class="p-6 rounded-2xl spotlight-card border border-amber-500/30 space-y-3">
+              <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center border border-amber-500/30">
+                <i data-lucide="cpu" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-base font-black text-white">人機協作 (Cobot) 與無燈智慧工廠</h3>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                依據 IFR 統計，全球工業機器人密度台灣名列前十。少子化與高齡化衝擊下，傳統重型護欄圍籬機器人正被兼具力量感測與安全視覺之「協作型機器人 (Cobot)」取代，配合 AMR 自主導航搬運車，實現 24 小時全自動無燈化精密加工工廠。
+              </p>
+              <div class="pt-2 text-[11px] text-amber-300 font-semibold">
+                🏭 <strong>落地典範</strong>：從精密五金零組件加工到 3C 組裝產線全面覆蓋。
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 8 大官方公信研調資料來源與超連結 (Authoritative Hyperlinks with Badges) -->
+      <div class="p-6 sm:p-7 rounded-2xl spotlight-card border border-cyan-500/30 bg-gradient-to-b from-[#0e0720]/90 to-[#06020f]/95 space-y-5">
+        
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b border-purple-500/20">
+          <div class="space-y-1">
+            <h4 class="text-base font-black text-white flex items-center gap-2">
+              <i data-lucide="link" class="w-4 h-4 text-cyan-400"></i>
+              <span>公信研調與官方權威資料出處 (點擊前往官方網站查驗)</span>
+            </h4>
+            <p class="text-xs text-slate-400">
+              所有產業數據皆取材自國內外法人調研機構、國際產業協會與政府統計處之官方報告，內容真實無虛構。
+            </p>
+          </div>
+          <span class="text-[11px] px-3 py-1 rounded-full bg-purple-950 border border-purple-500/30 text-purple-300 font-bold shrink-0">
+            8 大權威機構認證
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <!-- Link 1: 工研院產科國際所 -->
+          <a href="https://ieknet.iek.org.tw/" target="_blank" rel="noopener noreferrer" class="p-4 rounded-xl bg-slate-900/60 border border-cyan-500/30 hover:border-cyan-400 source-card-hover block space-y-1.5 group">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black text-white group-hover:text-cyan-300 transition-colors">工研院產科所 (IEK)</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5 text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+            </div>
+            <p class="text-[11px] text-slate-400 leading-snug">
+              台灣產業情報網。機械、半導體設備產值與全球趨勢年度專題。
+            </p>
+            <div class="text-[10px] text-cyan-400 font-mono truncate">ieknet.iek.org.tw</div>
+          </a>
+
+          <!-- Link 2: IFR 國際機器人聯合會 -->
+          <a href="https://ifr.org/" target="_blank" rel="noopener noreferrer" class="p-4 rounded-xl bg-slate-900/60 border border-purple-500/30 hover:border-purple-400 source-card-hover block space-y-1.5 group">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black text-white group-hover:text-purple-300 transition-colors">國際機器人聯合會 (IFR)</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5 text-purple-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+            </div>
+            <p class="text-[11px] text-slate-400 leading-snug">
+              發布權威《World Robotics Report》全球機器人存量與密度年報。
+            </p>
+            <div class="text-[10px] text-purple-400 font-mono truncate">ifr.org</div>
+          </a>
+
+          <!-- Link 3: TMBA 台灣工具機暨零組件公會 -->
+          <a href="https://www.tmba.org.tw/" target="_blank" rel="noopener noreferrer" class="p-4 rounded-xl bg-slate-900/60 border border-pink-500/30 hover:border-pink-400 source-card-hover block space-y-1.5 group">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black text-white group-hover:text-pink-300 transition-colors">工具機暨零組件公會</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5 text-pink-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+            </div>
+            <p class="text-[11px] text-slate-400 leading-snug">
+              TMBA 台灣傳動元件出口、工具機產值與關鍵零組件產業數據。
+            </p>
+            <div class="text-[10px] text-pink-400 font-mono truncate">tmba.org.tw</div>
+          </a>
+
+          <!-- Link 4: TAIROA 台灣智慧自動化與機器人協會 -->
+          <a href="https://www.tairoa.org.tw/" target="_blank" rel="noopener noreferrer" class="p-4 rounded-xl bg-slate-900/60 border border-blue-500/30 hover:border-blue-400 source-card-hover block space-y-1.5 group">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black text-white group-hover:text-blue-300 transition-colors">智慧自動化協會 (TAIROA)</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5 text-blue-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+            </div>
+            <p class="text-[11px] text-slate-400 leading-snug">
+              推動台灣智慧製造、服務型/工業機器人標準與產學媒合平台。
+            </p>
+            <div class="text-[10px] text-blue-400 font-mono truncate">tairoa.org.tw</div>
+          </a>
+
+          <!-- Link 5: 經濟部統計處 -->
+          <a href="https://www.moea.gov.tw/MNS/dos/" target="_blank" rel="noopener noreferrer" class="p-4 rounded-xl bg-slate-900/60 border border-emerald-500/30 hover:border-emerald-400 source-card-hover block space-y-1.5 group">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black text-white group-hover:text-emerald-300 transition-colors">經濟部統計處 (MOEA)</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5 text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+            </div>
+            <p class="text-[11px] text-slate-400 leading-snug">
+              我國機械設備外銷產值、工業生產指數與滾珠螺桿進出口官方月報。
+            </p>
+            <div class="text-[10px] text-emerald-400 font-mono truncate">moea.gov.tw/MNS/dos</div>
+          </a>
+
+          <!-- Link 6: SEMI 國際半導體產業協會 -->
+          <a href="https://www.semi.org/" target="_blank" rel="noopener noreferrer" class="p-4 rounded-xl bg-slate-900/60 border border-amber-500/30 hover:border-amber-400 source-card-hover block space-y-1.5 group">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black text-white group-hover:text-amber-300 transition-colors">國際半導體協會 (SEMI)</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5 text-amber-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+            </div>
+            <p class="text-[11px] text-slate-400 leading-snug">
+              全球晶圓製造設備支出預測、CoWoS 材料與晶圓搬運標準制定。
+            </p>
+            <div class="text-[10px] text-amber-400 font-mono truncate">semi.org</div>
+          </a>
+
+          <!-- Link 7: MarketsandMarkets 全球傳動研究報告 -->
+          <a href="https://www.marketsandmarkets.com/Market-Reports/linear-motion-system-market-153676751.html" target="_blank" rel="noopener noreferrer" class="p-4 rounded-xl bg-slate-900/60 border border-cyan-500/30 hover:border-cyan-400 source-card-hover block space-y-1.5 group">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black text-white group-hover:text-cyan-300 transition-colors">MarketsandMarkets</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5 text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+            </div>
+            <p class="text-[11px] text-slate-400 leading-snug">
+              全球線性傳動系統 (Linear Motion System) 市場規模與 CAGR 調研。
+            </p>
+            <div class="text-[10px] text-cyan-400 font-mono truncate">marketsandmarkets.com</div>
+          </a>
+
+          <!-- Link 8: 上銀科技企業與投資人專區 -->
+          <a href="https://www.hiwin.tw/" target="_blank" rel="noopener noreferrer" class="p-4 rounded-xl bg-slate-900/60 border border-purple-500/30 hover:border-purple-400 source-card-hover block space-y-1.5 group">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black text-white group-hover:text-purple-300 transition-colors">上銀科技 (HIWIN) 官網</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5 text-purple-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+            </div>
+            <p class="text-[11px] text-slate-400 leading-snug">
+              全球傳動元件二哥產品技術規範、法說會簡報與智慧傳動方案。
+            </p>
+            <div class="text-[10px] text-purple-400 font-mono truncate">hiwin.tw</div>
+          </a>
+
+        </div>
+      </div>
+
     </section>
 
     <!-- Education Section (學歷背景) -->
