@@ -387,6 +387,127 @@ html {
   box-shadow: 0 10px 25px -5px rgba(0, 240, 255, 0.25), 0 0 15px rgba(168, 85, 247, 0.2);
 }
 
+/* ============================================================
+   AI 專案導覽助理專用樣式 (AI Project Navigator Styles)
+   ============================================================ */
+
+/* 目標專案跳轉高亮脈衝聚焦動畫 (Target Highlight Pulse Aura) */
+@keyframes targetHighlightPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.85), inset 0 0 25px rgba(0, 240, 255, 0.45);
+    border-color: #00f0ff;
+    transform: scale(1.015);
+  }
+  40% {
+    box-shadow: 0 0 45px 10px rgba(168, 85, 247, 0.9), inset 0 0 35px rgba(168, 85, 247, 0.5);
+    border-color: #c084fc;
+    transform: scale(1.02);
+  }
+  75% {
+    box-shadow: 0 0 25px 4px rgba(0, 240, 255, 0.6), inset 0 0 15px rgba(0, 240, 255, 0.3);
+    border-color: #38bdf8;
+    transform: scale(1.01);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 240, 255, 0), inset 0 0 0 rgba(0, 240, 255, 0);
+    transform: scale(1);
+  }
+}
+
+.target-highlight-active {
+  animation: targetHighlightPulse 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards !important;
+  border-color: #00f0ff !important;
+  z-index: 30 !important;
+  position: relative !important;
+}
+
+/* 對話視窗自訂精緻捲軸 */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(10, 5, 24, 0.5);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 240, 255, 0.3);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 240, 255, 0.6);
+}
+
+/* 隱藏原生捲軸 (No-Scrollbar Utility) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* AI 打字即時閃爍光標 */
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.ai-typing-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: #00f0ff;
+  font-weight: 900;
+  animation: blinkCursor 0.75s infinite;
+}
+
+/* 訊息氣泡淡入動效 */
+@keyframes messageBubbleIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.ai-msg-anim {
+  animation: messageBubbleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 導覽按鈕內部微波流光 */
+.ai-jump-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-jump-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 240, 255, 0.25),
+    rgba(168, 85, 247, 0.25),
+    transparent
+  );
+  transform: rotate(25deg);
+  transition: all 0.75s ease;
+  pointer-events: none;
+}
+
+.ai-jump-btn:hover::after {
+  left: 150%;
+}
+
+
 
 
 
