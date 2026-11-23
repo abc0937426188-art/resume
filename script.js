@@ -743,13 +743,27 @@ document.addEventListener('DOMContentLoaded', () => {
   let isAiThinking = false;
   let chatInitialized = false;
 
+  // 浮動導覽達成提示 (Toast Notification)
+  function showNavigationToast(title) {
+    const toast = document.getElementById('ai-nav-toast');
+    const toastText = document.getElementById('ai-nav-toast-text');
+    if (toast && toastText) {
+      toastText.textContent = `已鎖定並導覽至：${title}`;
+      toast.classList.add('show');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2800);
+    }
+  }
+
   // 快捷切換視窗
   function toggleAiWindow(show) {
     if (show === undefined) show = !isAiWindowOpen;
     isAiWindowOpen = show;
 
     if (isAiWindowOpen) {
-      aiWindow.classList.remove('hidden');
+      aiWindow.style.display = 'flex';
       aiBtnIconIdle.classList.add('hidden');
       aiBtnIconActive.classList.remove('hidden');
       if (aiTooltip) aiTooltip.classList.add('hidden');
@@ -763,7 +777,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 100);
       playClickLaser();
     } else {
-      aiWindow.classList.add('hidden');
+      aiWindow.style.display = 'none';
       aiBtnIconIdle.classList.remove('hidden');
       aiBtnIconActive.classList.add('hidden');
     }
@@ -866,52 +880,85 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.lucide) window.lucide.createIcons();
   }
 
-  // 綁定快捷按鈕點擊事件 (全域代理)
-  function bindQuickButtons() {
-    document.querySelectorAll('.ai-quick-btn').forEach(btn => {
-      btn.onclick = () => {
-        const query = btn.getAttribute('data-query');
-        if (query && !isAiThinking) {
-          handleUserQuery(query);
-        }
-      };
-    });
-  }
-  bindQuickButtons();
-
   // 平滑跳轉至目標專案區塊 + 科技全息高亮聚焦脈衝
-  function jumpToProjectSection(targetId) {
+  function jumpToProjectSection(targetId, targetTitle) {
     const el = document.getElementById(targetId);
-    if (!el) return;
+    if (!el) {
+      console.warn('Target element not found:', targetId);
+      return;
+    }
 
     playNavigateJumpSound();
 
-    // 手機螢幕上自動縮小對話框避免遮蔽視線
-    if (window.innerWidth < 640) {
-      toggleAiWindow(false);
-    }
+    // 1. 自動收合對話視窗，避免遮擋專案展示畫面
+    toggleAiWindow(false);
 
-    // 平滑捲動至視窗正中
-    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // 2. 顯示頂部全息導覽達成提示
+    showNavigationToast(targetTitle || '專案展示區');
 
-    // 觸發高亮脈衝聚焦光暈 (Pulse Highlight)
+    // 3. 高精度多重相容平滑捲動 (Dual Smooth Scroll Engine)
+    const headerOffset = 90;
+    const elementPosition = el.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+      top: Math.max(0, offsetPosition),
+      behavior: 'smooth'
+    });
+
+    try {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch (err) {}
+
+    // 4. 觸發醒目全息聚焦脈衝動畫 (Pulse Highlight)
     el.classList.remove('target-highlight-active');
     void el.offsetWidth; // 強制重繪
     el.classList.add('target-highlight-active');
 
     setTimeout(() => {
       el.classList.remove('target-highlight-active');
-    }, 2600);
+    }, 2800);
   }
 
-  // 專案跳轉按鈕事件監聽 (動態事件委派)
-  aiChatMessages.addEventListener('click', (e) => {
+  // 全域代理事件監聽 (確保任何動態生成的按鈕、導航列按鈕皆能秒回)
+  document.addEventListener('click', (e) => {
+    // 1. 導覽列與 Hero 的「專案導覽」主按鈕
+    const navTrigger = e.target.closest('.nav-ai-trigger');
+    if (navTrigger) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleAiWindow(true);
+
+      // 若手機版選單開啟中則自動收合
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+      }
+      playClickLaser();
+      return;
+    }
+
+    // 2. 專案導覽直達跳轉按鈕 (.ai-jump-btn)
     const jumpBtn = e.target.closest('.ai-jump-btn');
     if (jumpBtn) {
+      e.preventDefault();
       const targetId = jumpBtn.getAttribute('data-target');
+      const title = jumpBtn.querySelector('.ai-jump-title')?.textContent?.trim() || '專案展示區';
       if (targetId) {
-        jumpToProjectSection(targetId);
+        jumpToProjectSection(targetId, title);
       }
+      return;
+    }
+
+    // 3. 快捷提問膠囊按鈕 (.ai-quick-btn)
+    const quickBtn = e.target.closest('.ai-quick-btn');
+    if (quickBtn) {
+      e.preventDefault();
+      const query = quickBtn.getAttribute('data-query');
+      if (query && !isAiThinking) {
+        handleUserQuery(query);
+      }
+      return;
     }
   });
 
@@ -1140,7 +1187,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span>專案導覽直達</span>
                 <span class="text-[8px] px-1.5 py-0.2 rounded bg-cyan-400/20 text-cyan-200 uppercase tracking-wider">SMOOTH JUMP</span>
               </div>
-              <div class="text-xs sm:text-sm font-black text-white group-hover:text-cyan-200 transition-colors">
+              <div class="ai-jump-title text-xs sm:text-sm font-black text-white group-hover:text-cyan-200 transition-colors">
                 ${result.action.title}
               </div>
               <div class="text-[10px] text-slate-400 line-clamp-1">
@@ -1169,7 +1216,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <i data-lucide="navigation" class="w-3.5 h-3.5"></i>
             </div>
             <div>
-              <div class="text-xs font-bold text-white group-hover:text-cyan-200 transition-colors">
+              <div class="ai-jump-title text-xs font-bold text-white group-hover:text-cyan-200 transition-colors">
                 ${act.title}
               </div>
               <div class="text-[10px] text-slate-400">

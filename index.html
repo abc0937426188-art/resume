@@ -64,10 +64,10 @@
         <div class="absolute -inset-10 rounded-full bg-gradient-to-tr from-sky-400/14 via-slate-200/10 to-indigo-400/10 blur-2xl pointer-events-none"></div>
         <div class="absolute -inset-2 rounded-full border border-slate-300/20 shadow-[0_0_60px_rgba(186,230,253,0.25)] pointer-events-none"></div>
 
-        <!-- 真實 NASA 1280x1280 高精細攝影月球本體 -->
+        <!-- 真實 NASA SVS (Scientific Visualization Studio) 高精細月球本體 -->
         <div class="w-full h-full rounded-full relative overflow-hidden cinema-moon-body shadow-[0_25px_60px_rgba(0,0,0,0.95)]">
-          <!-- NASA 高清月面紋理 (Full Near-side High-Resolution Imagery) -->
-          <img src="assets/moon.jpg" alt="Cinematic Moon" class="w-full h-full object-cover scale-105 pointer-events-none select-none filter contrast-[1.08] brightness-[0.96]">
+          <!-- NASA SVS 官方公開高清月面紋理 (Lunar Reconnaissance Orbiter LOLA/LROC Imagery) -->
+          <img src="assets/moon.jpg" alt="NASA SVS Cinematic Moon" class="w-full h-full object-cover scale-105 pointer-events-none select-none filter contrast-[1.08] brightness-[0.98]">
 
           <!-- 電影級 3D 球形晨昏線陰影層 (Cinematic 3D Spherical Terminator & Relief Lighting) -->
           <div class="absolute inset-0 cinema-moon-shadow"></div>
@@ -124,7 +124,7 @@
         </a>
 
         <!-- Desktop Nav Items -->
-        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+        <nav class="hidden md:flex items-center gap-5 text-sm font-medium text-slate-300">
           <a href="#about" class="hover:text-cyan-300 transition-colors">核心特質</a>
           <a href="#combat-power" class="hover:text-amber-300 transition-colors flex items-center gap-1">
             <i data-lucide="activity" class="w-3.5 h-3.5 text-amber-400"></i>
@@ -138,6 +138,14 @@
           <a href="#education" class="hover:text-pink-300 transition-colors">學歷背景</a>
           <a href="#passions" class="hover:text-cyan-300 transition-colors">生活與探索</a>
 
+          <!-- 專案導覽 AI 啟動按鈕 (加強版導覽連結) -->
+          <button id="nav-project-ai-btn" class="nav-ai-trigger px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-cyan-950/90 via-purple-950/80 to-[#12082b] border border-cyan-400/50 hover:border-cyan-300 text-cyan-300 hover:text-white transition-all shadow-md shadow-cyan-950/50 hover:shadow-cyan-400/30 flex items-center gap-2 group cursor-pointer" title="開啟 AI 智慧專案導覽員">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+            <i data-lucide="bot" class="w-4 h-4 text-cyan-400 group-hover:scale-110 transition-transform"></i>
+            <span class="font-bold text-xs sm:text-sm">專案導覽</span>
+            <span class="text-[9px] px-1.5 py-0.2 rounded bg-cyan-400/20 text-cyan-200 font-black">AI</span>
+          </button>
+
           <!-- 音效開關切換按鈕 -->
           <button id="sound-toggle-btn" class="p-2 rounded-xl bg-purple-950/60 hover:bg-purple-900/80 border border-purple-500/30 text-purple-300 hover:text-white transition-all shadow-sm" title="音效切換（開 / 關）">
             <i id="sound-icon" data-lucide="volume-2" class="w-4 h-4"></i>
@@ -150,6 +158,9 @@
 
         <!-- Mobile Menu Toggle -->
         <div class="md:hidden flex items-center gap-2">
+          <button id="mobile-nav-project-icon-btn" class="nav-ai-trigger p-2 rounded-lg bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 hover:text-white" title="專案導覽 AI">
+            <i data-lucide="bot" class="w-5 h-5"></i>
+          </button>
           <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-purple-950/60 focus:outline-none">
             <i data-lucide="menu" class="w-6 h-6"></i>
           </button>
@@ -159,6 +170,15 @@
 
     <!-- Mobile Nav Menu -->
     <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-6 border-b border-purple-900/40 bg-[#080312]/95 space-y-3">
+      <!-- 手機版專案導覽專屬主按鈕 -->
+      <button id="mobile-nav-project-ai-btn" class="nav-ai-trigger w-full text-left py-2.5 px-3 rounded-xl bg-gradient-to-r from-cyan-950/90 via-purple-950/70 to-transparent border border-cyan-400/60 text-cyan-300 font-bold flex items-center justify-between cursor-pointer shadow-lg shadow-cyan-950/50">
+        <span class="flex items-center gap-2.5">
+          <i data-lucide="bot" class="w-5 h-5 text-cyan-400"></i>
+          <span class="text-white">🚀 專案導覽 (AI 智慧導覽員)</span>
+        </span>
+        <span class="text-[10px] px-2 py-0.5 rounded-full bg-cyan-400 text-black font-black">開啟導覽</span>
+      </button>
+
       <a href="#about" class="mobile-nav-link block py-2 text-slate-300 hover:text-cyan-400">核心特質</a>
       <a href="#combat-power" class="mobile-nav-link block py-2 text-amber-300">專業能力指標</a>
       <a href="#experience" class="mobile-nav-link block py-2 text-slate-300 hover:text-purple-300">經歷實績</a>
@@ -210,6 +230,10 @@
               <i data-lucide="mail" class="w-5 h-5 text-yellow-300"></i>
               預約面試 ｜ 聯絡洽談
             </a>
+            <button id="hero-ai-nav-btn" class="nav-ai-trigger inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl border-2 border-cyan-400/60 bg-cyan-950/50 hover:bg-cyan-900/70 text-cyan-300 font-extrabold transition-all shadow-lg shadow-cyan-500/20 hover:scale-105 cursor-pointer">
+              <i data-lucide="bot" class="w-5 h-5 text-cyan-400 animate-pulse"></i>
+              🚀 專案導覽 (AI)
+            </button>
             <a href="#combat-power" id="combat-trigger-btn" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl border-2 border-amber-400/60 bg-amber-950/30 hover:bg-amber-900/50 text-amber-300 font-bold transition-all shadow-lg shadow-amber-500/20 hover:scale-105">
               <i data-lucide="activity" class="w-5 h-5 text-amber-400"></i>
               檢視專業能力指標
@@ -1233,10 +1257,19 @@
   <!-- ============================================================ -->
   <!-- 獨立輕量 AI 專案導覽助理 (Pure Frontend Cyber AI Navigator) -->
   <!-- ============================================================ -->
-  <div id="ai-navigator-root" class="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-50 select-none">
+  <!-- 浮動導覽達成提示 (Navigation Toast Notification) -->
+  <div id="ai-nav-toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-[99999] pointer-events-none transition-all duration-300 opacity-0 -translate-y-4">
+    <div class="px-5 py-2.5 rounded-2xl bg-[#0d071f]/95 border border-cyan-400/80 shadow-2xl shadow-cyan-500/40 text-xs sm:text-sm text-white font-bold flex items-center gap-2.5 backdrop-blur-xl">
+      <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
+      <i data-lucide="compass" class="w-4 h-4 text-cyan-300"></i>
+      <span id="ai-nav-toast-text">已鎖定並導覽至展示區！</span>
+    </div>
+  </div>
+
+  <div id="ai-navigator-root" class="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-[9999] pointer-events-none">
     
     <!-- 1. 浮動呼叫提示氣泡 (Floating Greeting Tooltip) -->
-    <div id="ai-nav-tooltip" class="hidden sm:flex items-center gap-2 mb-3 px-3.5 py-2 rounded-2xl bg-[#0d071d]/95 border border-cyan-500/40 shadow-xl shadow-cyan-950/50 text-xs text-slate-200 backdrop-blur-md cursor-pointer transition-all duration-300 hover:border-cyan-400 group">
+    <div id="ai-nav-tooltip" class="hidden sm:flex items-center gap-2 mb-3 px-3.5 py-2 rounded-2xl bg-[#0d071d]/95 border border-cyan-500/40 shadow-xl shadow-cyan-950/50 text-xs text-slate-200 backdrop-blur-md cursor-pointer transition-all duration-300 hover:border-cyan-400 group pointer-events-auto">
       <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0"></span>
       <span class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-purple-300 group-hover:from-cyan-200 group-hover:to-pink-300 transition-all">
         專案導覽 AI 在線中！想探索哪項實績？
@@ -1245,9 +1278,9 @@
     </div>
 
     <!-- 2. 懸浮觸發按鈕 (Floating Launcher Button) -->
-    <button id="ai-nav-toggle-btn" class="relative group flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-cyan-500 via-purple-600 to-pink-500 p-[2px] shadow-2xl shadow-cyan-500/30 hover:shadow-cyan-400/50 hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none" aria-label="打開 AI 專案導覽員">
+    <button id="ai-nav-toggle-btn" class="relative group flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-cyan-500 via-purple-600 to-pink-500 p-[2px] shadow-2xl shadow-cyan-500/40 hover:shadow-cyan-400/60 hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none pointer-events-auto cursor-pointer" aria-label="打開 AI 專案導覽員">
       <!-- 旋轉流光光暈背景 -->
-      <span class="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 blur-md opacity-70 group-hover:opacity-100 transition-opacity animate-pulse"></span>
+      <span class="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 blur-md opacity-75 group-hover:opacity-100 transition-opacity animate-pulse"></span>
       
       <div class="relative w-full h-full rounded-full bg-[#0a0518] flex items-center justify-center text-white overflow-hidden">
         <!-- 未開啟時的圖示：機器人 / 導覽火花 -->
@@ -1268,7 +1301,7 @@
     </button>
 
     <!-- 3. 智能對話視窗 (Chat Window Modal) -->
-    <div id="ai-nav-window" class="hidden fixed bottom-20 right-3 sm:bottom-24 sm:right-7 w-[calc(100vw-1.5rem)] sm:w-[420px] max-w-[440px] h-[550px] max-h-[82vh] rounded-3xl backdrop-blur-2xl bg-[#090514]/95 border border-cyan-500/40 shadow-2xl shadow-purple-950/80 flex flex-col overflow-hidden transition-all duration-300 animate-in fade-in zoom-in-95">
+    <div id="ai-nav-window" class="fixed bottom-20 right-3 sm:bottom-24 sm:right-7 w-[calc(100vw-1.5rem)] sm:w-[420px] max-w-[440px] h-[550px] max-h-[82vh] rounded-3xl backdrop-blur-2xl bg-[#090514]/95 border border-cyan-500/40 shadow-2xl shadow-purple-950/80 flex flex-col overflow-hidden transition-all duration-300 pointer-events-auto" style="display: none;">
       
       <!-- 對話窗頂部 Header -->
       <div class="px-4 py-3.5 bg-gradient-to-r from-[#12082b] via-[#0b081e] to-[#12082b] border-b border-purple-500/30 flex items-center justify-between shrink-0">

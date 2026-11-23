@@ -391,20 +391,39 @@ html {
    AI 專案導覽助理專用樣式 (AI Project Navigator Styles)
    ============================================================ */
 
+/* 浮動導覽達成提示樣式 */
+#ai-nav-toast {
+  transform: translate(-50%, -15px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#ai-nav-toast.show {
+  opacity: 1 !important;
+  transform: translate(-50%, 0px) !important;
+}
+
+#ai-navigator-root {
+  pointer-events: none !important;
+}
+
+#ai-navigator-root > * {
+  pointer-events: auto !important;
+}
+
 /* 目標專案跳轉高亮脈衝聚焦動畫 (Target Highlight Pulse Aura) */
 @keyframes targetHighlightPulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.85), inset 0 0 25px rgba(0, 240, 255, 0.45);
+    box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.9), inset 0 0 25px rgba(0, 240, 255, 0.5);
     border-color: #00f0ff;
     transform: scale(1.015);
   }
-  40% {
-    box-shadow: 0 0 45px 10px rgba(168, 85, 247, 0.9), inset 0 0 35px rgba(168, 85, 247, 0.5);
+  35% {
+    box-shadow: 0 0 50px 12px rgba(168, 85, 247, 0.95), inset 0 0 35px rgba(168, 85, 247, 0.6);
     border-color: #c084fc;
-    transform: scale(1.02);
+    transform: scale(1.025);
   }
-  75% {
-    box-shadow: 0 0 25px 4px rgba(0, 240, 255, 0.6), inset 0 0 15px rgba(0, 240, 255, 0.3);
+  70% {
+    box-shadow: 0 0 30px 6px rgba(0, 240, 255, 0.7), inset 0 0 20px rgba(0, 240, 255, 0.4);
     border-color: #38bdf8;
     transform: scale(1.01);
   }
@@ -415,7 +434,7 @@ html {
 }
 
 .target-highlight-active {
-  animation: targetHighlightPulse 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards !important;
+  animation: targetHighlightPulse 2.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards !important;
   border-color: #00f0ff !important;
   z-index: 30 !important;
   position: relative !important;
